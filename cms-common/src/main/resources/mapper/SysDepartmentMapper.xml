@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ehu.common.dao.system.SysDepartmentMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.ehu.common.bean.entity.system.SysDepartment">
+		<id column="department_id" property="departmentId" />
+		<result column="company_id" property="companyId" />
+		<result column="code" property="code" />
+		<result column="name" property="name" />
+		<result column="parent_code" property="parentCode" />
+		<result column="comment" property="comment" />
+		<result column="status" property="status" />
+		<result column="create_time" property="createTime" />
+		<result column="create_by" property="createBy" />
+		<result column="update_time" property="updateTime" />
+		<result column="update_by" property="updateBy" />
+	</resultMap>
+
+</mapper>
