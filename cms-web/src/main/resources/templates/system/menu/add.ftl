@@ -5,15 +5,15 @@
                 <input type="text" hidden id="parentId" name="parentId" value="${parentId}">
                 <div class="form-group">
                     <label class="" id="nameLabel">菜单名称</label>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="输入菜单名称...">
+                    <input type="text" class="form-control" name="name" id="name" placeholder="输入菜单名称..." required>
                 </div>
                 <div class="form-group">
                     <label class="" id="urlLabel">请求地址</label>
-                    <input type="text" class="form-control" name="url" id="url" placeholder="输入请求地址...">
+                    <input type="text" class="form-control" name="url" id="url" placeholder="输入请求地址..." required>
                 </div>
                 <div class="form-group">
                     <label id="sortNameLabel">排序</label>
-                    <input type="number" class="form-control" name="sort" id="sort" placeholder="输入排序...">
+                    <input type="number" class="form-control" name="sort" id="sort" placeholder="输入排序..." required>
                 </div>
                 <div class="form-group">
                     <label id="nickNameLabel">图标</label>
@@ -39,35 +39,16 @@
 </div>
 <script type="text/javascript">
     function securitySave() {
-        $("span").remove(".errorClass");
-        $("br").remove(".errorClass");
-        var status = 1;
-        if ($("#name").val() == "") {
-            $("#nameLabel").prepend('<span class="errorClass" style="color:red">*菜单不能为空</span><br class="errorClass"/>');
-            status = 0;
-        }
-        if ($("#url").val() == "") {
-            $("#urlLabel").prepend('<span class="errorClass" style="color:red">*请求地址不能为空</span><br class="errorClass"/>');
-            status = 0;
-        }
-        if($("#sort").val() == ""){
-            $("#sortNameLabel").prepend('<span class="errorClass" style="color:red">*顺序编号不能为空</span><br class="errorClass"/>');
-            status = 0;
-        }
-        if (status == 0) {
-            return false;
-        } else {
+        if ($("#securityAddForm").valid()) {
             $.ajax({
                 url: '/system/menu/save',
-                type: 'post',
-                dataType: 'text',
+                type: 'put',
+                dataType: 'json',
                 data: $("#securityAddForm").serialize(),
                 success: function (data) {
                     var json = JSON.parse(data);
-                    if (json.code==200) {
-                        $("#lgModal").modal('hide');
+                    if (json.code == 200) {
                         alertMsg("添加成功", "success");
-                        reloadMenuList();
                     } else {
                         alertMsg("添加失败:" + json.msg, "success");
                     }
@@ -75,11 +56,15 @@
             });
         }
     }
-
+    $("#securityAddForm").validate({
+        errorClass: 'text-danger',
+        errorElement: "span"
+    });
     function hideMenu() {
         $("#menuContent").fadeOut("fast");
         $("body").unbind("mousedown", onBodyDown);
     }
+
     function onBodyDown(event) {
         if (!(event.target.id == "menuBtn" || event.target.id == "pName" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length > 0)) {
             hideMenu();

@@ -5,15 +5,16 @@
                 <h3 class="box-title">菜单管理</h3>
             </div>
             <div class="box-body">
-                <div class="clearfix">
-                    <#--<div class="col-md-4">
+                <div class="row">
+                    <#--<div class="col-md-6">
                             <a class="btn btn-sm btn-primary" target="modal" modal="lg"
                            href="/system/menu/add">添加</a>
                     </div>-->
+                        <div class="col-xs-12">
+                            <table id="menu_tab" class="table" style="margin-top: 20px">
+                            </table>
+                        </div>
                 </div>
-                <table id="menu_tab" class="table" style="margin-top: 20px">
-
-                </table>
             </div>
         </div>
     </div>

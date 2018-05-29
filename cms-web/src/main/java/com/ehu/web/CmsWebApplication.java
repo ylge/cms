@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@MapperScan("com.ehu.common.dao")
-@ComponentScan(basePackages ="com.ehu")
+@MapperScan("com.ehu.system.dao")
+@ComponentScan(basePackages ="com.ehu.*")
 public class CmsWebApplication {
 
     public static void main(String[] args) {

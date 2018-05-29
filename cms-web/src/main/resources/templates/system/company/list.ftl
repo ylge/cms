@@ -4,11 +4,11 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">用户管理</h3>
+                <h3 class="box-title">公司管理</h3>
 
                 <div class="box-tools pull-left">
                 <@shiro.hasPermission name="system/company/add">
-                    <a onclick="securityToListAjax();" class="btn btn-sm btn-primary" target="modal" modal="lg"
+                    <a class="btn btn-sm btn-primary" target="modal" modal="lg"
                        href="system/company/add">添加</a>
                 </@shiro.hasPermission>
                 </div>
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <button type="submit" onclick="securityReload();" class="btn btn-primary">搜索</button>
+                        <button type="submit" class="btn btn-primary">搜索</button>
                     </div>
                 </div>
                 <table id="security_tab" class="table table-bordered table-striped">
@@ -57,6 +57,10 @@
                                 </td>
                             </tr>
                             </#list>
+                            <#else>
+                            <tr>
+                                <td colspan="8">没有记录</td>
+                            </tr>
                         </#if>
                     </tbody>
                 </table>

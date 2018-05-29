@@ -43,40 +43,24 @@
 </div>
 <script type="text/javascript" src="other/zTree/js/jquery.ztree.core.js"></script>
 <script type="text/javascript" src="other/zTree/js/jquery.ztree.excheck.js"></script>
-<link rel="stylesheet" type="text/css" href="other/zTree/css/zTreeStyle/zTreeStyle.css"/>
 <script type="text/javascript">
     function securitySave() {
-        $("span").remove(".errorClass");
-        $("br").remove(".errorClass");
-        var status = 1;
-        if ($("#name").val() == "") {
-            $("#nameLabel").prepend('<span class="errorClass" style="color:red">*菜单不能为空</span><br class="errorClass"/>');
-            status = 0;
-        }
-        if ($("#url").val() == "") {
-            $("#urlLabel").prepend('<span class="errorClass" style="color:red">*请求地址不能为空</span><br class="errorClass"/>');
-            status = 0;
-        }
-        if (status == 0) {
-            return false;
-        } else {
-            $.ajax({
-                url: '/system/menu/update',
-                type: 'post',
-                dataType: 'text',
-                data: $("#securityAddForm").serialize(),
-                success: function (data) {
-                    var json = JSON.parse(data);
-                    if (json.code==200) {
-                        $("#lgModal").modal('hide');
-                        alertMsg("更新成功", "success");
-                        reloadMenuList();
-                    } else {
-                        alertMsg("更新失败:" + json.msg, "success");
-                    }
+        $.ajax({
+            url: '/system/menu/update',
+            type: 'put',
+            dataType: 'json',
+            data: $("#securityAddForm").serialize(),
+            success: function (data) {
+                var json = JSON.parse(data);
+                if (json.code==200) {
+                    $("#lgModal").modal('hide');
+                    alertMsg("更新成功", "success");
+                    reloadMenuList();
+                } else {
+                    alertMsg("更新失败:" + json.msg, "success");
                 }
-            });
-        }
+            }
+        });
     }
     function hideMenu() {
         $("#menuContent").fadeOut("fast");

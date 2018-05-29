@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1> 系统异常 </h1>
-<div th:text="${url}"></div>
-<div th:text="${exception.message}"></div>
+<h3>${url}</h3>
+<h3>原因：${exception.message}</h3>
 </body>
 </html>
