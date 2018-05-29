@@ -1,6 +1,7 @@
 package com.ehu.common.exception;
 
 import com.ehu.common.bean.Result;
+import com.ehu.common.bean.ResultCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,7 +20,7 @@ public class GlobalExceptionHandler {
         log.error(e.getMessage());
         mav.addObject("exception", e);
         mav.addObject("url", req.getRequestURL());
-        mav.setViewName("error");
+        mav.setViewName("common/error");
         return mav;
     }
 
@@ -27,8 +28,9 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public Result<String> jsonErrorHandler(HttpServletRequest req, MyException e) throws Exception {
         Result<String> r = new Result<>();
+        log.error(e.getMessage());
         r.setMsg(e.getMessage());
-        r.setCode(r.ERROR);
+        r.setCode(ResultCode.FAIL.code);
         r.setData("Some Data");
         return r;
     }
