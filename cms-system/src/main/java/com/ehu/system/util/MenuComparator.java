@@ -1,8 +1,8 @@
-package com.ehu.common.util;
+package com.ehu.system.util;
 
 
 
-import com.ehu.common.bean.entity.system.SysMenu;
+import com.ehu.system.entity.SysMenu;
 
 import java.util.Comparator;
 

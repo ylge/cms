@@ -1,13 +1,15 @@
 package com.ehu.system.service.impl;
 
-import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.ehu.common.bean.entity.system.SysUserRole;
-import com.ehu.common.dao.system.SysUserRoleMapper;
+import com.ehu.common.base.BaseMapper;
+import com.ehu.common.base.impl.BaseServiceImpl;
+import com.ehu.system.entity.SysUserRole;
+import com.ehu.system.dao.SysUserRoleMapper;
 import com.ehu.system.service.SysUserRoleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 /**
  * <p>
@@ -18,15 +20,18 @@ import java.util.List;
  * @since 2018-05-11
  */
 @Service
-public class SysUserRoleServiceImpl extends ServiceImpl<SysUserRoleMapper, SysUserRole> implements SysUserRoleService {
+public class SysUserRoleServiceImpl extends BaseServiceImpl<SysUserRole, String> implements SysUserRoleService {
+
+    @Autowired
+    private SysUserRoleMapper sysUserRoleMapper;
 
     @Override
-    public List<SysUserRole> getByUserId(Integer userId) {
-        return this.selectList(new Wrapper<SysUserRole>() {
-            @Override
-            public String getSqlSegment() {
-                return "where user_id ="+userId;
-            }
-        });
+    public BaseMapper<SysUserRole, String> getMappser() {
+        return sysUserRoleMapper;
+    }
+
+    @Override
+    public List<SysUserRole> selectByUserId(Integer userId) {
+        return sysUserRoleMapper.selectByUserId(userId);
     }
 }

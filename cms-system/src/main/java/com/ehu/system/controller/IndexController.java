@@ -1,9 +1,9 @@
 package com.ehu.system.controller;
 
-import com.ehu.common.bean.ShiroUser;
-import com.ehu.common.bean.entity.system.SysMenu;
-import com.ehu.common.bean.entity.system.SysRoleMenu;
-import com.ehu.common.util.MenuComparator;
+import com.ehu.system.util.MenuComparator;
+import com.ehu.system.entity.ShiroUser;
+import com.ehu.system.entity.SysMenu;
+import com.ehu.system.entity.SysRoleMenu;
 import com.ehu.system.service.SysMenuService;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;

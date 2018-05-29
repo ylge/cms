@@ -1,7 +1,5 @@
-package com.ehu.common.bean;
+package com.ehu.system.entity;
 
-import com.ehu.common.bean.entity.system.SysRole;
-import com.ehu.common.bean.entity.system.SysRoleMenu;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.io.Serializable;

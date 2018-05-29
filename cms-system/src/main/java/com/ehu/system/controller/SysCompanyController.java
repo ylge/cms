@@ -1,14 +1,12 @@
 package com.ehu.system.controller;
 
 import com.ehu.common.base.BaseController;
-import com.ehu.common.bean.entity.system.SysCompany;
+import com.ehu.common.bean.Result;
+import com.ehu.system.entity.SysCompany;
 import com.ehu.system.service.SysCompanyService;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -35,22 +33,47 @@ public class SysCompanyController extends BaseController {
     @GetMapping(value = "list")
     public ModelAndView list(ModelAndView modelAndView) {
         modelAndView.setViewName("/system/company/list");
-        PageInfo<SysCompany> page = sysCompanyService.getCompanyList(null);
-        modelAndView.addObject("page", page);
         return modelAndView;
     }
 
     /**
-    　* @description:新增公司
-    　* @param
-    　* @return  
+    　* @description:公司新增
     　* @author geyl
     　* @date 2018-5-22 13:35 
     　*/
-    @RequestMapping(value = "add", method = RequestMethod.GET)
-    public ModelAndView add(ModelAndView modelAndView) {
-        modelAndView.setViewName("/system/company/add");
+    @GetMapping(value = "add")
+    public String add() {
+        return "/system/company/add";
+    }
+
+    /**
+     　* @description:公司编辑
+     　* @author geyl
+     　* @date 2018-5-22 13:35
+     　*/
+    @GetMapping(value = "edit/{companyId}")
+    public ModelAndView edit(ModelAndView modelAndView,@PathVariable String companyId) {
+        modelAndView.setViewName("/system/company/edit");
+        modelAndView.addObject("company",sysCompanyService.selectByPrimaryKey(companyId));
         return modelAndView;
+    }
+
+    /**
+     　* @description:新增公司
+     　* @param
+     　* @return
+     　* @author geyl
+     　* @date 2018-5-22 13:35
+     　*/
+    @PutMapping(value = "save")
+    public @ResponseBody
+    Result save(@RequestBody SysCompany sysCompany ) {
+        if(sysCompanyService.save(sysCompany)){
+            return Result.OK();
+        }else {
+            return Result.Fail();
+        }
+
     }
 
 }

@@ -1,9 +1,11 @@
 package com.ehu.system.service.impl;
 
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.ehu.common.bean.entity.system.SysDepartment;
-import com.ehu.common.dao.system.SysDepartmentMapper;
+import com.ehu.common.base.BaseMapper;
+import com.ehu.common.base.impl.BaseServiceImpl;
+import com.ehu.system.entity.SysDepartment;
+import com.ehu.system.dao.SysDepartmentMapper;
 import com.ehu.system.service.SysDepartmentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +17,12 @@ import org.springframework.stereotype.Service;
  * @since 2018-05-11
  */
 @Service
-public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, SysDepartment> implements SysDepartmentService {
-	
+public class SysDepartmentServiceImpl extends BaseServiceImpl<SysDepartment,String > implements SysDepartmentService {
+
+    @Autowired
+    private SysDepartmentMapper sysDepartmentMapper;
+    @Override
+    public BaseMapper<SysDepartment, String> getMappser() {
+        return sysDepartmentMapper;
+    }
 }

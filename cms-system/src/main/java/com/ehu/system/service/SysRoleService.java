@@ -1,7 +1,7 @@
 package com.ehu.system.service;
 
-import com.baomidou.mybatisplus.service.IService;
-import com.ehu.common.bean.entity.system.SysRole;
+import com.ehu.common.base.BaseService;
+import com.ehu.system.entity.SysRole;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.ehu.common.bean.entity.system.SysRole;
  * @author geyongliang
  * @since 2018-05-11
  */
-public interface SysRoleService extends IService<SysRole> {
+public interface SysRoleService extends BaseService<SysRole,String> {
 
 }

@@ -1,7 +1,7 @@
 package com.ehu.system.service;
 
-import com.baomidou.mybatisplus.service.IService;
-import com.ehu.common.bean.entity.system.SysDepartment;
+import com.ehu.common.base.BaseService;
+import com.ehu.system.entity.SysDepartment;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.ehu.common.bean.entity.system.SysDepartment;
  * @author geyongliang
  * @since 2018-05-11
  */
-public interface SysDepartmentService extends IService<SysDepartment> {
+public interface SysDepartmentService extends BaseService<SysDepartment,String> {
 	
 }

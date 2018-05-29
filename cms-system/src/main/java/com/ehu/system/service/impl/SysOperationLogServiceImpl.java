@@ -1,9 +1,11 @@
 package com.ehu.system.service.impl;
 
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.ehu.common.bean.entity.system.SysOperationLog;
-import com.ehu.common.dao.system.SysOperationLogMapper;
+import com.ehu.common.base.BaseMapper;
+import com.ehu.common.base.impl.BaseServiceImpl;
+import com.ehu.system.entity.SysOperationLog;
+import com.ehu.system.dao.SysOperationLogMapper;
 import com.ehu.system.service.SysOperationLogService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +17,12 @@ import org.springframework.stereotype.Service;
  * @since 2018-05-11
  */
 @Service
-public class SysOperationLogServiceImpl extends ServiceImpl<SysOperationLogMapper, SysOperationLog> implements SysOperationLogService {
-	
+public class SysOperationLogServiceImpl extends BaseServiceImpl<SysOperationLog, String> implements SysOperationLogService {
+	@Autowired
+    private SysOperationLogMapper sysOperationLogMapper;
+
+    @Override
+    public BaseMapper<SysOperationLog, String> getMappser() {
+        return sysOperationLogMapper;
+    }
 }

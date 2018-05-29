@@ -1,7 +1,8 @@
 package com.ehu.system.service;
 
 
-import com.ehu.common.bean.entity.system.SysMenu;
+import com.ehu.common.base.BaseService;
+import com.ehu.system.entity.SysMenu;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * Time:13:59
  * ProjectName:Common-admin
  */
-public interface MenuService {
+public interface MenuService extends BaseService<SysMenu,String> {
 
     List<SysMenu> getMenu();
 }

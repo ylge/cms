@@ -1,7 +1,7 @@
 package com.ehu.system.service;
 
-import com.ehu.common.bean.ShiroUser;
-import com.ehu.common.bean.entity.system.*;
+import com.ehu.system.entity.ShiroUser;
+import com.ehu.system.entity.system.*;
 import org.apache.shiro.authc.CredentialsException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.crypto.hash.Md5Hash;
@@ -45,12 +45,12 @@ public class ShiroFactory {
         shiroUser.setId(user.getUserId());            // 账号id
         shiroUser.setUsername(user.getUsername());// 账号
         shiroUser.setName(user.getName());        // 用户名称
-        List<SysUserRole> userRoleList = sysUserRoleService.getByUserId(user.getUserId());
+        List<SysUserRole> userRoleList = sysUserRoleService.selectByUserId(user.getUserId());
         List<SysRole> roleList = new ArrayList<>();
         if (userRoleList != null && userRoleList.size() > 0){
             for (SysUserRole sysRoleUser: userRoleList
                  ) {
-                SysRole role = sysRoleService.selectById(sysRoleUser.getRoleId());
+                SysRole role = sysRoleService.selectByPrimaryKey(sysRoleUser.getRoleId());
                 roleList.add(role);
             }
             shiroUser.setRoleList(roleList);
@@ -65,7 +65,7 @@ public class ShiroFactory {
             List<SysRoleMenu> sysRoleMenus = new ArrayList<>();
             for (SysRole r:roleList ) {
                 roleValues.add(r.getRoleId().toString());
-                List<SysRoleMenu> ll = sysRoleMenuService.getByRoleId(r.getRoleId());
+                List<SysRoleMenu> ll = sysRoleMenuService.selectByRoleId(r.getRoleId());
                 sysRoleMenus.addAll(ll);
             }
             shiroUser.setRoleValues(roleValues);

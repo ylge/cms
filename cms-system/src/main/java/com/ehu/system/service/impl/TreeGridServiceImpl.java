@@ -1,7 +1,7 @@
 package com.ehu.system.service.impl;
 
 import com.ehu.common.bean.TreeGridNode;
-import com.ehu.common.bean.entity.system.SysMenu;
+import com.ehu.system.entity.SysMenu;
 import com.ehu.system.service.MenuService;
 import com.ehu.system.service.TreeGridService;
 import org.springframework.beans.factory.annotation.Autowired;

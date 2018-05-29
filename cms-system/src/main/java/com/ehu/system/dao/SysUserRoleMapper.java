@@ -1,19 +1,19 @@
-package com.ehu.system.service;
+package com.ehu.system.dao;
 
-import com.ehu.common.base.BaseService;
+import com.ehu.common.base.BaseMapper;
 import com.ehu.system.entity.SysUserRole;
 
 import java.util.List;
 
 /**
  * <p>
- *  服务类
+  *  Mapper 接口
  * </p>
  *
  * @author geyongliang
  * @since 2018-05-11
  */
-public interface SysUserRoleService extends BaseService<SysUserRole,String> {
+public interface SysUserRoleMapper extends BaseMapper<SysUserRole,String> {
 
     List<SysUserRole> selectByUserId(Integer userId);
 }

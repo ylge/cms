@@ -1,7 +1,9 @@
 package com.ehu.system.service.impl;
 
-import com.ehu.common.bean.entity.system.SysMenu;
-import com.ehu.common.dao.system.SysMenuMapper;
+import com.ehu.common.base.BaseMapper;
+import com.ehu.common.base.impl.BaseServiceImpl;
+import com.ehu.system.entity.SysMenu;
+import com.ehu.system.dao.SysMenuMapper;
 import com.ehu.system.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +16,7 @@ import java.util.List;
  * ProjectName:Common-admin
  */
 @Service
-public class MenuServiceImpl implements MenuService {
+public class MenuServiceImpl extends BaseServiceImpl<SysMenu, String> implements MenuService {
     @Autowired
     private SysMenuMapper menuMapper;
 
@@ -25,4 +27,8 @@ public class MenuServiceImpl implements MenuService {
     }
 
 
+    @Override
+    public BaseMapper<SysMenu, String> getMappser() {
+        return menuMapper;
+    }
 }

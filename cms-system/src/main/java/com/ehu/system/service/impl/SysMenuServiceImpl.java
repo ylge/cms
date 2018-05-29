@@ -1,8 +1,9 @@
 package com.ehu.system.service.impl;
 
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.ehu.common.bean.entity.system.SysMenu;
-import com.ehu.common.dao.system.SysMenuMapper;
+import com.ehu.common.base.BaseMapper;
+import com.ehu.common.base.impl.BaseServiceImpl;
+import com.ehu.system.entity.SysMenu;
+import com.ehu.system.dao.SysMenuMapper;
 import com.ehu.system.service.SysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ import java.util.Map;
  * @since 2018-04-27
  */
 @Service
-public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> implements SysMenuService {
+public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String> implements SysMenuService {
     @Autowired
     private SysMenuMapper sysMenuMapper;
     @Override
@@ -28,17 +29,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     }
 
     @Override
-    public SysMenu selectByPrimaryKey(String id) {
-        return sysMenuMapper.selectById(Integer.valueOf(id));
-    }
-
-    @Override
-    public void update(SysMenu menu) {
-        sysMenuMapper.updateByPrimaryKeySelective(menu);
-    }
-
-    @Override
-    public void deleteByPrimaryKey(String id) {
-        sysMenuMapper.deleteById(Integer.valueOf(id));
+    public BaseMapper<SysMenu, String> getMappser() {
+        return sysMenuMapper;
     }
 }

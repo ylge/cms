@@ -1,10 +1,11 @@
 package com.ehu.system.service.impl;
 
-import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.ehu.common.bean.entity.system.SysRoleMenu;
-import com.ehu.common.dao.system.SysRoleMenuMapper;
+import com.ehu.common.base.BaseMapper;
+import com.ehu.common.base.impl.BaseServiceImpl;
+import com.ehu.system.entity.SysRoleMenu;
+import com.ehu.system.dao.SysRoleMenuMapper;
 import com.ehu.system.service.SysRoleMenuService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,15 +19,18 @@ import java.util.List;
  * @since 2018-05-11
  */
 @Service
-public class SysRoleMenuServiceImpl extends ServiceImpl<SysRoleMenuMapper, SysRoleMenu> implements SysRoleMenuService {
+public class SysRoleMenuServiceImpl extends BaseServiceImpl<SysRoleMenu, String> implements SysRoleMenuService {
+
+    @Autowired
+    private SysRoleMenuMapper sysRoleMenuMapper;
 
     @Override
-    public List<SysRoleMenu> getByRoleId(Integer roleId) {
-        return this.selectList(new Wrapper<SysRoleMenu>() {
-            @Override
-            public String getSqlSegment() {
-                return "where role_id = "+roleId;
-            }
-        });
+    public BaseMapper<SysRoleMenu, String> getMappser() {
+        return sysRoleMenuMapper;
+    }
+
+    @Override
+    public List<SysRoleMenu> selectByRoleId(Integer roleId) {
+        return sysRoleMenuMapper.selectByRoleId(roleId);
     }
 }

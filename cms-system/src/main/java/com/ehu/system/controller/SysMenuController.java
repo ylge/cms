@@ -1,9 +1,10 @@
 package com.ehu.system.controller;
 
+import com.ehu.common.base.BaseController;
 import com.ehu.common.bean.Result;
 import com.ehu.common.bean.TreeGridNode;
 import com.ehu.common.bean.TreeGridWrapper;
-import com.ehu.common.bean.entity.system.SysMenu;
+import com.ehu.system.entity.SysMenu;
 import com.ehu.system.service.SysMenuService;
 import com.ehu.system.service.TreeGridService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,7 +21,7 @@ import java.util.List;
 　*/
 @Controller
 @RequestMapping("system/menu/")
-public class SysMenuController {
+public class SysMenuController extends BaseController {
     @Autowired
     private SysMenuService menuService;
     @Autowired
@@ -56,16 +56,15 @@ public class SysMenuController {
      * @param menu
      * @return
      */
-    @PostMapping(value = "save")
+    @PutMapping(value = "save")
     public @ResponseBody
     Result save(SysMenu menu){
-        menu.setCreateTime(new Date());
         menu.setStatus(1);
         if (menu.getSort() == null){
             menu.setSort(1);
         }
-        menuService.insert(menu);
-        return new Result<>();
+        menuService.insertSelective(menu);
+        return Result.OK();
     }
 
     /**
@@ -74,7 +73,7 @@ public class SysMenuController {
      * @param modelAndView
      * @return
      */
-    @RequestMapping(value = "edit/{id}",method = RequestMethod.GET)
+    @GetMapping(value = "edit/{id}")
     public ModelAndView edit(@PathVariable String id, ModelAndView modelAndView){
         SysMenu menu = menuService.selectByPrimaryKey(id);
         modelAndView.addObject("menu",menu);
@@ -87,12 +86,11 @@ public class SysMenuController {
      * @param menu
      * @return
      */
-    @RequestMapping(value = "update")
+    @PutMapping(value = "update")
     public @ResponseBody
     Result update(SysMenu menu){
-        menu.setUpdateTime(new Date());
-        menuService.update(menu);
-        return new Result();
+        menuService.updateByPrimaryKeySelective(menu);
+        return Result.OK();
     }
     @GetMapping(value = "getTreeGridMenu")
     public @ResponseBody
@@ -113,6 +111,6 @@ public class SysMenuController {
     public @ResponseBody
     Result delete(@PathVariable String id){
         menuService.deleteByPrimaryKey(id);
-        return new Result();
+        return Result.OK();
     }
 }

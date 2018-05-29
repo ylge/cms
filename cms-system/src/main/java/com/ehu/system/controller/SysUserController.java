@@ -1,14 +1,12 @@
 package com.ehu.system.controller;
 
 import com.ehu.common.base.BaseController;
-import com.ehu.common.bean.entity.system.SysUser;
+import com.ehu.common.bean.PageBean;
+import com.ehu.system.entity.SysUser;
 import com.ehu.system.service.SysUserService;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -26,11 +24,14 @@ public class SysUserController extends BaseController {
     private SysUserService sysUserService;
 
     @GetMapping(value = "list")
-    public ModelAndView list(ModelAndView modelAndView) {
-        modelAndView.setViewName("/system/user/list");
-        PageInfo<SysUser> page = sysUserService.getUserList(null);
-        modelAndView.addObject("page", page);
-        return modelAndView;
+    public String list() {
+        return "system/user/list";
+    }
+
+    @PostMapping(value = "page")
+    public @ResponseBody PageBean<SysUser> page(@RequestParam(value = "start", defaultValue = "1") int start,
+                                                @RequestParam(value = "length", defaultValue = "10") int pageSize,SysUser user) {
+        return sysUserService.show(user,start,pageSize) ;
     }
 
     /**
@@ -40,7 +41,7 @@ public class SysUserController extends BaseController {
      　* @author geyl
      　* @date 2018-5-22 13:35
      　*/
-    @RequestMapping(value = "add", method = RequestMethod.GET)
+    @GetMapping(value = "add")
     public ModelAndView add(ModelAndView modelAndView) {
         modelAndView.setViewName("/system/user/add");
         return modelAndView;

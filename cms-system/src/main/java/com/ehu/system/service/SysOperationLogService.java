@@ -1,7 +1,7 @@
 package com.ehu.system.service;
 
-import com.baomidou.mybatisplus.service.IService;
-import com.ehu.common.bean.entity.system.SysOperationLog;
+import com.ehu.common.base.BaseService;
+import com.ehu.system.entity.SysOperationLog;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.ehu.common.bean.entity.system.SysOperationLog;
  * @author geyongliang
  * @since 2018-05-11
  */
-public interface SysOperationLogService extends IService<SysOperationLog> {
+public interface SysOperationLogService extends BaseService<SysOperationLog,String> {
 	
 }
