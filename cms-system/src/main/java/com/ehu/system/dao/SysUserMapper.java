@@ -1,7 +1,7 @@
 package com.ehu.system.dao;
 
 import com.ehu.common.base.BaseMapper;
-import com.ehu.system.entity.SysUser;
+import com.ehu.common.bean.entity.system.SysUser;
 
 /**
  * <p>

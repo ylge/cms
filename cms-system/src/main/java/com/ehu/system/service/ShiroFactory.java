@@ -1,7 +1,7 @@
 package com.ehu.system.service;
 
-import com.ehu.system.entity.ShiroUser;
-import com.ehu.system.entity.system.*;
+import com.ehu.common.bean.ShiroUser;
+import com.ehu.common.bean.entity.system.*;
 import org.apache.shiro.authc.CredentialsException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.crypto.hash.Md5Hash;
@@ -50,12 +50,12 @@ public class ShiroFactory {
         if (userRoleList != null && userRoleList.size() > 0){
             for (SysUserRole sysRoleUser: userRoleList
                  ) {
-                SysRole role = sysRoleService.selectByPrimaryKey(sysRoleUser.getRoleId());
+                SysRole role = sysRoleService.selectByPrimaryKey(sysRoleUser.getRoleId().toString());
                 roleList.add(role);
             }
             shiroUser.setRoleList(roleList);
         }
-        shiroUser.setCreateTime(user.getCreatedTime());
+        shiroUser.setCreateTime(user.getCreateTime());
 
         if (roleList != null && roleList.size() >0 ){
             //权限菜单值

@@ -3,7 +3,7 @@
 <mapper namespace="com.ehu.system.dao.SysRoleMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.ehu.system.entity.SysRole">
+	<resultMap id="BaseResultMap" type="com.ehu.common.bean.entity.system.SysRole">
 		<id column="role_id" property="roleId" />
 		<result column="name" property="name" />
 		<result column="value" property="value" />
@@ -13,4 +13,12 @@
 		<result column="status" property="status" />
 	</resultMap>
 
+	<sql id="Base_Column_List">
+		role_id, name, value, remark, status, create_time, update_time
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select 
+		<include refid="Base_Column_List"/>
+		from sys_role where role_id =#{roleId}
+	</select>
 </mapper>

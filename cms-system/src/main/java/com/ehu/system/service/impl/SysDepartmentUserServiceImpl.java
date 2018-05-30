@@ -2,7 +2,7 @@ package com.ehu.system.service.impl;
 
 import com.ehu.common.base.BaseMapper;
 import com.ehu.common.base.impl.BaseServiceImpl;
-import com.ehu.system.entity.SysDepartmentUser;
+import com.ehu.common.bean.entity.system.SysDepartmentUser;
 import com.ehu.system.dao.SysDepartmentUserMapper;
 import com.ehu.system.service.SysDepartmentUserService;
 import org.springframework.beans.factory.annotation.Autowired;

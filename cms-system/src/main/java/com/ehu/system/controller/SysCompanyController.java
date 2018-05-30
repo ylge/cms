@@ -2,7 +2,7 @@ package com.ehu.system.controller;
 
 import com.ehu.common.base.BaseController;
 import com.ehu.common.bean.Result;
-import com.ehu.system.entity.SysCompany;
+import com.ehu.common.bean.entity.system.SysCompany;
 import com.ehu.system.service.SysCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

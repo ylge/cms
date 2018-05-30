@@ -2,7 +2,7 @@ package com.ehu.system.util;
 
 
 
-import com.ehu.system.entity.SysMenu;
+import com.ehu.common.bean.entity.system.SysMenu;
 
 import java.util.Comparator;
 

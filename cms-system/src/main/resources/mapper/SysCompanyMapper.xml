@@ -3,7 +3,7 @@
 <mapper namespace="com.ehu.system.dao.SysCompanyMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.ehu.system.entity.SysCompany">
+	<resultMap id="BaseResultMap" type="com.ehu.common.bean.entity.system.SysCompany">
 		<id column="company_id" property="companyId" />
 		<result column="code" property="code" />
 		<result column="name" property="name" />

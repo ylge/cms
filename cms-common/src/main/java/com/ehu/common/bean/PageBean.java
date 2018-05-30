@@ -1,7 +1,6 @@
 package com.ehu.common.bean;
 
 
-import com.baomidou.mybatisplus.plugins.Page;
 import com.github.pagehelper.PageInfo;
 
 import java.io.Serializable;
@@ -32,19 +31,16 @@ public class PageBean<T> implements Serializable {
 	// 记录
 	private List<T> data;
 
-	public PageBean(PageInfo<T> tPageInfo) {
-	}
-
 	/**
 	 *
 	 * @param page
      */
-	public PageBean(Page<T> page) {
-		this.iDisplayStart = page.getCurrent();
+	public PageBean(PageInfo<T> page) {
+		this.iDisplayStart = page.getStartRow();
 		this.iDisplayLength = page.getSize();
-		this.iTotalRecords = page.getTotal();
-		this.iTotalDisplayRecords = page.getTotal();
-		this.data = page.getRecords();
+		this.iTotalRecords = (int)page.getTotal();
+		this.iTotalDisplayRecords = (int)page.getTotal();
+		this.data = page.getList();
 	}
 
 	public int getiDisplayStart() {

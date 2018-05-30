@@ -2,7 +2,7 @@ package com.ehu.system.service;
 
 
 import com.ehu.common.base.BaseService;
-import com.ehu.system.entity.SysCompany;
+import com.ehu.common.bean.entity.system.SysCompany;
 
 /**
  * <p>

@@ -3,7 +3,7 @@
 <mapper namespace="com.ehu.system.dao.SysDepartmentUserMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.ehu.system.entity.SysDepartmentUser">
+	<resultMap id="BaseResultMap" type="com.ehu.common.bean.entity.system.SysDepartmentUser">
 		<id column="id" property="id" />
 		<result column="department_id" property="departmentId" />
 		<result column="user_id" property="userId" />

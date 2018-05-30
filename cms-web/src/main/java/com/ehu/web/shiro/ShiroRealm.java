@@ -1,7 +1,7 @@
 package com.ehu.web.shiro;
 
-import com.ehu.system.entity.ShiroUser;
-import com.ehu.system.entity.SysUser;
+import com.ehu.common.bean.ShiroUser;
+import com.ehu.common.bean.entity.system.SysUser;
 import com.ehu.system.service.ShiroFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.*;

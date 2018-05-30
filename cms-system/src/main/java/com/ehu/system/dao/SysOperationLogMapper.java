@@ -1,7 +1,7 @@
 package com.ehu.system.dao;
 
 import com.ehu.common.base.BaseMapper;
-import com.ehu.system.entity.SysOperationLog;
+import com.ehu.common.bean.entity.system.SysOperationLog;
 
 /**
  * <p>

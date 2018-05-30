@@ -2,7 +2,7 @@ package com.ehu.system.service.impl;
 
 import com.ehu.common.base.BaseMapper;
 import com.ehu.common.base.impl.BaseServiceImpl;
-import com.ehu.system.entity.SysCompany;
+import com.ehu.common.bean.entity.system.SysCompany;
 import com.ehu.system.dao.SysCompanyMapper;
 import com.ehu.system.service.SysCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;

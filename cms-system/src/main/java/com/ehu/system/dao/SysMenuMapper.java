@@ -1,7 +1,7 @@
 package com.ehu.system.dao;
 
 import com.ehu.common.base.BaseMapper;
-import com.ehu.system.entity.SysMenu;
+import com.ehu.common.bean.entity.system.SysMenu;
 
 import java.util.List;
 import java.util.Map;

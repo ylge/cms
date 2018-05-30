@@ -1,7 +1,7 @@
 package com.ehu.system.service;
 
 import com.ehu.common.base.BaseService;
-import com.ehu.system.entity.SysUser;
+import com.ehu.common.bean.entity.system.SysUser;
 
 /**
  * <p>

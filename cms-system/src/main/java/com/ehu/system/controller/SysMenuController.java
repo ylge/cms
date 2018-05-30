@@ -4,7 +4,7 @@ import com.ehu.common.base.BaseController;
 import com.ehu.common.bean.Result;
 import com.ehu.common.bean.TreeGridNode;
 import com.ehu.common.bean.TreeGridWrapper;
-import com.ehu.system.entity.SysMenu;
+import com.ehu.common.bean.entity.system.SysMenu;
 import com.ehu.system.service.SysMenuService;
 import com.ehu.system.service.TreeGridService;
 import org.springframework.beans.factory.annotation.Autowired;

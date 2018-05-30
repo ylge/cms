@@ -1,4 +1,4 @@
-package com.ehu.system.entity;
+package com.ehu.common.bean.entity.system;
 
 
 import lombok.Data;

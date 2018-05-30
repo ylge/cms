@@ -1,7 +1,8 @@
-package com.ehu.system.entity;
+package com.ehu.common.bean.entity.system;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.apache.ibatis.type.Alias;
 
 import java.io.Serializable;
 import java.util.Date;

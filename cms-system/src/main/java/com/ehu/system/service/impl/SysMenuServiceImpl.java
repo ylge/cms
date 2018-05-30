@@ -2,7 +2,7 @@ package com.ehu.system.service.impl;
 
 import com.ehu.common.base.BaseMapper;
 import com.ehu.common.base.impl.BaseServiceImpl;
-import com.ehu.system.entity.SysMenu;
+import com.ehu.common.bean.entity.system.SysMenu;
 import com.ehu.system.dao.SysMenuMapper;
 import com.ehu.system.service.SysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;

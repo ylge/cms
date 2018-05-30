@@ -2,7 +2,7 @@ package com.ehu.system.service.impl;
 
 import com.ehu.common.base.BaseMapper;
 import com.ehu.common.base.impl.BaseServiceImpl;
-import com.ehu.system.entity.SysUserRole;
+import com.ehu.common.bean.entity.system.SysUserRole;
 import com.ehu.system.dao.SysUserRoleMapper;
 import com.ehu.system.service.SysUserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
