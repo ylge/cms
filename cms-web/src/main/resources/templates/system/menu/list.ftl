@@ -71,9 +71,8 @@
                         align: 'center',
                         width: 80,
                         formatter: function (value) {
-                            console.log(value);
                             var content = "";
-                            if (value != '100000') {
+                            if (value != '1') {
                                 content = '<a class="btn btn-xs btn-info"  target="modal" modal="lg" href="/system/menu/add/' + value + '">添加</a>'
                                         + " &nbsp;"
                                         + '<a class="btn btn-xs btn-info"  target="modal" modal="lg" href="/system/menu/edit/' + value + '">编辑</a>'

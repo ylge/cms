@@ -22,6 +22,10 @@
 		id, name, url, sort, is_menu, parent_id, status, create_time, update_time,create_by,update_by,icon,level
 	</sql>
 
+    <select id="selectByPrimaryKey" parameterType="String" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List"/>
+        from sys_menu where id =#{id}
+    </select>
 	<select id="getMenu" resultMap="BaseResultMap">
 		select
 		<if test="distinct">
@@ -64,7 +68,7 @@
 			</foreach>
 		</if>
 	</select>
-	<update id="updateByPrimaryKeySelective" parameterType="com.ehu.bean.entity.system.SysMenu">
+	<update id="updateByPrimaryKeySelective" parameterType="SysMenu">
 		update sys_menu
 		<set>
 			<if test="parentId != null">
@@ -100,4 +104,91 @@
 		</set>
 		where id = #{id,jdbcType=VARCHAR}
 	</update>
+    <insert id="insertSelective" parameterType="SysMenu">
+        insert into sys_menu
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="isMenu != null">
+                is_menu,
+            </if>
+            <if test="level != null">
+                level,
+            </if>
+            <if test="sort != null">
+                sort,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="icon != null">
+                icon,
+            </if>
+            <if test="createBy != null">
+                create_by,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateBy != null">
+                update_by,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">
+                #{parentId},
+            </if>
+            <if test="url != null">
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="isMenu != null">
+                #{isMenu},
+            </if>
+            <if test="level != null">
+                #{level},
+            </if>
+            <if test="sort != null">
+                #{sort},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="icon != null">
+                #{icon},
+            </if>
+            <if test="createBy != null">
+                #{createBy},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="updateBy != null">
+                #{updateBy},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime},
+            </if>
+        </trim>
+        <selectKey resultType="Integer" keyProperty="id" order="AFTER">
+            select LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_menu
+    where id = #{id}
+  </delete>
 </mapper>

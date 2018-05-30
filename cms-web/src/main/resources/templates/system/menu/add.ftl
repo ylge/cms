@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <form id="securityAddForm">
+        <form id="AddForm">
             <div class="modal-body">
                 <input type="text" hidden id="parentId" name="parentId" value="${parentId}">
                 <div class="form-group">
@@ -39,24 +39,24 @@
 </div>
 <script type="text/javascript">
     function securitySave() {
-        if ($("#securityAddForm").valid()) {
+        if ($("#AddForm").valid()) {
             $.ajax({
                 url: '/system/menu/save',
                 type: 'put',
                 dataType: 'json',
-                data: $("#securityAddForm").serialize(),
+                data: $("#AddForm").serialize(),
                 success: function (data) {
-                    var json = JSON.parse(data);
-                    if (json.code == 200) {
+                    console.log(data);
+                    if (data.code == 200) {
                         alertMsg("添加成功", "success");
                     } else {
-                        alertMsg("添加失败:" + json.msg, "success");
+                        alertMsg("添加失败:" + data.msg, "success");
                     }
                 }
             });
         }
     }
-    $("#securityAddForm").validate({
+    $("#AddForm").validate({
         errorClass: 'text-danger',
         errorElement: "span"
     });

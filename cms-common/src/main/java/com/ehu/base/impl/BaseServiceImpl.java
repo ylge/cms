@@ -53,7 +53,7 @@ public abstract class BaseServiceImpl<T, E extends Serializable> implements Base
      * @return
      */
     public T addValue(T record, boolean flag) {
-        ShiroUser currentUser = (ShiroUser) SecurityUtils.getSubject().getSession().getAttribute("shiroUser");
+        ShiroUser currentUser = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
         //统一处理公共字段
         Class<?> clazz = record.getClass();
         String operator, operateDate;
@@ -68,7 +68,7 @@ public abstract class BaseServiceImpl<T, E extends Serializable> implements Base
             }
             Field field = clazz.getDeclaredField(operator);
             field.setAccessible(true);
-            field.set(record, currentUser.getId());
+            field.set(record, currentUser.getName());
             Field fieldDate = clazz.getDeclaredField(operateDate);
             fieldDate.setAccessible(true);
             fieldDate.set(record, new Date());

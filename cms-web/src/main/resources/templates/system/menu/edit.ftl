@@ -29,9 +29,9 @@
             </div>
         </form>
     </div>
-    <div id="menuContent" class="menuContent" style="display:none; position: absolute;">
+   <#-- <div id="menuContent" class="menuContent" style="display:none; position: absolute;">
         <ul id="treeDemo" class="ztree" style="margin-top:0; width:180px; height: 300px;"></ul>
-    </div>
+    </div>-->
 
 </div>
 <div class="modal-footer">
@@ -51,13 +51,12 @@
             dataType: 'json',
             data: $("#securityAddForm").serialize(),
             success: function (data) {
-                var json = JSON.parse(data);
-                if (json.code==200) {
-                    $("#lgModal").modal('hide');
+                if (data.code==200) {
+                    // $("#lgModal").modal('hide');
                     alertMsg("更新成功", "success");
                     reloadMenuList();
                 } else {
-                    alertMsg("更新失败:" + json.msg, "success");
+                    alertMsg("更新失败:" + data.msg, "success");
                 }
             }
         });

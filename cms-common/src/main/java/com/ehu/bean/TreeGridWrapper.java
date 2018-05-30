@@ -4,9 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by Mr.Yangxiufeng on 2017/9/12.
+ * Created by gyl on 2017/9/12.
  * Time:18:00
- * ProjectName:Common-admin
  */
 public class TreeGridWrapper implements Serializable {
     private static final long serialVersionUID = 3871928415548297855L;

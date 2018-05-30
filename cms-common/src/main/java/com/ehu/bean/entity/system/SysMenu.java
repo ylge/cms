@@ -16,11 +16,8 @@ import java.util.List;
  * @author geyongliang
  * @since 2018-05-11
  */
-@Alias("SysMenu")
 @Data
 public class SysMenu implements Serializable {
-
-    private static final long serialVersionUID = 1L;
 
 	private Integer id;
     /**
