@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ehu.system.dao.SysCompanyMapper">
+<mapper namespace="com.ehu.dao.SysCompanyMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.ehu.common.bean.entity.system.SysCompany">
+	<resultMap id="BaseResultMap" type="com.ehu.bean.entity.system.SysCompany">
 		<id column="company_id" property="companyId" />
 		<result column="code" property="code" />
 		<result column="name" property="name" />
