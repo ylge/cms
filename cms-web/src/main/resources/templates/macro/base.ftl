@@ -152,11 +152,8 @@
 <link rel="stylesheet" href="adminlte/plugins/ionslider/ion.rangeSlider.skinNice.css">
 <!-- bootstrap slider -->
 <link rel="stylesheet" href="adminlte/plugins/bootstrap-slider/slider.css">
-
-<!-- Morris chart -->
-<link rel="stylesheet" href="adminlte/plugins/morris/morris.css">
-<!-- jvectormap -->
-<link rel="stylesheet" href="adminlte/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+<!-- dataTables-->
+<link rel="stylesheet" href="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.css">
 
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -209,8 +206,6 @@
 <!-- jvectormap -->
 <script src="adminlte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="adminlte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="adminlte/plugins/knob/jquery.knob.js"></script>
 <!-- daterangepicker -->
 <script src="adminlte/plugins/moment/moment.min.js"></script>
 <script src="adminlte/plugins/daterangepicker/daterangepicker.js"></script>
@@ -220,8 +215,6 @@
 <script src="adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- SlimScroll 1.3.0 -->
 <script src="adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- ChartJS 1.0.1 -->
-<script src="adminlte/plugins/chartjs/Chart.min.js"></script>
 <!-- FLOT CHARTS -->
 <script src="adminlte/plugins/flot/jquery.flot.min.js"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
@@ -252,8 +245,8 @@
 <!-- Bootstrap slider -->
 <script src="adminlte/plugins/bootstrap-slider/bootstrap-slider.js"></script>
 <!-- DataTables -->
-<script src="adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+<script src="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 <!-- validate-->
 <script src="adminlte/plugins/validate/jquery.validate.js"></script>
 <script type="text/javascript">
