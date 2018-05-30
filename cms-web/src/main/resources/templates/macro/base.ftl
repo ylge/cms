@@ -7,7 +7,7 @@
                 <#list menuList as menu>
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-envelope"></i> <span>${menu.name}</span> <span class="pull-right-container"> <i
+                            <i class="fa fa-bars"></i> <span>${menu.name}</span> <span class="pull-right-container"> <i
                                 class="fa fa-angle-left pull-right"></i></span>
                         </a>
                         <#if menu.child??>
@@ -16,25 +16,26 @@
                                     <li>
                                         <a target="navTab" <#if child.url=""> target_type="iframe"
                                                            fresh="false" </#if>href="${child.url}">
-                                            <i class="fa fa-envelope"></i> <span>${child.name}</span> <span
-                                                class="pull-right-container"> <i
+                                            <#if child.child??>
+                                                <i class="fa fa-bars"></i> <span>${child.name}</span>
+                                                <span class="pull-right-container"> <i
                                                 class="fa fa-angle-left pull-right"></i></span>
+                                            <#else >
+                                                <i class="fa fa-circle-o"></i> <span>${child.name}</span>
+                                            </#if>
                                         </a>
-                                    <#--<a target="navTab">-->
-                                    <#--<i class="fa fa-inbox"></i> <span>${child.menuName}</span>-->
                                         <#if child.child??>
                                             <ul class="treeview-menu">
                                                 <#list child.child as child>
                                                     <li>
                                                         <a target="navTab" <#if child.url=""> target_type="iframe"
                                                            fresh="false" </#if>href="${child.url}">
-                                                            <i class="fa fa-inbox"></i> <span>${child.name}</span>
+                                                            <i class="fa fa-circle-o"></i> <span>${child.name}</span>
                                                         </a>
                                                     </li>
                                                 </#list>
                                             </ul>
                                         </#if>
-                                    <#--</a>-->
                                     </li>
                                 </#list>
                             </ul>
@@ -99,7 +100,7 @@
 <#macro footer>
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>Version</b> 2.3.6
+        <b>Version</b> 3.0.0
     </div>
 <#--<strong>Copyright &copy; 2017-2026 <a href="https://github.com/babylikebird/common-admin">Yang</a>.-->
     </strong> All rights reserved.
@@ -116,6 +117,7 @@
 <link rel="stylesheet" href="adminlte/dist/css/font-awesome.min.css">
 <!-- Ionicons -->
 <link rel="stylesheet" href="adminlte/dist/css/ionicons.min.css">
+<#--<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">-->
 <!-- Theme style -->
 <link rel="stylesheet" href="adminlte/dist/css/AdminLTE.min.css">
 <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -260,7 +262,7 @@
     var search_ajax;
     //当你需要多条件查询，你可以调用此方法，动态修改参数传给服务器
     //查询添加的时候需要重写该方法，每个页面查询参数不一样，请参考user/list 葛永亮 2017-9-14
-    window.reloadTable = function (oTable, datePremise, premise) {
+    window.reloadTable = function (oTable) {
 //        var date = $(datePremise).val();
 //        var search = $(premise).val();
 //        var param = {
@@ -290,8 +292,8 @@
         </li>
     </ul>
     <!-- Tab panes -->
-    <div class="tab-content">
-        <!-- Home tab content -->
+    <#--<div class="tab-content">
+        <!-- Home tab content &ndash;&gt;
         <div class="tab-pane" id="control-sidebar-home-tab">
             <h3 class="control-sidebar-heading">最近的活动</h3>
             <ul class="control-sidebar-menu">
@@ -387,9 +389,9 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </div>-->
         <!-- Settings tab content -->
-        <div class="tab-pane" id="control-sidebar-settings-tab">
+        <#--<div class="tab-pane" id="control-sidebar-settings-tab">
             <form method="post">
                 <h3 class="control-sidebar-heading">一般设置</h3>
 
@@ -433,7 +435,7 @@
                     </label>
                 </div>
             </form>
-        </div>
+        </div>-->
     </div>
 </aside>
 <div class="control-sidebar-bg"></div>

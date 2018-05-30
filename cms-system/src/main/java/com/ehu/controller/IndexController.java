@@ -51,15 +51,15 @@ public class IndexController {
                     param.put("menuIds", ids);
                     param.put("parentId", menu.getId());
                     List<SysMenu> secondMenuList = menuService.listLevelSysMenu(param);
+                    //得到三级菜单
                     for (SysMenu sysMenu:secondMenuList){
                         param.put("menuIds", ids);
                         param.put("parentId", sysMenu.getId());
                         param.put("isMenu", 1);
                         List<SysMenu> thirdMenuList = menuService.listLevelSysMenu(param);
-                        if(thirdMenuList!=null){
+                        if(thirdMenuList!=null && thirdMenuList.size()>0){
                             thirdMenuList.sort(new MenuComparator());
                             sysMenu.setChild(thirdMenuList);
-                            thirdMenuList.sort(new MenuComparator());
                         }
                     }
                     secondMenuList.sort(new MenuComparator());

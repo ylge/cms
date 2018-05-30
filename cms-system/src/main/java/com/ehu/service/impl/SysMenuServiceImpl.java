@@ -2,6 +2,7 @@ package com.ehu.service.impl;
 
 import com.ehu.base.BaseMapper;
 import com.ehu.base.impl.BaseServiceImpl;
+import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysMenu;
 import com.ehu.dao.SysMenuMapper;
 import com.ehu.service.SysMenuService;
@@ -26,6 +27,22 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String> impleme
     @Override
     public List<SysMenu> listLevelSysMenu(Map<String, Object> param) {
         return sysMenuMapper.listLevelSysMenu(param);
+    }
+
+    @Override
+    public Result save(SysMenu menu) {
+        if(menu.getStatus()==null){
+            menu.setStatus(1);
+        }
+        if (menu.getSort() == null){
+            menu.setSort(1);
+        }
+        if(menu.getId()!=null){
+            this.updateByPrimaryKeySelective(menu);
+        }else {
+            this.insertSelective(menu);
+        }
+        return Result.OK();
     }
 
     @Override

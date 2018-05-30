@@ -2,6 +2,7 @@
     <div class="col-md-12">
         <form id="securityAddForm">
             <div class="modal-body">
+                <input type="hidden" name="companyId" value="${company.companyId}">
                 <div class="form-group">
                     <label>编码</label>
                     <input type="text" class="form-control" name="code" id="code" value="${company.code}" placeholder="输入公司编码..." required>
@@ -45,11 +46,10 @@
                 dataType: 'json',
                 data: $("#securityAddForm").serialize(),
                 success: function (data) {
-                    var json = JSON.parse(data);
-                    if (json.status) {
+                    if (data.code==200) {
                         alertMsg("添加成功", "success");
                     } else {
-                        alertMsg("添加失败:" + json.msg, "success");
+                        alertMsg("添加失败:" + data.msg, "success");
                     }
                 }
             });

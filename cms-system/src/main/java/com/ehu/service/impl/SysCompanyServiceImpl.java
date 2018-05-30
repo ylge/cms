@@ -2,6 +2,7 @@ package com.ehu.service.impl;
 
 import com.ehu.base.BaseMapper;
 import com.ehu.base.impl.BaseServiceImpl;
+import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysCompany;
 import com.ehu.dao.SysCompanyMapper;
 import com.ehu.service.SysCompanyService;
@@ -28,7 +29,12 @@ public class SysCompanyServiceImpl extends BaseServiceImpl<SysCompany, String> i
     }
 
     @Override
-    public boolean save(SysCompany sysCompany) {
-        return false;
+    public Result save(SysCompany sysCompany) {
+        if(sysCompany.getCompanyId()==null){
+            this.insertSelective(sysCompany);
+        }else{
+            this.updateByPrimaryKey(sysCompany);
+        }
+        return Result.OK();
     }
 }

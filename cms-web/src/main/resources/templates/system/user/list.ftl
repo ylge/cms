@@ -1,44 +1,42 @@
 <div class="row">
-    <div class="col-xs-12">
-        <div class="box">
-            <div class="box-header">
-                <h3 class="box-title">用户管理</h3>
-                <div class="box-tools pull-left">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">用户管理</h3>
+            <div class="box-tools pull-left">
                 <@shiro.hasPermission name="system/user/add">
                     <a class="btn btn-sm btn-primary" target="modal" modal="lg"
                        href="system/user/add">添加</a>
                 </@shiro.hasPermission>
-                    <a class="btn btn-sm btn-primary" href="system/user/exportExcel">导出</a>
-                </div>
+                <a class="btn btn-sm btn-primary" href="system/user/exportExcel">导出</a>
             </div>
-            <div class="box-body">
-                <div class="dataTables_wrapper form-inline dt-bootstrap">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                                <input type="text" class="form-control" id="username" placeholder="根据账号搜索...">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <button type="button" onclick="securityReload()" class="btn btn-primary">搜索</button>
+        </div>
+        <div class="box-body">
+            <div class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input type="text" class="form-control" id="username" placeholder="根据账号搜索...">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <table id="user_list" class="table table-bordered table-striped dataTable">
-                                <thead>
-                                <tr>
-                                    <th>序号</th>
-                                    <th>账号</th>
-                                    <th>昵称</th>
-                                    <th>状态</th>
-                                    <th>创建时间</th>
-                                    <th>操作</th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
+                    <div class="col-md-4">
+                        <button type="button" onclick="securityReload()" class="btn btn-primary">搜索</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="user_list" class="table table-bordered table-striped dataTable">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>账号</th>
+                                <th>昵称</th>
+                                <th>状态</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -67,7 +65,7 @@
                 // "dataType":"json",
                 "type": "post",
                 // "contentType":'application/json',
-                "data": function ( d ) {
+                "data": function (d) {
                     d.username = $('#username').val();
                 }
             },
@@ -123,6 +121,7 @@
                 }]
         })
     });
+
     function securityReload() {
         reloadTable(user_list);
     }

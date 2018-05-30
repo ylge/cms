@@ -20,4 +20,136 @@
 		<result column="update_by" property="updateBy" />
 	</resultMap>
 
+    <sql id="Base_Column_List">
+		company_id, code,name,short_name, parent_code, logo,comment, address,city_code,status, create_time, update_time,create_by,update_by
+	</sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from sys_company where company_id =#{company}
+    </select>
+    <select id="selectListByPage" parameterType="SysCompany" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from sys_company
+        <where>
+            <if test="name!=null and name!=''"> and name =#{name}</if>
+        </where>
+    </select>
+
+    <insert id="insertSelective" parameterType="SysCompany">
+        insert into sys_company
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="code != null">
+                code,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="shortName != null">
+                short_name,
+            </if>
+            <if test="parentCode != null">
+                parent_code,
+            </if>
+            <if test="logo != null">
+                logo,
+            </if>
+            <if test="comment != null">
+                comment,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="cityCode != null">
+                city_code,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="createBy != null">
+                create_by,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="code != null">
+                #{code},
+            </if>
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="shortName != null">
+                #{shortName},
+            </if>
+            <if test="parentCode != null">
+                #{parentCode},
+            </if>
+            <if test="logo != null">
+                #{logo},
+            </if>
+            <if test="comment != null">
+                #{comment},
+            </if>
+            <if test="address != null">
+                #{address},
+            </if>
+            <if test="cityCode != null">
+                #{cityCode},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="createBy != null">
+                #{createBy},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+        </trim>
+        <selectKey resultType="Integer" keyProperty="companyId" order="AFTER">
+            select LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="SysCompany">
+        update sys_company
+        <set>
+            <if test="code != null">
+                code = #{code},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="shortName != null">
+                short_name = #{shortName},
+            </if>
+            <if test="parentCode != null">
+                parent_code = #{parentCode},
+            </if>
+            <if test="logo != null">
+                logo = #{logo},
+            </if>
+            <if test="comment != null">
+                comment = #{comment},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="cityCode != null">
+                city_code = #{cityCode,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateBy != null">
+                update_by = #{updateBy,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+
 </mapper>

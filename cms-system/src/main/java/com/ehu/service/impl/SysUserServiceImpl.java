@@ -21,14 +21,14 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String> impleme
 
     @Autowired
     private SysUserMapper sysUserMapper;
-    @Override
-    public SysUser getUserByName(String username) {
-        return sysUserMapper.getUserByName(username);
-    }
-
 
     @Override
     public BaseMapper<SysUser, String> getMappser() {
         return sysUserMapper;
+    }
+
+    @Override
+    public SysUser getUserByName(String username) {
+        return sysUserMapper.getUserByName(username);
     }
 }

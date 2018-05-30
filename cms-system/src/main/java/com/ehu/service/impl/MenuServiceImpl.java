@@ -22,8 +22,7 @@ public class MenuServiceImpl extends BaseServiceImpl<SysMenu, String> implements
 
     @Override
     public List<SysMenu> getMenu() {
-        List<SysMenu> list = menuMapper.getMenu();
-        return list;
+        return menuMapper.getMenu();
     }
 
 

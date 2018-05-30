@@ -47,10 +47,10 @@ public class SysDepartment implements Serializable{
 	private Integer status;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createTime;
-	private Integer createBy;
+	private String createBy;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date updateTime;
-	private Integer updateBy;
+	private String updateBy;
 
 	@Override
 	public String toString() {

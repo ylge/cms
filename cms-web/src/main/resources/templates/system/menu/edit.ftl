@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <form id="securityAddForm">
-            <input type="text" hidden id="id" name="id" value="${menu.id}">
+            <input type="hidden" name="id" value="${menu.id}">
             <div class="modal-body">
                 <div class="form-group">
                     <label class="" id="nameLabel">菜单名称</label>
@@ -46,7 +46,7 @@
 <script type="text/javascript">
     function securitySave() {
         $.ajax({
-            url: '/system/menu/update',
+            url: '/system/menu/save',
             type: 'put',
             dataType: 'json',
             data: $("#securityAddForm").serialize(),

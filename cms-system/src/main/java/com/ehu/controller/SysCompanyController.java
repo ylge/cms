@@ -1,8 +1,10 @@
 package com.ehu.controller;
 
 import com.ehu.base.BaseController;
+import com.ehu.bean.PageBean;
 import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysCompany;
+import com.ehu.bean.entity.system.SysUser;
 import com.ehu.service.SysCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * @author geyl
  * @Title: SysCompanyController
- * @Package com.ehoo100.cms.controller.system
+ * @Package com.ehu.controller
  * @Description: 公司管理
  * @date 2018-5-18 13:40
  */
@@ -36,14 +38,21 @@ public class SysCompanyController extends BaseController {
         return modelAndView;
     }
 
+    @PostMapping(value = "page")
+    public @ResponseBody
+    PageBean<SysCompany> page(@RequestParam(value = "start", defaultValue = "1") int start,
+                           @RequestParam(value = "length", defaultValue = "10") int pageSize, SysCompany sysCompany) {
+        return sysCompanyService.show(sysCompany,start,pageSize) ;
+    }
     /**
     　* @description:公司新增
     　* @author geyl
     　* @date 2018-5-22 13:35 
     　*/
     @GetMapping(value = "add")
-    public String add() {
-        return "/system/company/add";
+    public ModelAndView add(ModelAndView modelAndView) {
+        modelAndView.setViewName("/system/company/add");
+        return modelAndView;
     }
 
     /**
@@ -67,13 +76,8 @@ public class SysCompanyController extends BaseController {
      　*/
     @PutMapping(value = "save")
     public @ResponseBody
-    Result save(@RequestBody SysCompany sysCompany ) {
-        if(sysCompanyService.save(sysCompany)){
-            return Result.OK();
-        }else {
-            return Result.Fail();
-        }
-
+    Result save(SysCompany sysCompany ) {
+        return sysCompanyService.save(sysCompany);
     }
 
 }

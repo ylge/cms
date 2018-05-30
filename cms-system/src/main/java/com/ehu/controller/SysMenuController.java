@@ -47,7 +47,7 @@ public class SysMenuController extends BaseController {
     @GetMapping(value = "add/{id}")
     public ModelAndView add(@PathVariable String id, ModelAndView modelAndView){
         modelAndView.setViewName("/system/menu/add");
-        modelAndView.addObject("parentId",id);
+        modelAndView.addObject("menu",menuService.selectByPrimaryKey(id));
         return modelAndView;
     }
 
@@ -59,12 +59,7 @@ public class SysMenuController extends BaseController {
     @PutMapping(value = "save")
     public @ResponseBody
     Result save(SysMenu menu){
-        menu.setStatus(1);
-        if (menu.getSort() == null){
-            menu.setSort(1);
-        }
-        menuService.insertSelective(menu);
-        return Result.OK();
+        return menuService.save(menu);
     }
 
     /**
@@ -81,17 +76,6 @@ public class SysMenuController extends BaseController {
         return modelAndView;
     }
 
-    /**
-     * 编辑菜单保存
-     * @param menu
-     * @return
-     */
-    @PutMapping(value = "update")
-    public @ResponseBody
-    Result update(SysMenu menu){
-        menuService.updateByPrimaryKeySelective(menu);
-        return Result.OK();
-    }
     @GetMapping(value = "getTreeGridMenu")
     public @ResponseBody
     TreeGridWrapper getTreeGridMenu(){

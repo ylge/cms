@@ -2,6 +2,7 @@ package com.ehu.service;
 
 
 import com.ehu.base.BaseService;
+import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysCompany;
 
 /**
@@ -14,5 +15,5 @@ import com.ehu.bean.entity.system.SysCompany;
  */
 public interface SysCompanyService extends BaseService<SysCompany,String> {
 
-    boolean save(SysCompany sysCompany);
+    Result save(SysCompany sysCompany);
 }

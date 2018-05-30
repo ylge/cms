@@ -1,8 +1,9 @@
 <div class="row">
     <div class="col-md-12">
-        <form id="AddForm">
+        <form id="securityAddForm">
             <div class="modal-body">
-                <input type="text" hidden id="parentId" name="parentId" value="${parentId}">
+                <input type="hidden" name="parentId" value="${menu.id}">
+                <input type="hidden" name="level" value="${menu.level+1}">
                 <div class="form-group">
                     <label class="" id="nameLabel">菜单名称</label>
                     <input type="text" class="form-control" name="name" id="name" placeholder="输入菜单名称..." required>
@@ -39,16 +40,17 @@
 </div>
 <script type="text/javascript">
     function securitySave() {
-        if ($("#AddForm").valid()) {
+        if ($("#securityAddForm").valid()) {
             $.ajax({
                 url: '/system/menu/save',
                 type: 'put',
                 dataType: 'json',
-                data: $("#AddForm").serialize(),
+                data: $("#securityAddForm").serialize(),
                 success: function (data) {
                     console.log(data);
                     if (data.code == 200) {
                         alertMsg("添加成功", "success");
+                        reloadMenuList();
                     } else {
                         alertMsg("添加失败:" + data.msg, "success");
                     }
@@ -56,7 +58,7 @@
             });
         }
     }
-    $("#AddForm").validate({
+    $("#securityAddForm").validate({
         errorClass: 'text-danger',
         errorElement: "span"
     });

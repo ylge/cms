@@ -63,7 +63,7 @@ public class SysCompany implements Serializable {
     /**
      * 创建人
      */
-	private Integer createBy;
+	private String  createBy;
     /**
      * 更新日期
      */
@@ -72,7 +72,7 @@ public class SysCompany implements Serializable {
     /**
      * 更新人
      */
-	private Integer updateBy;
+	private String updateBy;
 
 	@Override
 	public String toString() {
