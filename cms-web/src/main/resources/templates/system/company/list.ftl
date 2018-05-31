@@ -1,13 +1,20 @@
+<#--<style type="text/css">
+    .toCentre {
+        position: relative;
+        top: 9px;
+        left: 20px;
+    }
+</style>-->
 <div class="row">
     <div class="box">
         <div class="box-header">
             <h3 class="box-title">公司管理</h3>
-            <div class="box-tools pull-left">
-                <#--<@shiro.hasPermission name="system/company/add">
+            <#--<div class="box-tools pull-left">
+                <@shiro.hasPermission name="system/company/add">
                     <a class="btn btn-sm btn-primary" onclick="securityToListAjax()" target="modal" modal="lg"
                        href="system/company/add">添加</a>
-                </@shiro.hasPermission>-->
-            </div>
+                </@shiro.hasPermission>
+            </div>-->
         </div>
         <div class="box-body">
             <div class="dataTables_wrapper form-inline dt-bootstrap">
@@ -54,13 +61,14 @@
     var company_tab;
     $(function () {
         company_tab = $('#company_tab').DataTable({
-            "dom": '<"toolbar">rt<"bottom"ilp><"clear">',
+            "dom":"t<'row'<'col-xs-2'l><'col-xs-3'i><'col-xs-6'p>>",
             "processing": true,
             "searching": false,
             "serverSide": true, //启用服务器端分页
-            "scrollCollapse": true,//滚动条
-            "bSort": true, //是否启动各个字段的排序功能
-            "bAutoWidth": true, //是否自适应宽度
+            "scrollY": "480",//滚动条y轴
+            "bSort": false, //是否启动各个字段的排序功能
+            "autoWidth": true, //是否自适应宽度
+            // "bLengthChange" : true,//分页条数选择按钮
             "language": {"url": "adminlte/plugins/datatables/language.json"},
             "ajax": {
                 "url": "system/company/page",
@@ -113,9 +121,10 @@
         })
     });
 
+    // $('#company_tab').addClass("toCentre");
+
     function securityToListAjax() {
         list_ajax = company_tab;
-        console.log(list_ajax);
     }
 
     function securityReload() {

@@ -113,13 +113,13 @@ public abstract class BaseServiceImpl<T, E extends Serializable> implements Base
      * 公共展示类
      *
      * @param t     实体
-     * @param page  页
-     * @param limit 行
+     * @param start  开始行
+     * @param pageSize 每页条数
      * @return
      */
     @Override
-    public PageBean<T> show(T t, int page, int limit) {
-        PageHelper.startPage(page, limit);
+    public PageBean<T> show(T t, int start, int pageSize) {
+        PageHelper.startPage(start/pageSize+1, pageSize);
         List<T> tList = getMappser().selectListByPage(t);
         PageBean<T> pageBean = new PageBean<>(new PageInfo<>(tList));
         return pageBean;
