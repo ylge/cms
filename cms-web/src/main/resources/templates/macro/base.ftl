@@ -86,11 +86,11 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <#--<li>
                     <a href="#" data-toggle="control-sidebar">
                         <i class="fa fa-gears"></i>
                     </a>
-                </li>
+                </li>-->
             </ul>
         </div>
     </nav>
@@ -270,9 +270,9 @@
 
 <#macro setting>
 <!-- Control Sidebar -->
-<#--<aside class="control-sidebar control-sidebar-dark">-->
+<aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
-    <#--<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
         <li>
             <a href="#control-sidebar-home-tab" data-toggle="tab">
                 <i class="fa fa-home"></i>
@@ -283,10 +283,10 @@
                 <i class="fa fa-gears"></i>
             </a>
         </li>
-    </ul>-->
+    </ul>
     <!-- Tab panes -->
-    <#--<div class="tab-content">
-        <!-- Home tab content &ndash;&gt;
+    <div class="tab-content">
+        <!-- Home tab content -->
         <div class="tab-pane" id="control-sidebar-home-tab">
             <h3 class="control-sidebar-heading">最近的活动</h3>
             <ul class="control-sidebar-menu">
@@ -382,9 +382,9 @@
                     </a>
                 </li>
             </ul>
-        </div>-->
+        </div>
         <!-- Settings tab content -->
-        <#--<div class="tab-pane" id="control-sidebar-settings-tab">
+        <div class="tab-pane" id="control-sidebar-settings-tab">
             <form method="post">
                 <h3 class="control-sidebar-heading">一般设置</h3>
 
@@ -429,8 +429,8 @@
                 </div>
             </form>
         </div>
-    </div>-->
-<#--</aside>-->
+    </div>
+</aside>
 <div class="control-sidebar-bg"></div>
 </div>
 <div id="loading" class="loading-panel">
