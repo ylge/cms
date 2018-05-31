@@ -50,8 +50,8 @@
 
 <#macro header>
 <header class="main-header">
-    <a href="index2.html" class="logo">
-        <span class="logo-mini"><b>易乎社区CMS</b></span>
+    <a href="#" class="logo">
+        <#--<span class="logo-mini"><b>易乎社区CMS</b></span>-->
         <span class="logo-lg"><b>易乎社区CMS</b></span>
     </a>
     <nav class="navbar navbar-static-top">
@@ -68,11 +68,10 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li class="user-header">
-                            <img src="adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
+                            <img src="${user.avatar!'adminlte/dist/img/ehulogo.png'}" class="img-circle">
                             <p>
                                 ${user.username!}
-                            <#--<small>${user.createTime?string('yyyy-MM-dd HH:mm:ss')}加入</small>-->
+                            <small>${user.createTime?string('yyyy-MM-dd HH:mm:ss')}加入</small>
                             </p>
                         </li>
                         <li class="user-footer">
