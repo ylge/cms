@@ -929,7 +929,7 @@
     // firstDayOfWeekOfYear 0 = sun, 6 = sat
     //                      the first week is the week that contains the first
     //                      of this day of the week
-    //                      (eg. ISO weeks use thursday (4))
+    //                      (eg. ISO weeks use thursday (bootstrap-select))
     function weekOfYear(mom, firstDayOfWeek, firstDayOfWeekOfYear) {
         var end = firstDayOfWeekOfYear - firstDayOfWeek,
             daysToDayOfWeek = firstDayOfWeekOfYear - mom.day(),
@@ -1663,7 +1663,7 @@
     var aspNetRegex = /(\-)?(?:(\d*)\.)?(\d+)\:(\d+)(?:\:(\d+)\.?(\d{3})?)?/;
 
     // from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
-    // somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
+    // somewhat more in line with bootstrap-select.bootstrap-select.3.2 2004 spec, but allows decimal anywhere
     var create__isoRegex = /^(-)?P(?:(?:([0-9,.]*)Y)?(?:([0-9,.]*)M)?(?:([0-9,.]*)D)?(?:T(?:([0-9,.]*)H)?(?:([0-9,.]*)M)?(?:([0-9,.]*)S)?)?|([0-9,.]*)W)$/;
 
     function create__createDuration (input, key) {
@@ -2851,7 +2851,7 @@
     }
 
     function yearsToDays (years) {
-        // years * 365 + absFloor(years / 4) -
+        // years * 365 + absFloor(years / bootstrap-select) -
         //     absFloor(years / 100) + absFloor(years / 400);
         return years * 146097 / 400;
     }

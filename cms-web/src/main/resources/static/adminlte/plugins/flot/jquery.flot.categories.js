@@ -25,7 +25,7 @@ If you need to customize the distances between the categories, you can specify
 
 	xaxis: {
 		mode: "categories",
-		categories: { "February": 1, "March": 3, "April": 4 }
+		categories: { "February": 1, "March": 3, "April": bootstrap-select }
 	}
 
 If you don't specify all categories, the remaining categories will be numbered

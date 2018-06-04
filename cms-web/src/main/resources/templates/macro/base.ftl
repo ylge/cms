@@ -1,27 +1,34 @@
 <#macro menu>
 <aside class="main-sidebar">
     <section class="sidebar">
-        <ul class="sidebar-menu">
+        <ul class="sidebar-menu" data-widget="tree">
             <li class="header">主导航</li>
             <#if menuList??>
                 <#list menuList as menu>
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-bars"></i> <span>${menu.name}</span> <span class="pull-right-container"> <i
-                                class="fa fa-angle-left pull-right"></i></span>
+                            <i class="fa fa-bars"></i>
+                            <span>${menu.name}</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <#if menu.child??>
                             <ul class="treeview-menu">
                                 <#list menu.child as child>
                                     <li>
-                                        <a target="navTab" <#if child.url=""> target_type="iframe"
-                                                           fresh="false" </#if>href="${child.url}">
+                                        <a target="navTab"
+                                            <#if child.url=""> target_type="iframe" fresh="false"
+                                            </#if>href="${child.url}">
                                             <#if child.child??>
-                                                <i class="fa fa-bars"></i> <span>${child.name}</span>
-                                                <span class="pull-right-container"> <i
-                                                class="fa fa-angle-left pull-right"></i></span>
+                                                <i class="fa fa-bars"></i>
+                                                <span>${child.name}</span>
+                                                <span class="pull-right-container">
+                                                    <i class="fa fa-angle-left pull-right"></i>
+                                                </span>
                                             <#else >
-                                                <i class="fa fa-circle-o"></i> <span>${child.name}</span>
+                                                <i class="fa fa-circle-o"></i>
+                                                <span>${child.name}</span>
                                             </#if>
                                         </a>
                                         <#if child.child??>
@@ -51,7 +58,7 @@
 <#macro header>
 <header class="main-header">
     <a href="#" class="logo">
-        <#--<span class="logo-mini"><b>易乎社区CMS</b></span>-->
+    <#--<span class="logo-mini"><b>易乎社区CMS</b></span>-->
         <span class="logo-lg"><b>易乎社区CMS</b></span>
     </a>
     <nav class="navbar navbar-static-top">
@@ -63,15 +70,14 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown user user-menu">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                    <#--<img src="adminlte/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">--> <span
-                            class="hidden-xs">${user.name!}</span>
+                        <span class="hidden-xs">${user.name!}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="user-header">
                             <img src="${user.avatar!'adminlte/dist/img/ehulogo.png'}" class="img-circle">
                             <p>
                                 ${user.username!}
-                            <small>${user.createTime?string('yyyy-MM-dd HH:mm:ss')}加入</small>
+                                <small>${user.createTime?string('yyyy-MM-dd HH:mm:ss')}加入</small>
                             </p>
                         </li>
                         <li class="user-footer">
@@ -85,11 +91,11 @@
                         </li>
                     </ul>
                 </li>
-                <#--<li>
-                    <a href="#" data-toggle="control-sidebar">
-                        <i class="fa fa-gears"></i>
-                    </a>
-                </li>-->
+            <#--<li>
+                <a href="#" data-toggle="control-sidebar">
+                    <i class="fa fa-gears"></i>
+                </a>
+            </li>-->
             </ul>
         </div>
     </nav>
@@ -101,7 +107,6 @@
     <div class="pull-right hidden-xs">
         <b>Version</b> 3.0.0
     </div>
-<#--<strong>Copyright &copy; 2017-2026 <a href="https://github.com/babylikebird/common-admin">Yang</a>.-->
     </strong> All rights reserved.
 </footer>
 </#macro>
@@ -116,7 +121,6 @@
 <link rel="stylesheet" href="adminlte/dist/css/font-awesome.min.css">
 <!-- Ionicons -->
 <link rel="stylesheet" href="adminlte/dist/css/ionicons.min.css">
-<#--<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">-->
 <!-- Theme style -->
 <link rel="stylesheet" href="adminlte/dist/css/AdminLTE.min.css">
 <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -124,8 +128,6 @@
 <link rel="stylesheet" href="adminlte/dist/css/skins/_all-skins.min.css"
 <!-- 以上为公共css -->
 
-<!-- daterange picker -->
-<link rel="stylesheet" href="adminlte/plugins/daterangepicker/daterangepicker.css">
 <!-- bootstrap datepicker -->
 <link rel="stylesheet" href="adminlte/plugins/datepicker/datepicker3.css">
 <!-- iCheck for checkboxes and radio inputs -->
@@ -134,8 +136,8 @@
 <link rel="stylesheet" href="adminlte/plugins/colorpicker/bootstrap-colorpicker.min.css">
 <!-- Bootstrap time Picker -->
 <link rel="stylesheet" href="adminlte/plugins/timepicker/bootstrap-timepicker.min.css">
-<!-- Select2 -->
-<link rel="stylesheet" href="adminlte/plugins/select2/select2.min.css">
+<!-- Bootstrap select -->
+<link rel="stylesheet" href="adminlte/plugins/bootstrap-select/bootstrap-select.min.css">
 <!-- bootstrap wysihtml5 - text editor -->
 <link rel="stylesheet" href="adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <!-- iCheck -->
@@ -152,8 +154,14 @@
 <!-- bootstrap slider -->
 <link rel="stylesheet" href="adminlte/plugins/bootstrap-slider/slider.css">
 <!-- dataTables-->
-<link rel="stylesheet" href="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.css">
-
+<link rel="stylesheet"
+      href="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.css">
+<style>
+    .active .pull-right-container {
+        transform: rotate(-90deg);
+        transition: all .3s;
+    }
+</style>
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -195,43 +203,25 @@
 <script src="adminlte/dist/js/app.js"></script>
 <!-- 以上JS为页面必须 -->
 
-<!-- jQuery UI 1.11.4 -->
+<!-- jQuery UI 1.11.bootstrap-select -->
 <script src="adminlte/plugins/jQueryUI/jquery-ui.min.js"></script>
-<!-- Morris.js charts -->
-<script src="adminlte/plugins/raphael/raphael.min.js"></script>
-<script src="adminlte/plugins/morris/morris.min.js"></script>
 <!-- Sparkline -->
 <script src="adminlte/plugins/sparkline/jquery.sparkline.min.js"></script>
 <!-- jvectormap -->
 <script src="adminlte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="adminlte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- daterangepicker -->
-<script src="adminlte/plugins/moment/moment.min.js"></script>
-<script src="adminlte/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- datepicker -->
 <script src="adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- SlimScroll 1.3.0 -->
 <script src="adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FLOT CHARTS -->
-<script src="adminlte/plugins/flot/jquery.flot.min.js"></script>
-<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-<script src="adminlte/plugins/flot/jquery.flot.resize.min.js"></script>
-<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-<script src="adminlte/plugins/flot/jquery.flot.pie.min.js"></script>
-<!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script src="adminlte/plugins/flot/jquery.flot.categories.min.js"></script>
 <!-- iCheck -->
 <script src="adminlte/plugins/iCheck/icheck.min.js"></script>
-<!-- Select2 -->
-<script src="adminlte/plugins/select2/select2.full.min.js"></script>
 <!-- InputMask -->
 <script src="adminlte/plugins/input-mask/jquery.inputmask.js"></script>
 <script src="adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="adminlte/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- date-range-picker -->
-<script src="adminlte/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap datepicker -->
 <script src="adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
 <script src="adminlte/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
@@ -239,6 +229,8 @@
 <script src="adminlte/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <!-- bootstrap time picker -->
 <script src="adminlte/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- bootstrap select -->
+<script src="adminlte/plugins/bootstrap-select/bootstrap-select.min.js"></script>
 <!-- Ion Slider -->
 <script src="adminlte/plugins/ionslider/ion.rangeSlider.min.js"></script>
 <!-- Bootstrap slider -->
@@ -430,8 +422,6 @@
         </div>
     </div>
 </aside>
-<div class="control-sidebar-bg"></div>
-</div>
 <div id="loading" class="loading-panel">
     <div class="box">
         <i class="fa fa-refresh fa-spin"></i> <span class="tip"> 正在加载 · · · </span>
@@ -459,14 +449,15 @@
 <div class="modal fade" id="lgModal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <#--<div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
-            </div>
+            </div>-->
             <div class="modal-body">
                 <p>确认删除？</p>
             </div>
         </div>
     </div>
+</div>
 </#macro>

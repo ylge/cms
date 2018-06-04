@@ -71,11 +71,9 @@
                         align: 'center',
                         width: 80,
                         formatter: function (value) {
-                            var content = "";
+                            var content = '<a class="btn btn-xs btn-info"  target="modal" href="/system/menu/add/' + value + '">添加</a>';
                             if (value != '1') {
-                                content = '<a class="btn btn-xs btn-info"  target="modal" modal="lg" href="/system/menu/add/' + value + '">添加</a>'
-                                        + " &nbsp;"
-                                        + '<a class="btn btn-xs btn-info"  target="modal" modal="lg" href="/system/menu/edit/' + value + '">编辑</a>'
+                                content += '<a class="btn btn-xs btn-info"  target="modal" modal="lg" href="/system/menu/edit/' + value + '">编辑</a>'
                                         + " &nbsp;"
                                         + '<a class="btn btn-xs btn-default" callback="reloadMenuList()" data-body="确认要删除吗？" target="ajaxTodo" href="/system/menu/delete/' + value + '">删除</a>'
 
@@ -93,8 +91,8 @@
         $('#menu_tab').treegrid('reload');
     }
 
-    function doClick() {
+    /*function doClick() {
         var row = $('#tg').treegrid('getSelected');
         console.log(JSON.stringify(row));
-    }
+    }*/
 </script>

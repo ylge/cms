@@ -1,6 +1,7 @@
 package com.ehu.service;
 
 import com.ehu.base.BaseService;
+import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysDepartment;
 
 /**
@@ -12,5 +13,6 @@ import com.ehu.bean.entity.system.SysDepartment;
  * @since 2018-05-11
  */
 public interface SysDepartmentService extends BaseService<SysDepartment,String> {
-	
+
+    Result save(SysDepartment sysDepartment);
 }

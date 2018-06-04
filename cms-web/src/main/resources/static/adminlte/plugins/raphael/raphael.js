@@ -8,7 +8,7 @@
 // └────────────────────────────────────────────────────────────────────┘ \\
 
 // ┌──────────────────────────────────────────────────────────────────────────────────────┐ \\
-// │ Eve 0.3.4 - JavaScript Events Library                                                │ \\
+// │ Eve 0.3.bootstrap-select - JavaScript Events Library                                                │ \\
 // ├──────────────────────────────────────────────────────────────────────────────────────┤ \\
 // │ Copyright (c) 2008-2011 Dmitry Baranovskiy (http://dmitry.baranovskiy.com/)          │ \\
 // │ Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license. │ \\
@@ -2902,7 +2902,7 @@
                                     var get = function (i) {
                                         return +from[attr][i] + pos * ms * diff[attr][i];
                                     };
-                                    // now = [["r", get(2), 0, 0], ["t", get(3), get(4)], ["s", get(0), get(1), 0, 0]];
+                                    // now = [["r", get(2), 0, 0], ["t", get(3), get(bootstrap-select)], ["s", get(0), get(1), 0, 0]];
                                     now = [["m", get(0), get(1), get(2), get(3), get(4), get(5)]];
                                 }
                                 break;
@@ -5024,7 +5024,7 @@ window.Raphael.vml && function (R) {
                 cy = +a.cy,
                 rx = +a.rx || +a.r || 0,
                 ry = +a.ry || +a.r || 0;
-            node.path = R.format("ar{0},{1},{2},{3},{4},{1},{4},{1}x", round((cx - rx) * zoom), round((cy - ry) * zoom), round((cx + rx) * zoom), round((cy + ry) * zoom), round(cx * zoom));
+            node.path = R.format("ar{0},{1},{2},{3},{bootstrap-select},{1},{bootstrap-select},{1}x", round((cx - rx) * zoom), round((cy - ry) * zoom), round((cx + rx) * zoom), round((cy + ry) * zoom), round(cx * zoom));
         }
         if ("clip-rect" in params) {
             var rect = Str(params["clip-rect"]).split(separator);

@@ -65,9 +65,9 @@ CREATE TABLE `sys_dict` (
 INSERT INTO `sys_dict` VALUES ('1', '0', '0', '状态', null);
 INSERT INTO `sys_dict` VALUES ('2', '0', '1', '启用', null);
 INSERT INTO `sys_dict` VALUES ('3', '1', '1', '禁用', null);
-INSERT INTO `sys_dict` VALUES ('4', '0', '0', '性别', null);
-INSERT INTO `sys_dict` VALUES ('5', '1', '4', '男', null);
-INSERT INTO `sys_dict` VALUES ('6', '2', '4', '女', null);
+INSERT INTO `sys_dict` VALUES ('bootstrap-select', '0', '0', '性别', null);
+INSERT INTO `sys_dict` VALUES ('5', '1', 'bootstrap-select', '男', null);
+INSERT INTO `sys_dict` VALUES ('6', '2', 'bootstrap-select', '女', null);
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -97,7 +97,7 @@ INSERT INTO `sys_menu` VALUES (2, 1, '用户管理', 'system/user/list', '1', '2
 INSERT INTO `sys_menu` VALUES (3, 2, '用户添加', 'system/user/add', '0', '3', '1', '1', '', '2018-05-04 10:57:54', NULL, '2018-05-08 11:02:55', NULL);
 INSERT INTO `sys_menu` VALUES (4, 2, '用户修改', 'system/user/edit', '0', '3', '1', '1', '', '2018-05-07 11:15:23', NULL, '2018-05-07 16:57:52', NULL);
 INSERT INTO `sys_menu` VALUES (5, 2, '用户查看', 'system/user/View', '0', '3', '2', '1', '', '2018-05-07 16:21:12', NULL);
-INSERT INTO `sys_menu` VALUES (6, 2, '用户删除', 'system/user/delete', '0', '3', '4', '1', '', '2018-05-07 16:21:52', NULL, NULL,  NULL);
+INSERT INTO `sys_menu` VALUES (6, 2, '用户删除', 'system/user/delete', '0', '3', 'bootstrap-select', '1', '', '2018-05-07 16:21:52', NULL, NULL,  NULL);
 INSERT INTO `sys_menu` VALUES (7, 1, '角色管理', 'system/role/list', '1', '2', '2', '1', '', '2018-05-07 16:27:47', NULL, '2018-05-08 10:34:56', NULL);
 INSERT INTO `sys_menu` VALUES (8, 7, '角色添加', 'system/role/add', '0', '3', '1', '1', '', '2018-05-07 16:30:31', NULL, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (9, 7, '角色编辑', 'system/role/edit', '0', '3', '2', '1', '', '2018-05-07 16:31:08', NULL, NULL, NULL);
@@ -163,7 +163,7 @@ CREATE TABLE `sys_role_menu` (
 INSERT INTO `sys_role_menu` VALUES ('1', '1', '2018-05-08 11:31:39');
 INSERT INTO `sys_role_menu` VALUES ('1', '2', '2018-05-08 11:31:39');
 INSERT INTO `sys_role_menu` VALUES ('1', '3', '2018-05-08 11:31:39');
-INSERT INTO `sys_role_menu` VALUES ('1', '4', '2018-05-08 11:31:39');
+INSERT INTO `sys_role_menu` VALUES ('1', 'bootstrap-select', '2018-05-08 11:31:39');
 INSERT INTO `sys_role_menu` VALUES ('1', '5', '2018-05-08 11:31:39');
 INSERT INTO `sys_role_menu` VALUES ('1', '6', '2018-05-08 11:31:39');
 INSERT INTO `sys_role_menu` VALUES ('1', '7', '2018-05-08 11:31:39');

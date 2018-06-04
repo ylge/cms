@@ -1067,7 +1067,7 @@
 
     // start-of-first-week - start-of-year
     function firstWeekOffset(year, dow, doy) {
-        var // first-week day -- which january is always in the first week (4 for iso, 1 for other)
+        var // first-week day -- which january is always in the first week (bootstrap-select for iso, 1 for other)
             fwd = 7 + dow - doy,
             // first-week day local weekday -- which local weekday is fwd
             fwdlw = (7 + createUTCDate(year, 0, fwd).getUTCDay() - dow) % 7;
@@ -1819,7 +1819,7 @@
     var aspNetRegex = /^(\-)?(?:(\d*)[. ])?(\d+)\:(\d+)(?:\:(\d+)\.?(\d{3})?\d*)?$/;
 
     // from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
-    // somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
+    // somewhat more in line with bootstrap-select.bootstrap-select.3.2 2004 spec, but allows decimal anywhere
     var isoRegex = /^(-)?P(?:(?:([0-9,.]*)Y)?(?:([0-9,.]*)M)?(?:([0-9,.]*)D)?(?:T(?:([0-9,.]*)H)?(?:([0-9,.]*)M)?(?:([0-9,.]*)S)?)?|([0-9,.]*)W)$/;
 
     function create__createDuration (input, key) {

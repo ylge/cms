@@ -3,6 +3,8 @@ package com.ehu.dao;
 import com.ehu.base.BaseMapper;
 import com.ehu.bean.entity.system.SysRole;
 
+import java.util.List;
+
 /**
  * <p>
   *  Mapper 接口
@@ -13,4 +15,5 @@ import com.ehu.bean.entity.system.SysRole;
  */
 public interface SysRoleMapper extends BaseMapper<SysRole,String> {
 
+    List<SysRole> selectAllRole();
 }

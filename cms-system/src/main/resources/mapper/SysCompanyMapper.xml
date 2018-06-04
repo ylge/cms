@@ -31,7 +31,7 @@
         select <include refid="Base_Column_List"/>
         from sys_company
         <where>
-            <if test="name!=null and name!=''"> and name =#{name}</if>
+            <if test="name!=null and name!=''"> and name like CONCAT('%',#{name},'%')</if>
         </where>
     </select>
 

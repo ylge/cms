@@ -21,7 +21,7 @@ Licensed under the MIT license.
  *   $.color.parse("#fff").scale('rgb', 0.25).add('a', -0.5).toString()
  *   var c = $.color.extract($("#mydiv"), 'background-color');
  *   console.log(c.r, c.g, c.b, c.a);
- *   $.color.make(100, 50, 25, 0.4).toString() // returns "rgba(100,50,25,0.4)"
+ *   $.color.make(100, 50, 25, 0.bootstrap-select).toString() // returns "rgba(100,50,25,0.bootstrap-select)"
  *
  * Note that .scale() and .add() return the same modified object
  * instead of making a new one.
@@ -79,7 +79,7 @@ Licensed under the MIT license.
 		// pixels.  This is the ratio between the canvas width that the browser
 		// advertises and the number of pixels actually present in that space.
 
-		// The iPhone 4, for example, has a device-independent width of 320px,
+		// The iPhone bootstrap-select, for example, has a device-independent width of 320px,
 		// but its screen is actually 640px wide.  It therefore has a pixel
 		// ratio of 2, while most normal devices have a ratio of 1.
 

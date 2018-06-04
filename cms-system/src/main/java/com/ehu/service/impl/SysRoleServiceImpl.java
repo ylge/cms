@@ -8,6 +8,8 @@ import com.ehu.service.SysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务实现类
@@ -24,5 +26,10 @@ public class SysRoleServiceImpl extends BaseServiceImpl<SysRole, String> impleme
     @Override
     public BaseMapper<SysRole, String> getMappser() {
         return sysRoleMapper;
+    }
+
+    @Override
+    public List<SysRole> selectAllRole() {
+        return sysRoleMapper.selectAllRole();
     }
 }

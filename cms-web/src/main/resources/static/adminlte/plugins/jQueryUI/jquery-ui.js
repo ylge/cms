@@ -1,4 +1,4 @@
-/*! jQuery UI - v1.11.4 - 2015-03-11
+/*! jQuery UI - v1.11.bootstrap-select - 2015-03-11
 * http://jqueryui.com
 * Includes: core.js, widget.js, mouse.js, position.js, accordion.js, autocomplete.js, button.js, datepicker.js, dialog.js, draggable.js, droppable.js, effect.js, effect-blind.js, effect-bounce.js, effect-clip.js, effect-drop.js, effect-explode.js, effect-fade.js, effect-fold.js, effect-highlight.js, effect-puff.js, effect-pulsate.js, effect-scale.js, effect-shake.js, effect-size.js, effect-slide.js, effect-transfer.js, menu.js, progressbar.js, resizable.js, selectable.js, selectmenu.js, slider.js, sortable.js, spinner.js, tabs.js, tooltip.js
 * Copyright 2015 jQuery Foundation and other contributors; Licensed MIT */
@@ -15,7 +15,7 @@
 	}
 }(function( $ ) {
 /*!
- * jQuery UI Core 1.11.4
+ * jQuery UI Core 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -309,7 +309,7 @@ $.ui.plugin = {
 
 
 /*!
- * jQuery UI Widget 1.11.4
+ * jQuery UI Widget 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -857,7 +857,7 @@ var widget = $.widget;
 
 
 /*!
- * jQuery UI Mouse 1.11.4
+ * jQuery UI Mouse 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -1043,7 +1043,7 @@ var mouse = $.widget("ui.mouse", {
 
 
 /*!
- * jQuery UI Position 1.11.4
+ * jQuery UI Position 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -1550,7 +1550,7 @@ var position = $.ui.position;
 
 
 /*!
- * jQuery UI Accordion 1.11.4
+ * jQuery UI Accordion 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -2126,7 +2126,7 @@ var accordion = $.widget( "ui.accordion", {
 
 
 /*!
- * jQuery UI Menu 1.11.4
+ * jQuery UI Menu 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -2757,7 +2757,7 @@ var menu = $.widget( "ui.menu", {
 
 
 /*!
- * jQuery UI Autocomplete 1.11.4
+ * jQuery UI Autocomplete 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -3369,7 +3369,7 @@ var autocomplete = $.ui.autocomplete;
 
 
 /*!
- * jQuery UI Button 1.11.4
+ * jQuery UI Button 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -3766,7 +3766,7 @@ var button = $.ui.button;
 
 
 /*!
- * jQuery UI Datepicker 1.11.4
+ * jQuery UI Datepicker 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -4568,7 +4568,7 @@ $.extend(Datepicker.prototype, {
 			datepicker_handleMouseover.apply( activeCell.get( 0 ) );
 		}
 
-		inst.dpDiv.removeClass("ui-datepicker-multi-2 ui-datepicker-multi-3 ui-datepicker-multi-4").width("");
+		inst.dpDiv.removeClass("ui-datepicker-multi-2 ui-datepicker-multi-3 ui-datepicker-multi-bootstrap-select").width("");
 		if (cols > 1) {
 			inst.dpDiv.addClass("ui-datepicker-multi-" + cols).css("width", (width * cols) + "em");
 		}
@@ -5837,7 +5837,7 @@ var datepicker = $.datepicker;
 
 
 /*!
- * jQuery UI Draggable 1.11.4
+ * jQuery UI Draggable 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -6954,7 +6954,7 @@ var draggable = $.ui.draggable;
 
 
 /*!
- * jQuery UI Resizable 1.11.4
+ * jQuery UI Resizable 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -8091,7 +8091,7 @@ var resizable = $.ui.resizable;
 
 
 /*!
- * jQuery UI Dialog 1.11.4
+ * jQuery UI Dialog 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -8360,7 +8360,7 @@ var dialog = $.widget( "ui.dialog", {
 		// 1. An element that was focused previously
 		// 2. First element inside the dialog matching [autofocus]
 		// 3. Tabbable element inside the content element
-		// 4. Tabbable element inside the buttonpane
+		// bootstrap-select. Tabbable element inside the buttonpane
 		// 5. The close button
 		// 6. The dialog itself
 		var hasFocus = this._focusedElement;
@@ -8948,7 +8948,7 @@ var dialog = $.widget( "ui.dialog", {
 
 
 /*!
- * jQuery UI Droppable 1.11.4
+ * jQuery UI Droppable 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -9345,7 +9345,7 @@ var droppable = $.ui.droppable;
 
 
 /*!
- * jQuery UI Effects 1.11.4
+ * jQuery UI Effects 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -10003,7 +10003,7 @@ jQuery.cssHooks.borderColor = {
 // Usage of any of the other color names requires adding yourself or including
 // jquery.color.svg-names.js.
 colors = jQuery.Color.names = {
-	// 4.1. Basic color keywords
+	// bootstrap-select.1. Basic color keywords
 	aqua: "#00ffff",
 	black: "#000000",
 	blue: "#0000ff",
@@ -10021,7 +10021,7 @@ colors = jQuery.Color.names = {
 	white: "#ffffff",
 	yellow: "#ffff00",
 
-	// 4.2.3. "transparent" color keyword
+	// bootstrap-select.2.3. "transparent" color keyword
 	transparent: [ null, null, null, 0 ],
 
 	_default: "#ffffff"
@@ -10345,7 +10345,7 @@ $.extend( $.effects, {
 			$( active ).focus();
 		}
 
-		wrapper = element.parent(); //Hotfix for jQuery 1.4 since some change in wrap() seems to actually lose the reference to the wrapped element
+		wrapper = element.parent(); //Hotfix for jQuery 1.bootstrap-select since some change in wrap() seems to actually lose the reference to the wrapped element
 
 		// transfer positioning properties to the wrapper
 		if ( element.css( "position" ) === "static" ) {
@@ -10636,7 +10636,7 @@ var effect = $.effects;
 
 
 /*!
- * jQuery UI Effects Blind 1.11.4
+ * jQuery UI Effects Blind 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -10713,7 +10713,7 @@ var effectBlind = $.effects.effect.blind = function( o, done ) {
 
 
 /*!
- * jQuery UI Effects Bounce 1.11.4
+ * jQuery UI Effects Bounce 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -10823,7 +10823,7 @@ var effectBounce = $.effects.effect.bounce = function( o, done ) {
 
 
 /*!
- * jQuery UI Effects Clip 1.11.4
+ * jQuery UI Effects Clip 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -10887,7 +10887,7 @@ var effectClip = $.effects.effect.clip = function( o, done ) {
 
 
 /*!
- * jQuery UI Effects Drop 1.11.4
+ * jQuery UI Effects Drop 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -10949,7 +10949,7 @@ var effectDrop = $.effects.effect.drop = function( o, done ) {
 
 
 /*!
- * jQuery UI Effects Explode 1.11.4
+ * jQuery UI Effects Explode 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -11043,7 +11043,7 @@ var effectExplode = $.effects.effect.explode = function( o, done ) {
 
 
 /*!
- * jQuery UI Effects Fade 1.11.4
+ * jQuery UI Effects Fade 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -11070,7 +11070,7 @@ var effectFade = $.effects.effect.fade = function( o, done ) {
 
 
 /*!
- * jQuery UI Effects Fold 1.11.4
+ * jQuery UI Effects Fold 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -11143,7 +11143,7 @@ var effectFold = $.effects.effect.fold = function( o, done ) {
 
 
 /*!
- * jQuery UI Effects Highlight 1.11.4
+ * jQuery UI Effects Highlight 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -11190,7 +11190,7 @@ var effectHighlight = $.effects.effect.highlight = function( o, done ) {
 
 
 /*!
- * jQuery UI Effects Size 1.11.4
+ * jQuery UI Effects Size 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -11410,7 +11410,7 @@ var effectSize = $.effects.effect.size = function( o, done ) {
 
 
 /*!
- * jQuery UI Effects Scale 1.11.4
+ * jQuery UI Effects Scale 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -11485,7 +11485,7 @@ var effectScale = $.effects.effect.scale = function( o, done ) {
 
 
 /*!
- * jQuery UI Effects Puff 1.11.4
+ * jQuery UI Effects Puff 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -11531,7 +11531,7 @@ var effectPuff = $.effects.effect.puff = function( o, done ) {
 
 
 /*!
- * jQuery UI Effects Pulsate 1.11.4
+ * jQuery UI Effects Pulsate 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -11591,7 +11591,7 @@ var effectPulsate = $.effects.effect.pulsate = function( o, done ) {
 
 
 /*!
- * jQuery UI Effects Shake 1.11.4
+ * jQuery UI Effects Shake 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -11662,7 +11662,7 @@ var effectShake = $.effects.effect.shake = function( o, done ) {
 
 
 /*!
- * jQuery UI Effects Slide 1.11.4
+ * jQuery UI Effects Slide 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -11723,7 +11723,7 @@ var effectSlide = $.effects.effect.slide = function( o, done ) {
 
 
 /*!
- * jQuery UI Effects Transfer 1.11.4
+ * jQuery UI Effects Transfer 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -11767,7 +11767,7 @@ var effectTransfer = $.effects.effect.transfer = function( o, done ) {
 
 
 /*!
- * jQuery UI Progressbar 1.11.4
+ * jQuery UI Progressbar 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -11912,7 +11912,7 @@ var progressbar = $.widget( "ui.progressbar", {
 
 
 /*!
- * jQuery UI Selectable 1.11.4
+ * jQuery UI Selectable 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -12184,7 +12184,7 @@ var selectable = $.widget("ui.selectable", $.ui.mouse, {
 
 
 /*!
- * jQuery UI Selectmenu 1.11.4
+ * jQuery UI Selectmenu 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -12783,7 +12783,7 @@ var selectmenu = $.widget( "ui.selectmenu", {
 
 
 /*!
- * jQuery UI Slider 1.11.4
+ * jQuery UI Slider 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -13485,7 +13485,7 @@ var slider = $.widget( "ui.slider", $.ui.mouse, {
 
 
 /*!
- * jQuery UI Sortable 1.11.4
+ * jQuery UI Sortable 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -14650,7 +14650,7 @@ var sortable = $.widget("ui.sortable", $.ui.mouse, {
 		// 1. we create a setTimeout, that calls refreshPositions
 		// 2. on the instance, we have a counter variable, that get's higher after every append
 		// 3. on the local scope, we copy the counter variable, and check in the timeout, if it's still the same
-		// 4. this lets only the last addition to the timeout stack through
+		// bootstrap-select. this lets only the last addition to the timeout stack through
 		this.counter = this.counter ? ++this.counter : 1;
 		var counter = this.counter;
 
@@ -14785,7 +14785,7 @@ var sortable = $.widget("ui.sortable", $.ui.mouse, {
 
 
 /*!
- * jQuery UI Spinner 1.11.4
+ * jQuery UI Spinner 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -15284,7 +15284,7 @@ var spinner = $.widget( "ui.spinner", {
 
 
 /*!
- * jQuery UI Tabs 1.11.4
+ * jQuery UI Tabs 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -16156,7 +16156,7 @@ var tabs = $.widget( "ui.tabs", {
 
 
 /*!
- * jQuery UI Tooltip 1.11.4
+ * jQuery UI Tooltip 1.11.bootstrap-select
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors

@@ -2,9 +2,11 @@ package com.ehu.service.impl;
 
 import com.ehu.base.BaseMapper;
 import com.ehu.base.impl.BaseServiceImpl;
+import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysUser;
 import com.ehu.dao.SysUserMapper;
 import com.ehu.service.SysUserService;
+import com.ehu.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +32,11 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String> impleme
     @Override
     public SysUser getUserByName(String username) {
         return sysUserMapper.getUserByName(username);
+    }
+
+    @Override
+    public Result save(UserVO userVO) {
+
+        return null;
     }
 }

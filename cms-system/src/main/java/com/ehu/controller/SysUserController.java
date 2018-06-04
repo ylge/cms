@@ -2,8 +2,11 @@ package com.ehu.controller;
 
 import com.ehu.base.BaseController;
 import com.ehu.bean.PageBean;
+import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysUser;
+import com.ehu.service.SysRoleService;
 import com.ehu.service.SysUserService;
+import com.ehu.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * @author geyl
  * @Title: SysUserController
- * @Package com.ehoo100.cms.controller.system
+ * @Package com.ehu.controller
  * @Description: 用户管理
  * @date 2018-5-18 13:40
  */
@@ -22,6 +25,8 @@ public class SysUserController extends BaseController {
 
     @Autowired
     private SysUserService sysUserService;
+    @Autowired
+    private SysRoleService sysRoleService;
 
     @GetMapping(value = "list")
     public String list() {
@@ -36,15 +41,27 @@ public class SysUserController extends BaseController {
 
     /**
      　* @description:添加用户
-     　* @param
-     　* @return
      　* @author geyl
      　* @date 2018-5-22 13:35
      　*/
     @GetMapping(value = "add")
     public ModelAndView add(ModelAndView modelAndView) {
         modelAndView.setViewName("/system/user/add");
+        modelAndView.addObject("roles",sysRoleService.selectAllRole());
         return modelAndView;
+    }
+
+    /**
+     　* @description:新增公司
+     　* @param
+     　* @return
+     　* @author geyl
+     　* @date 2018-5-22 13:35
+     　*/
+    @PutMapping(value = "save")
+    public @ResponseBody
+    Result save(UserVO userVO ) {
+        return sysUserService.save(userVO);
     }
 
 }

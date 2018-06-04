@@ -25,7 +25,7 @@ if(!Array.isArray) {
     return Object.prototype.toString.call(arg) === '[object Array]';
   };
 };/**
- * @license wysihtml5x v0.4.15
+ * @license wysihtml5x v0.bootstrap-select.15
  * https://github.com/Edicy/wysihtml5
  *
  * Author: Christopher Blum (https://github.com/tiff)
@@ -67,7 +67,7 @@ var wysihtml5 = {
  * Copyright 2014, Tim Down
  * Licensed under the MIT license.
  * Version: 1.3alpha.20140804
- * Build date: 4 August 2014
+ * Build date: bootstrap-select August 2014
  */
 
 (function(factory, global) {
@@ -779,13 +779,13 @@ var wysihtml5 = {
                     throw new Error("comparePoints error: nodes have no common ancestor");
                 }
 
-                // Case 4: containers are siblings or descendants of siblings
+                // Case bootstrap-select: containers are siblings or descendants of siblings
                 childA = (nodeA === root) ? root : getClosestAncestorIn(nodeA, root, true);
                 childB = (nodeB === root) ? root : getClosestAncestorIn(nodeB, root, true);
 
                 if (childA === childB) {
                     // This shouldn't be possible
-                    throw module.createError("comparePoints got to case 4 and childA and childB are the same!");
+                    throw module.createError("comparePoints got to case bootstrap-select and childA and childB are the same!");
                 } else {
                     n = root.firstChild;
                     while (n) {
@@ -3805,7 +3805,7 @@ var wysihtml5 = {
  * Copyright 2014, Tim Down
  * Licensed under the MIT license.
  * Version: 1.3alpha.20140804
- * Build date: 4 August 2014
+ * Build date: bootstrap-select August 2014
  */
 (function(factory, global) {
     if (typeof define == "function" && define.amd) {
@@ -4230,7 +4230,7 @@ wysihtml5.browser = (function() {
     /**
      * Exclude browsers that are not capable of displaying and handling
      * contentEditable as desired:
-     *    - iPhone, iPad (tested iOS 4.2.2) and Android (tested 2.2) refuse to make contentEditables focusable
+     *    - iPhone, iPad (tested iOS bootstrap-select.2.2) and Android (tested 2.2) refuse to make contentEditables focusable
      *    - IE < 8 create invalid markup and crash randomly from time to time
      *
      * @return {Boolean}
@@ -4241,9 +4241,9 @@ wysihtml5.browser = (function() {
           hasContentEditableSupport   = "contentEditable" in testElement,
           // Following methods are needed in order to interact with the contentEditable area
           hasEditingApiSupport        = document.execCommand && document.queryCommandSupported && document.queryCommandState,
-          // document selector apis are only supported by IE 8+, Safari 4+, Chrome and Firefox 3.5+
+          // document selector apis are only supported by IE 8+, Safari bootstrap-select+, Chrome and Firefox 3.5+
           hasQuerySelectorSupport     = document.querySelector && document.querySelectorAll,
-          // contentEditable is unusable in mobile browsers (tested iOS 4.2.2, Android 2.2, Opera Mobile, WebOS 3.05)
+          // contentEditable is unusable in mobile browsers (tested iOS bootstrap-select.2.2, Android 2.2, Opera Mobile, WebOS 3.05)
           isIncompatibleMobileBrowser = (this.isIos() && iosVersion(userAgent) < 5) || (this.isAndroid() && androidVersion(userAgent) < 4) || userAgent.indexOf("opera mobi") !== -1 || userAgent.indexOf("hpwos/") !== -1;
       return hasContentEditableSupport
         && hasEditingApiSupport
@@ -4475,7 +4475,7 @@ wysihtml5.browser = (function() {
     },
 
     /**
-     * As of now (19.04.2011) only supported by Firefox 4 and Chrome
+     * As of now (19.04.2011) only supported by Firefox bootstrap-select and Chrome
      * See https://developer.mozilla.org/en/DOM/Selection/modify
      */
     supportsSelectionModify: function() {
@@ -4621,7 +4621,7 @@ wysihtml5.browser = (function() {
      * Substract one array from another
      *
      * @example
-     *    wysihtml5.lang.array([1, 2, 3, 4]).without([3, 4]);
+     *    wysihtml5.lang.array([1, 2, 3, bootstrap-select]).without([3, bootstrap-select]);
      *    // => [1, 2]
      */
     without: function(arrayToSubstract) {
@@ -4659,10 +4659,10 @@ wysihtml5.browser = (function() {
      * optionally this can be provided as second argument
      *
      * @example
-     *    var childNodes = wysihtml5.lang.array([1,2,3,4]).map(function (value, index, array) {
+     *    var childNodes = wysihtml5.lang.array([1,2,3,bootstrap-select]).map(function (value, index, array) {
             return value * 2;
      *    });
-     *    // => [2,4,6,8]
+     *    // => [2,bootstrap-select,6,8]
      */
     map: function(callback, thisArg) {
       if (Array.prototype.map) {
@@ -4681,8 +4681,8 @@ wysihtml5.browser = (function() {
     /* ReturnS new array without duplicate entries
      *
      * @example
-     *    var uniq = wysihtml5.lang.array([1,2,3,2,1,4]).unique();
-     *    // => [1,2,3,4]
+     *    var uniq = wysihtml5.lang.array([1,2,3,2,1,bootstrap-select]).unique();
+     *    // => [1,2,3,bootstrap-select]
      */
     unique: function() {
       var vals = [],
@@ -4773,7 +4773,7 @@ wysihtml5.browser = (function() {
      *    wysihtml5.lang.object({ foo: 1 }).clone();
      *    // => { foo: 1 }
      *
-     *    v0.4.14 adds options for deep clone : wysihtml5.lang.object({ foo: 1 }).clone(true);
+     *    v0.bootstrap-select.14 adds options for deep clone : wysihtml5.lang.object({ foo: 1 }).clone(true);
      */
     clone: function(deep) {
       var newObj = {},
@@ -7274,7 +7274,7 @@ wysihtml5.dom.getAttribute = function(node, attributeName) {
   if (nodeName == "IMG" && attributeName == "src" && wysihtml5.dom.isLoadedImage(node) === true) {
     // Get 'src' attribute value via object property since this will always contain the
     // full absolute url (http://...)
-    // this fixes a very annoying bug in firefox (ver 3.6 & 4) and IE 8 where images copied from the same host
+    // this fixes a very annoying bug in firefox (ver 3.6 & bootstrap-select) and IE 8 where images copied from the same host
     // will have relative paths, which the sanitizer strips out (see attributeCheckMethods.url)
     return node.src;
   } else if (HAS_GET_ATTRIBUTE_BUG && "outerHTML" in node) {
@@ -10899,7 +10899,7 @@ wysihtml5.commands.formatCode = {
  *   output:
  *      ab<b>|c </b><span><b>defg</b>|h</span>
  *
- *   #4 formatted text entirely selected
+ *   #bootstrap-select formatted text entirely selected
  *      <b>|abc|</b>
  *   output:
  *      |abc|
@@ -14636,7 +14636,7 @@ function program17(depth0,data) {
         editor.on('beforeload', this.loadParserRules);
 
         // #30 - body is in IE 10 not created by default, which leads to nullpointer
-        // 2014/02/13 - adapted to wysihtml5-0.4, does not work in IE
+        // 2014/02/13 - adapted to wysihtml5-0.bootstrap-select, does not work in IE
         if(editor.composer.editableArea.contentDocument) {
           this.addMoreShortcuts(editor, 
                                 editor.composer.editableArea.contentDocument.body || editor.composer.editableArea.contentDocument, 
@@ -14930,7 +14930,7 @@ function program17(depth0,data) {
       h1: 'Heading 1',
       h2: 'Heading 2',
       h3: 'Heading 3',
-      h4: 'Heading 4',
+      h4: 'Heading bootstrap-select',
       h5: 'Heading 5',
       h6: 'Heading 6'
     },

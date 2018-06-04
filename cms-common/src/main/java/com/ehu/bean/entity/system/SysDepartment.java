@@ -25,6 +25,10 @@ public class SysDepartment implements Serializable{
      * 公司代码
      */
 	private Integer companyId;
+	/**
+	 * 公司名称
+	 */
+	private String companyName;
     /**
      * 部门编号
      */
@@ -57,6 +61,7 @@ public class SysDepartment implements Serializable{
 		return "SysDepartment{" +
 			", departmentId=" + departmentId +
 			", companyId=" + companyId +
+			", companyName=" + companyName +
 			", code=" + code +
 			", name=" + name +
 			", parentCode=" + parentCode +
