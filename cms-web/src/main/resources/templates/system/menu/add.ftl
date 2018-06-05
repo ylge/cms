@@ -46,7 +46,7 @@
                     console.log(data);
                     if (data.code == 200) {
                         alertMsg("添加成功", "success");
-                        $("#lgModal").modal('close');
+                        $("#lgModal").modal('hide');
                         reloadMenuList();
                     } else {
                         alertMsg("添加失败:" + data.msg, "success");

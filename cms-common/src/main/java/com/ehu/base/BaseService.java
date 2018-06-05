@@ -1,6 +1,7 @@
 package com.ehu.base;
 
 import com.ehu.bean.PageBean;
+import com.ehu.exception.MyException;
 
 import java.io.Serializable;
 import java.util.List;

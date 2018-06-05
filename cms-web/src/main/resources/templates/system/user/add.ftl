@@ -24,7 +24,7 @@
             <select name="roles" id="roles" class="selectpicker form-control" multiple data-max-options="4" data-live-search="true">
                 <#if roles??>
                     <#list roles as role>
-                        <#if role.value == 'admin'>
+                        <#if (role.value) ??>
                             <@shiro.hasRole name="admin">
                                 <option value="${role.roleId}">${role.name}</option>
                             </@shiro.hasRole>
@@ -61,7 +61,7 @@
                 data: $("#userAddForm").serialize(),
                 success: function (data) {
                     if (data.code == 200) {
-                        $("#lgModal").modal('close');
+                        $("#lgModal").modal('hide');
                         alertMsg("添加成功", "success");
                         reloadTable(list_ajax);
                     } else {

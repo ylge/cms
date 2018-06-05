@@ -231,6 +231,7 @@
 <script src="adminlte/plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- bootstrap select -->
 <script src="adminlte/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="adminlte/plugins/bootstrap-select/i18n/defaults-zh_CN.js"></script>
 <!-- Ion Slider -->
 <script src="adminlte/plugins/ionslider/ion.rangeSlider.min.js"></script>
 <!-- Bootstrap slider -->

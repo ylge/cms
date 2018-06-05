@@ -4,6 +4,7 @@ import com.ehu.base.BaseMapper;
 import com.ehu.base.BaseService;
 import com.ehu.bean.PageBean;
 import com.ehu.bean.ShiroUser;
+import com.ehu.exception.MyException;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
@@ -66,13 +67,12 @@ public abstract class BaseServiceImpl<T, E extends Serializable> implements Base
                 operateDate = UPDATE_TIME;
 
             }
-            Field field = clazz.getDeclaredField(operator);
-            field.setAccessible(true);
-            field.set(record, currentUser.getName());
             Field fieldDate = clazz.getDeclaredField(operateDate);
             fieldDate.setAccessible(true);
             fieldDate.set(record, new Date());
-
+            Field field = clazz.getDeclaredField(operator);
+            field.setAccessible(true);
+            field.set(record, currentUser.getName());
         } catch (NoSuchFieldException e) {
             //无此字段
         } catch (IllegalAccessException e) {
@@ -82,7 +82,7 @@ public abstract class BaseServiceImpl<T, E extends Serializable> implements Base
     }
 
     @Override
-    public int insertSelective(T record) {
+    public int insertSelective(T record){
         record = addValue(record, true);
         return getMappser().insertSelective(record);
     }

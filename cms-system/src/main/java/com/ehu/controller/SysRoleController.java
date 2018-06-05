@@ -3,10 +3,9 @@ package com.ehu.controller;
 import com.ehu.base.BaseController;
 import com.ehu.bean.PageBean;
 import com.ehu.bean.Result;
-import com.ehu.bean.entity.system.SysCompany;
-import com.ehu.bean.entity.system.SysUser;
+import com.ehu.bean.entity.system.SysRole;
 import com.ehu.exception.MyException;
-import com.ehu.service.SysCompanyService;
+import com.ehu.service.SysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,20 +13,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author geyl
- * @Title: SysCompanyController
+ * @Title: SysRoleController
  * @Package com.ehu.controller
- * @Description: 公司管理
+ * @Description: 角色管理
  * @date 2018-5-18 13:40
  */
 @Controller
-@RequestMapping(value = "system/company/")
-public class SysCompanyController extends BaseController {
+@RequestMapping(value = "system/role/")
+public class SysRoleController extends BaseController {
 
     @Autowired
-    private SysCompanyService sysCompanyService;
+    private SysRoleService sysRoleService;
 
     /**
-    　* @description:公司列表
+    　* @description:角色列表
     　* @param
     　* @return  
     　* @author geyl
@@ -35,41 +34,41 @@ public class SysCompanyController extends BaseController {
     　*/
     @GetMapping(value = "list")
     public ModelAndView list(ModelAndView modelAndView) {
-        modelAndView.setViewName("/system/company/list");
+        modelAndView.setViewName("/system/role/list");
         return modelAndView;
     }
 
     @PostMapping(value = "page")
     public @ResponseBody
-    PageBean<SysCompany> page(@RequestParam(value = "start", defaultValue = "1") int start,
-                           @RequestParam(value = "length", defaultValue = "10") int pageSize, SysCompany sysCompany) {
-        return sysCompanyService.show(sysCompany,start,pageSize) ;
+    PageBean<SysRole> page(@RequestParam(value = "start", defaultValue = "1") int start,
+                           @RequestParam(value = "length", defaultValue = "10") int pageSize, SysRole sysRole) {
+        return sysRoleService.show(sysRole,start,pageSize) ;
     }
     /**
-    　* @description:公司新增
+    　* @description:角色新增
     　* @author geyl
     　* @date 2018-5-22 13:35 
     　*/
     @GetMapping(value = "add")
     public ModelAndView add(ModelAndView modelAndView) {
-        modelAndView.setViewName("/system/company/add");
+        modelAndView.setViewName("/system/role/add");
         return modelAndView;
     }
 
     /**
-     　* @description:公司编辑
+     　* @description:角色编辑
      　* @author geyl
      　* @date 2018-5-22 13:35
      　*/
-    @GetMapping(value = "edit/{companyId}")
-    public ModelAndView edit(ModelAndView modelAndView,@PathVariable String companyId) {
-        modelAndView.setViewName("/system/company/edit");
-        modelAndView.addObject("company",sysCompanyService.selectByPrimaryKey(companyId));
+    @GetMapping(value = "edit/{roleId}")
+    public ModelAndView edit(ModelAndView modelAndView,@PathVariable String roleId) {
+        modelAndView.setViewName("/system/role/edit");
+        modelAndView.addObject("role",sysRoleService.selectByPrimaryKey(roleId));
         return modelAndView;
     }
 
     /**
-     　* @description:新增公司
+     　* @description:新增角色
      　* @param
      　* @return
      　* @author geyl
@@ -77,8 +76,8 @@ public class SysCompanyController extends BaseController {
      　*/
     @PutMapping(value = "save")
     public @ResponseBody
-    Result save(SysCompany sysCompany ){
-        return sysCompanyService.save(sysCompany);
+    Result save(SysRole sysrole ){
+        return sysRoleService.save(sysrole);
     }
 
 }

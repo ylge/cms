@@ -1,7 +1,9 @@
 package com.ehu.service;
 
 import com.ehu.base.BaseService;
+import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysRole;
+import com.ehu.exception.MyException;
 
 import java.util.List;
 
@@ -16,4 +18,6 @@ import java.util.List;
 public interface SysRoleService extends BaseService<SysRole,String> {
 
     List<SysRole> selectAllRole();
+
+    Result save(SysRole sysrole);
 }

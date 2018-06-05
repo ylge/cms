@@ -28,7 +28,6 @@
                             <th>角色名称</th>
                             <th>状态</th>
                             <th>创建时间</th>
-                            <th>创建人</th>
                             <th>操作</th>
                         </tr>
                         </thead>
@@ -39,16 +38,9 @@
     </div>
 </div>
 <script type="text/javascript">
-    var user_tab;
+    var role_tab;
     $(function () {
-        //初始化时间选择器
-        $('#startDate').datepicker({
-            language: 'zh-CN',
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            todayHighlight: true
-        });
-        user_tab = $('#role_tab').DataTable({
+        role_tab = $('#role_tab').DataTable({
             "dom": "t<'row'<'col-xs-2'l><'col-xs-3'i><'col-xs-6'p>>",
             "processing": true,
             "searching": false,
@@ -72,7 +64,6 @@
                 {"data": "name"},
                 {"data": null},
                 {"data": "createTime"},
-                {"data": "createBy"},
                 {"data": null}
             ],
             "columnDefs": [

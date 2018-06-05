@@ -43,7 +43,7 @@
                 data: $("#companyEditForm").serialize(),
                 success: function (data) {
                     if (data.code==200) {
-                        $("#lgModal").modal('close');
+                        $("#lgModal").modal('hide');
                         alertMsg("添加成功", "success");
                         reloadTable(list_ajax);
                     } else {

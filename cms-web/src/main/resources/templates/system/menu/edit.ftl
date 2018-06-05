@@ -46,8 +46,8 @@
             data: $("#menuEditForm").serialize(),
             success: function (data) {
                 if (data.code == 200) {
-                    alertMsg("更新成功", "success");
                     $("#lgModal").modal('hide');
+                    alertMsg("更新成功", "success");
                     reloadMenuList();
                 } else {
                     alertMsg("更新失败:" + data.msg, "success");

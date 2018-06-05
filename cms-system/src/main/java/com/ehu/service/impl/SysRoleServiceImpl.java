@@ -2,8 +2,10 @@ package com.ehu.service.impl;
 
 import com.ehu.base.BaseMapper;
 import com.ehu.base.impl.BaseServiceImpl;
+import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysRole;
 import com.ehu.dao.SysRoleMapper;
+import com.ehu.exception.MyException;
 import com.ehu.service.SysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +33,15 @@ public class SysRoleServiceImpl extends BaseServiceImpl<SysRole, String> impleme
     @Override
     public List<SysRole> selectAllRole() {
         return sysRoleMapper.selectAllRole();
+    }
+
+    @Override
+    public Result save(SysRole sysrole){
+        if(sysrole.getRoleId()==null){
+            this.insertSelective(sysrole);
+        }else{
+            this.updateByPrimaryKey(sysrole);
+        }
+        return Result.OK();
     }
 }
