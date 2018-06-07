@@ -2,16 +2,14 @@ package com.ehu.controller;
 
 import com.ehu.base.BaseController;
 import com.ehu.bean.Result;
-import com.ehu.bean.TreeGridNode;
-import com.ehu.bean.TreeGridWrapper;
 import com.ehu.bean.entity.system.SysMenu;
 import com.ehu.service.SysMenuService;
-import com.ehu.service.TreeGridService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,8 +22,6 @@ import java.util.List;
 public class SysMenuController extends BaseController {
     @Autowired
     private SysMenuService menuService;
-    @Autowired
-    private TreeGridService treeGridService;
 
     /**
      * 菜单列表
@@ -35,6 +31,8 @@ public class SysMenuController extends BaseController {
     @GetMapping(value = "list")
     public ModelAndView list(ModelAndView modelAndView){
         modelAndView.setViewName("/system/menu/list");
+        ArrayList<SysMenu> menus = new ArrayList<>();
+        modelAndView.addObject("menus", menuService.getMenu(menus,0));
         return modelAndView;
     }
 
@@ -56,7 +54,7 @@ public class SysMenuController extends BaseController {
      * @param menu
      * @return
      */
-    @PutMapping(value = "save")
+    @PostMapping(value = "save")
     public @ResponseBody
     Result save(SysMenu menu){
         return menuService.save(menu);
@@ -74,16 +72,6 @@ public class SysMenuController extends BaseController {
         modelAndView.addObject("menu",menu);
         modelAndView.setViewName("/system/menu/edit");
         return modelAndView;
-    }
-
-    @GetMapping(value = "getTreeGridMenu")
-    public @ResponseBody
-    TreeGridWrapper getTreeGridMenu(){
-        List<TreeGridNode> list = treeGridService.getMenuTreeGridNodes();
-        TreeGridWrapper wrapper = new TreeGridWrapper();
-        wrapper.setRows(list);
-        wrapper.setTotal(list.size());
-        return wrapper;
     }
 
     /**

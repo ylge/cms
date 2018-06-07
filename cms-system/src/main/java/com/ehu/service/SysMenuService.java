@@ -4,6 +4,7 @@ import com.ehu.base.BaseService;
 import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysMenu;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +17,8 @@ import java.util.Map;
  * @since 2018-04-27
  */
 public interface SysMenuService extends BaseService<SysMenu,String> {
+
+    List<SysMenu> getMenu(ArrayList<SysMenu> menuLists,Object obj);
 
     List<SysMenu> listLevelSysMenu(Map<String, Object> param);
 

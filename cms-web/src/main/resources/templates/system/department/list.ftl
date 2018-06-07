@@ -104,10 +104,7 @@
                         var btn = '<a class="btn btn-xs btn-primary" target="modal" onclick="departmentToListAjax()" modal="lg" href="system/department/view/' + data.departmentId + '">查看</a> &nbsp;'
                                 + '<@shiro.hasPermission name="system/department/edit">'
                                 + '<a class="btn btn-xs btn-info" data-title="修改" onclick="departmentToListAjax()" target="modal" modal="lg" href="system/department/edit/' + data.departmentId + '">修改</a> &nbsp;'
-                                + '</@shiro.hasPermission>'
-                                + '<@shiro.hasPermission name="system/department/delete">'
-                                + '<a class="btn btn-xs btn-default" callback="securityReload();" data-body="确认要删除吗？" target="ajaxTodo" href="system/department/delete/' + data.departmentId + '">删除</a>'
-                                +'</@shiro.hasPermission>';
+                                + '</@shiro.hasPermission>';
                         return btn;
                     }
                 }]

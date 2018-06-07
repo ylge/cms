@@ -29,26 +29,23 @@
         <div class="pull-right">
             <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-close"></i>关闭
             </button>
-            <button type="button" class="btn btn-primary btn-sm" onclick="securitySave();"><i class="fa fa-save"></i>更新
+            <button type="button" class="btn btn-primary btn-sm" onclick="menuSave();"><i class="fa fa-save"></i>更新
             </button>
         </div>
     </div>
 </form>
 
-<script type="text/javascript" src="other/zTree/js/jquery.ztree.core.js"></script>
-<script type="text/javascript" src="other/zTree/js/jquery.ztree.excheck.js"></script>
 <script type="text/javascript">
-    function securitySave() {
+    function menuSave() {
         $.ajax({
             url: '/system/menu/save',
-            type: 'put',
+            type: 'post',
             dataType: 'json',
             data: $("#menuEditForm").serialize(),
             success: function (data) {
                 if (data.code == 200) {
                     $("#lgModal").modal('hide');
                     alertMsg("更新成功", "success");
-                    reloadMenuList();
                 } else {
                     alertMsg("更新失败:" + data.msg, "success");
                 }

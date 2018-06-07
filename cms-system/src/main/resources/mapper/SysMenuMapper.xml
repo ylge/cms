@@ -26,15 +26,12 @@
       select <include refid="Base_Column_List"/>
         from sys_menu where id =#{id}
     </select>
-	<select id="getMenu" resultMap="BaseResultMap">
-		select
-		<if test="distinct">
-			distinct
-		</if>
-		<include refid="Base_Column_List" />
-		from sys_menu where status = 1
-	</select>
 
+	<select id="getMenuByParentId" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from sys_menu where parent_id = #{parentId} order by sort asc, create_time desc
+	</select>
 	<select id="listLevelSysMenu" parameterType="java.util.Map" resultMap="BaseResultMap">
 		SELECT
 		<if test="distinct">

@@ -9,6 +9,8 @@ import com.ehu.service.SysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +26,17 @@ import java.util.Map;
 public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String> implements SysMenuService {
     @Autowired
     private SysMenuMapper sysMenuMapper;
+
+    @Override
+    public List<SysMenu> getMenu(ArrayList<SysMenu> menuLists,Object parentId) {
+        List<SysMenu> list = sysMenuMapper.getMenuByParentId(parentId.toString());
+        list.forEach(sysMenu -> {
+            menuLists.add(sysMenu);
+            getMenu(menuLists,sysMenu.getId());
+        });
+        return menuLists;
+    }
+
     @Override
     public List<SysMenu> listLevelSysMenu(Map<String, Object> param) {
         return sysMenuMapper.listLevelSysMenu(param);

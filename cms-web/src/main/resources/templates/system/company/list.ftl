@@ -83,15 +83,7 @@
                 {
                     targets: 5,
                     data: null,
-                    render: function (data) {
-                        if (data.status == 0) {
-                            return "不可用";
-                        }
-                        if (data.status == 1) {
-                            return "可用";
-                        }
-                        return "未知状态";
-                    }
+                    render: tableModel.getState(this.status)
                 },
                 {
                     "targets": -1,
@@ -102,7 +94,7 @@
                                 + '<a class="btn btn-xs btn-info" data-title="修改" onclick="companyToListAjax()" target="modal" modal="lg" href="system/company/edit/' + data.companyId + '">修改</a> &nbsp;'
                                 + '</@shiro.hasPermission>'
                                 + '<@shiro.hasPermission name="system/company/delete">'
-                                + '<a class="btn btn-xs btn-default" callback="securityReload();" data-body="确认要删除吗？" target="ajaxTodo" href="system/company/delete/' + data.companyId + '">删除</a>'
+                                + '<a class="btn btn-xs btn-default" callback="companyReload();" data-body="确认要删除吗？" target="ajaxTodo" href="system/company/delete/' + data.companyId + '">删除</a>'
                                 +'</@shiro.hasPermission>';
                         return btn;
                     }

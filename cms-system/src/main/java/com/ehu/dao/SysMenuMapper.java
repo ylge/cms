@@ -18,6 +18,5 @@ public interface SysMenuMapper extends BaseMapper<SysMenu,String> {
 
     List<SysMenu> listLevelSysMenu(Map<String, Object> param);
 
-    List<SysMenu> getMenu();
-
+    List<SysMenu> getMenuByParentId(String s);
 }

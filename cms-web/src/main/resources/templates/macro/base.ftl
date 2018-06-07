@@ -146,7 +146,7 @@
 <!-- fullCalendar 2.2.5-->
 <link rel="stylesheet" href="adminlte/plugins/fullcalendar/fullcalendar.min.css">
 <link rel="stylesheet" href="adminlte/plugins/fullcalendar/fullcalendar.print.css" media="print">
-
+<link rel="stylesheet" href="adminlte/plugins/jquery-treegrid-master/css/jquery.treegrid.css"></link>
 <!-- Ion Slider -->
 <link rel="stylesheet" href="adminlte/plugins/ionslider/ion.rangeSlider.css">
 <!-- ion slider Nice -->
@@ -201,10 +201,14 @@
 <script src="adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- AdminLTE App -->
 <script src="adminlte/dist/js/app.js"></script>
+<script src="adminlte/dist/js/common.js"></script>
+<script src="adminlte/plugins/tree/treeview.js"></script>
 <!-- 以上JS为页面必须 -->
 
 <!-- jQuery UI 1.11.bootstrap-select -->
 <script src="adminlte/plugins/jQueryUI/jquery-ui.min.js"></script>
+<script src="adminlte/plugins/jquery-treegrid-master/js/jquery.treegrid.min.js"></script>
+<script src="adminlte/plugins/jquery-treegrid-master/js/jquery.treegrid.bootstrap3.js"></script>
 <!-- Sparkline -->
 <script src="adminlte/plugins/sparkline/jquery.sparkline.min.js"></script>
 <!-- jvectormap -->

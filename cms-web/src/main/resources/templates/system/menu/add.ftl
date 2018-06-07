@@ -1,4 +1,4 @@
-<form id="menuAddForm">
+<form id="menuAddForm" method="post" action="/system/menu/save">
     <div class="modal-body">
         <input type="hidden" name="parentId" value="${menu.id}">
         <input type="hidden" name="level" value="${menu.level+1}">
@@ -39,15 +39,13 @@
         if ($("#menuAddForm").valid()) {
             $.ajax({
                 url: '/system/menu/save',
-                type: 'put',
+                type: 'post',
                 dataType: 'json',
                 data: $("#menuAddForm").serialize(),
                 success: function (data) {
-                    console.log(data);
                     if (data.code == 200) {
                         alertMsg("添加成功", "success");
                         $("#lgModal").modal('hide');
-                        reloadMenuList();
                     } else {
                         alertMsg("添加失败:" + data.msg, "success");
                     }
@@ -61,14 +59,4 @@
         errorElement: "span"
     });
 
-    function hideMenu() {
-        $("#menuContent").fadeOut("fast");
-        $("body").unbind("mousedown", onBodyDown);
-    }
-
-    function onBodyDown(event) {
-        if (!(event.target.id == "menuBtn" || event.target.id == "pName" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length > 0)) {
-            hideMenu();
-        }
-    }
 </script>
