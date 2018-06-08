@@ -13,7 +13,7 @@
 		<@menu/>
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
-		<!-- Content Header (Page header) -->
+		<!-- Content Header (PageResult header) -->
 		<section class="content-header-navtabs">
 			<div class="tabs-page">
 				<ul class="tabs-list clearfix" id="navTabs">

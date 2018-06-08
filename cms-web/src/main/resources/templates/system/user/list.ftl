@@ -23,16 +23,6 @@
             <div class="row">
                 <div class="col-sm-12">
                     <table id="user_tab" class="table table-bordered table-striped dataTable">
-                        <thead>
-                        <tr>
-                            <th>序号</th>
-                            <th>账号</th>
-                            <th>昵称</th>
-                            <th>状态</th>
-                            <th>创建时间</th>
-                            <th>操作</th>
-                        </tr>
-                        </thead>
                     </table>
                 </div>
             </div>
@@ -42,79 +32,52 @@
 <script type="text/javascript">
     var user_tab;
     $(function () {
-        //初始化时间选择器
-        $('#startDate').datepicker({
-            language: 'zh-CN',
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            todayHighlight: true
+        user_tab=$('#user_tab').bootstrapTable({
+            // height : tableModel.getHeight(),
+            url: "system/user/page",
+            method: 'get',
+            striped: true,                      //是否显示行间隔色
+            pagination: true, //分页
+            queryParams: queryParams,//传递参数（*）
+            sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+            columns: [
+                {title: "ID", field: "userId"},
+                {title: "帐号", field: "username"},
+                {title: "昵称", field: "name"},
+                {title: "状态", field: "status", formatter: tableModel.getState},
+                {title: "创建时间", field: "createTime", sortable: true},
+                {title: "操作", field: "operate", align: 'center',formatter: operateFormatter}
+            ]
         });
-        user_tab = $('#user_tab').DataTable({
-            "dom": "t<'row'<'col-xs-2'l><'col-xs-3'i><'col-xs-6'p>>",
-            "processing": true,
-            "searching": false,
-            "serverSide": true, //启用服务器端分页
-            "scrollY": "480",//滚动条y轴
-            "bSort": false, //是否启动各个字段的排序功能
-            "autoWidth": true, //是否自适应宽度
-            // "bLengthChange" : true,//分页条数选择按钮
-            // "pagingType": "full_numbers",//首页和尾页
-            "language": {"url": "adminlte/plugins/datatables/language.json"},
-            "ajax": {
-                "url": "system/user/page",
-                "dataType": "json",
-                "type": "post",
-                "data": function (d) {
-                    d.username = $('#username').val();
-                }
-            },
-            "columns": [
-                {"data": "userId"},
-                {"data": "username"},
-                {"data": "name"},
-                {"data": null},
-                {"data": "createTime"},
-                {"data": null}
-            ],
-            "columnDefs": [
-                {
-                    targets: 3,
-                    data: null,
-                    render: function (data) {
-                        if (data.status == 0) {
-                            return "不可用";
-                        }
-                        if (data.status == 1) {
-                            return "可用";
-                        }
-                        return "未知状态";
-                    }
-                },
-                {
-                    "targets": -1,
-                    "data": null,
-                    "render": function (data) {
-                        var btn = '<a class="btn btn-xs btn-primary" target="modal" modal="lg" href="system/user/view/' + data.id + '">查看</a> &nbsp;';
-                        btn += '<@shiro.hasPermission name="system/user/edit">'
-                                + '<a class="btn btn-xs btn-info" data-title="修改" target="modal" modal="lg" href="system/user/edit/' + data.id + '">修改</a> &nbsp;'
-                                +'</@shiro.hasPermission>'
-                                + '<@shiro.hasPermission name="system/user/edit">'
-                                + '<a class="btn btn-xs btn-info" target="modal" modal="lg" href="system/user/goResetPwd/' + data.id + '">重置密码</a> &nbsp;'
-                                +'</@shiro.hasPermission>'
-                                + '<@shiro.hasPermission name="system/user/edit">'
-                                + '<a class="btn btn-xs btn-info" target="modal" modal="lg" href="system/user/goDispatcherRole/' + data.id + '">角色分配</a> &nbsp;'
-                                +'</@shiro.hasPermission>';
-                                <#--+ '<@shiro.hasPermission name="system/user/delete">'-->
-                                <#--+ '<a class="btn btn-xs btn-default" callback="userReload();" data-body="确认要删除吗？" target="ajaxTodo" href="system/user/delete/' + data.id + '">删除</a>'-->
-                                <#--+'</@shiro.hasPermission>';-->
-                        return btn;
-                    }
-                }]
-        })
     });
-
+    function operateFormatter(value, row, index) {
+        return [
+            <@shiro.hasPermission name="system/user/edit">,
+            '<a href="system/user/edit/'+row.userId+'" >',
+            '<i class="glyphicon glyphicon-edit"></i>修改',
+            '</a>  ',
+            </@shiro.hasPermission>,
+            <@shiro.hasPermission name="system/user/delete">,
+            '<a callback="userReload();" data-body="确认要删除吗？" target="ajaxTodo" href="system/user/delete/'+row.userId+'">',
+            '<i class="glyphicon glyphicon-trash"></i>删除',
+            '</a>',
+            </@shiro.hasPermission>
+        ].join('');
+    }
     function userToListAjax() {
         list_ajax = user_tab;
+    }
+
+    function queryParams(params) {
+        console.log(params);
+        var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+            limit: params.limit,   //页面大小
+            offset: params.offset,  //偏移量
+            order: params.order,  //排序方式
+            sort: params.sort,  //排序字段
+            username: $("#username").val()
+        };
+        return temp;
     }
 
     function userReload() {

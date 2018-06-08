@@ -1,11 +1,9 @@
 package com.ehu.controller;
 
 import com.ehu.base.BaseController;
-import com.ehu.bean.PageBean;
+import com.ehu.bean.PageResult;
 import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysCompany;
-import com.ehu.bean.entity.system.SysUser;
-import com.ehu.exception.MyException;
 import com.ehu.service.SysCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,9 +39,8 @@ public class SysCompanyController extends BaseController {
 
     @PostMapping(value = "page")
     public @ResponseBody
-    PageBean<SysCompany> page(@RequestParam(value = "start", defaultValue = "1") int start,
-                           @RequestParam(value = "length", defaultValue = "10") int pageSize, SysCompany sysCompany) {
-        return sysCompanyService.show(sysCompany,start,pageSize) ;
+    PageResult<SysCompany> page(SysCompany sysCompany){
+        return sysCompanyService.pageList(sysCompany) ;
     }
     /**
     　* @description:公司新增

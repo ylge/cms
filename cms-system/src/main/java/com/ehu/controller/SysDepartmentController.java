@@ -1,7 +1,7 @@
 package com.ehu.controller;
 
 import com.ehu.base.BaseController;
-import com.ehu.bean.PageBean;
+import com.ehu.bean.PageResult;
 import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysDepartment;
 import com.ehu.service.SysDepartmentService;
@@ -39,9 +39,8 @@ public class SysDepartmentController extends BaseController {
 
     @PostMapping(value = "page")
     public @ResponseBody
-    PageBean<SysDepartment> page(@RequestParam(value = "start", defaultValue = "1") int start,
-                           @RequestParam(value = "length", defaultValue = "10") int pageSize, SysDepartment sysDepartment) {
-        return sysDepartmentService.show(sysDepartment,start,pageSize) ;
+    PageResult<SysDepartment> page(SysDepartment sysDepartment){
+        return sysDepartmentService.pageList(sysDepartment) ;
     }
     /**
     　* @description:部门新增

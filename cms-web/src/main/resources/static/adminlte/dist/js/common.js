@@ -9,47 +9,6 @@ var tableModel = (function () {
     }
 })();
 
-var layerModel = (function () {
-    return{
-        closeParent : function () {
-            var current = parent.layer.getFrameIndex(window.name); //获取窗口索引
-            parent.layer.close(current);
-        }
-    }
-})();
-
-var operaModel = (function () {
-    return{
-        delRow : function (rowid,url,field) {
-            layer.confirm('确定删除吗?', function(){
-                $.getJSON(url, {ids:rowid}, function(ret){
-                    if (ret.status){
-                        layer.msg(ret.msg, {icon: 1});
-                        $table.bootstrapTable('remove', {
-                            field: field,
-                            values: [rowid]
-                        });
-                    } else {
-                        layer.msg(ret.msg, {icon: 2});
-                    }
-                });
-            });
-        },
-        //重新刷新页面，使用location.reload()有可能导致重新提交
-        reloadPage : function (win) {
-            var location = win.location;
-            location.href = location.pathname + location.search;
-        },
-        /**
-         * 页面跳转
-         * @param url
-         */
-        redirect : function (url) {
-            location.href = url;
-        }
-    }
-})();
-
 (function () {
     //全局ajax处理
     $.ajaxSetup({

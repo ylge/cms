@@ -1,7 +1,6 @@
 package com.ehu.base;
 
-import com.ehu.bean.PageBean;
-import com.ehu.exception.MyException;
+import com.ehu.bean.PageResult;
 
 import java.io.Serializable;
 import java.util.List;
@@ -57,6 +56,7 @@ public interface BaseService <T,E extends Serializable>{
 
   List<T> selectListByPage(T record);
 
-  public PageBean<T> show(T t, int page, int limit);
+//  public PageBean<T> show(T t, int page, int limit);
+  public PageResult<T> pageList(T t);
 
 }

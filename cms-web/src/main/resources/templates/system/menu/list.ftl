@@ -60,13 +60,13 @@
     $("input[name=sort]").on('keyup',function () {
         var _id = $(this).attr("id");
         var _sort = $(this).val();
-        if(_sort!=''){
+        if(_sort!==''){
             $.post( '/system/menu/save',{
                 id: _id,
                 sort: _sort
             },function (data) {
-                if(data.code==200){
-
+                if(data.code===200){
+                    alert("修改成功");
                 }
             });
         }

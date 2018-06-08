@@ -1,7 +1,7 @@
 package com.ehu.controller;
 
 import com.ehu.base.BaseController;
-import com.ehu.bean.PageBean;
+import com.ehu.bean.PageResult;
 import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysUser;
 import com.ehu.service.SysRoleService;
@@ -33,10 +33,10 @@ public class SysUserController extends BaseController {
         return "system/user/list";
     }
 
-    @PostMapping(value = "page")
-    public @ResponseBody PageBean<SysUser> page(@RequestParam(value = "start", defaultValue = "1") int start,
-                                                @RequestParam(value = "length", defaultValue = "10") int pageSize,SysUser user) {
-        return sysUserService.show(user,start,pageSize) ;
+    @GetMapping(value = "page")
+    public @ResponseBody
+    PageResult<SysUser> page(SysUser user){
+        return sysUserService.pageList(user) ;
     }
 
     /**
@@ -52,16 +52,27 @@ public class SysUserController extends BaseController {
     }
 
     /**
-     　* @description:新增公司
+     　* @description:新增用户
      　* @param
      　* @return
      　* @author geyl
      　* @date 2018-5-22 13:35
      　*/
-    @PutMapping(value = "save")
+    @PostMapping(value = "save")
     public @ResponseBody
     Result save(UserVO userVO ) {
         return sysUserService.save(userVO);
     }
 
+    /**
+     * 删除用户
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "delete/{id}")
+    public @ResponseBody
+    Result delete(@PathVariable String id){
+        sysUserService.deleteByPrimaryKey(id);
+        return Result.OK();
+    }
 }

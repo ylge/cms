@@ -1,6 +1,9 @@
 package com.ehu.vo;
 
+import com.ehu.bean.PageBean;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * @author geyl
@@ -10,7 +13,7 @@ import lombok.Data;
  * @date 2018-6-1 13:38
  */
 @Data
-public class UserVO {
+public class UserVO extends PageBean implements Serializable {
     private Integer userId;
     private String username;
     private String name;

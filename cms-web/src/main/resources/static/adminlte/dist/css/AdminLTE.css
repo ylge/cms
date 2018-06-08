@@ -191,7 +191,7 @@ a:focus {
   text-decoration: none;
   color: #72afd2;
 }
-/* Page Header */
+/* PageResult Header */
 .page-header {
   margin: 10px 0 20px 0;
   font-size: 22px;
@@ -3213,7 +3213,7 @@ table.text-center th {
   float: left;
 }
 /*
- * Page: Mailbox
+ * PageResult: Mailbox
  * -------------
  */
 .mailbox-messages > .table {
@@ -3282,7 +3282,7 @@ table.text-center th {
   height: auto;
 }
 /*
- * Page: Lock Screen
+ * PageResult: Lock Screen
  * -----------------
  */
 /* ADD THIS CLASS TO THE <BODY> TAG */
@@ -3348,7 +3348,7 @@ table.text-center th {
   margin-top: 10px;
 }
 /*
- * Page: Login & Register
+ * PageResult: Login & Register
  * ----------------------
  */
 .login-logo,
@@ -3649,7 +3649,7 @@ table.text-center th {
   }
 }
 /*
- * Page: 400 and 500 error pages
+ * PageResult: 400 and 500 error pages
  * ------------------------------
  */
 .error-page {
@@ -3691,7 +3691,7 @@ table.text-center th {
   }
 }
 /*
- * Page: Invoice
+ * PageResult: Invoice
  * -------------
  */
 .invoice {
@@ -3705,7 +3705,7 @@ table.text-center th {
   margin-top: 0;
 }
 /*
- * Page: Profile
+ * PageResult: Profile
  * -------------
  */
 .profile-user-img {

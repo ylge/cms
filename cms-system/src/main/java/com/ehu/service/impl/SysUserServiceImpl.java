@@ -3,12 +3,21 @@ package com.ehu.service.impl;
 import com.ehu.base.BaseMapper;
 import com.ehu.base.impl.BaseServiceImpl;
 import com.ehu.bean.Result;
+import com.ehu.bean.entity.system.SysRole;
 import com.ehu.bean.entity.system.SysUser;
+import com.ehu.bean.entity.system.SysUserRole;
 import com.ehu.dao.SysUserMapper;
+import com.ehu.dao.SysUserRoleMapper;
+import com.ehu.service.SysUserRoleService;
 import com.ehu.service.SysUserService;
+import com.ehu.shiro.ShiroKit;
 import com.ehu.vo.UserVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
+
+import java.util.Arrays;
 
 /**
  * <p>
@@ -23,6 +32,8 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String> impleme
 
     @Autowired
     private SysUserMapper sysUserMapper;
+    @Autowired
+    private SysUserRoleService sysUserRoleService;
 
     @Override
     public BaseMapper<SysUser, String> getMappser() {
@@ -36,7 +47,27 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String> impleme
 
     @Override
     public Result save(UserVO userVO) {
-
-        return null;
+        SysUser sysUser = new SysUser();
+        BeanUtils.copyProperties(userVO,sysUser);
+        String salt = ShiroKit.getRandomSalt(5);
+        sysUser.setSalt(salt);
+        String saltPwd = ShiroKit.md5(sysUser.getPassword(), salt);
+        sysUser.setPassword(saltPwd);
+        if(ObjectUtils.isEmpty(userVO.getUserId())){
+            this.insertSelective(sysUser);
+            //增加角色
+            if(!ObjectUtils.isEmpty(userVO.getRoles())){
+                String[] roles = userVO.getRoles().split(",");
+                Arrays.stream(roles).forEach(s -> {
+                    SysUserRole sysUserRole = new SysUserRole();
+                    sysUserRole.setRoleId(Integer.valueOf(s));
+                    sysUserRole.setUserId(sysUser.getUserId());
+                    sysUserRoleService.insertSelective(sysUserRole);
+                });
+            }
+        }else {
+            this.updateByPrimaryKeySelective(sysUser);
+        }
+        return Result.OK();
     }
 }

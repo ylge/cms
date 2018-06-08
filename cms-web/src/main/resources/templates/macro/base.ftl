@@ -153,9 +153,8 @@
 <link rel="stylesheet" href="adminlte/plugins/ionslider/ion.rangeSlider.skinNice.css">
 <!-- bootstrap slider -->
 <link rel="stylesheet" href="adminlte/plugins/bootstrap-slider/slider.css">
-<!-- dataTables-->
-<link rel="stylesheet"
-      href="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.css">
+<!-- bootstrap-table -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
 <style>
     .active .pull-right-container {
         transform: rotate(-90deg);
@@ -214,8 +213,6 @@
 <!-- jvectormap -->
 <script src="adminlte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="adminlte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- datepicker -->
-<script src="adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- SlimScroll 1.3.0 -->
@@ -240,26 +237,18 @@
 <script src="adminlte/plugins/ionslider/ion.rangeSlider.min.js"></script>
 <!-- Bootstrap slider -->
 <script src="adminlte/plugins/bootstrap-slider/bootstrap-slider.js"></script>
-<!-- DataTables -->
-<script src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
-<script src="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+<!-- bootstrap-table -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
 <!-- validate-->
 <script src="adminlte/plugins/validate/jquery.validate.js"></script>
 <script type="text/javascript">
     var list_ajax;
     var date_ajax;
-    var search_ajax;
     //当你需要多条件查询，你可以调用此方法，动态修改参数传给服务器
     //查询添加的时候需要重写该方法，每个页面查询参数不一样，请参考user/list 葛永亮 2017-9-14
-    window.reloadTable = function (oTable) {
-//        var date = $(datePremise).val();
-//        var search = $(premise).val();
-//        var param = {
-//            "date": date,
-//            "search": search
-//        };
-//        oTable.settings()[0].ajax.data = param;
-        oTable.ajax.reload();
+    window.reloadTable = function (oTable,opt) {
+        oTable.bootstrapTable('refresh', opt);
     }
 </script>
 </#macro>

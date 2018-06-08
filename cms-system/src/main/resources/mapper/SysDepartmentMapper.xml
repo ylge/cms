@@ -34,7 +34,7 @@
 		</where>
 	</select>
 
-	<insert id="insertSelective" parameterType="Sysdepartment">
+	<insert id="insertSelective" parameterType="SysDepartment">
 		insert into sys_department
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="code != null">

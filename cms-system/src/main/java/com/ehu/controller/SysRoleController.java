@@ -1,10 +1,9 @@
 package com.ehu.controller;
 
 import com.ehu.base.BaseController;
-import com.ehu.bean.PageBean;
+import com.ehu.bean.PageResult;
 import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysRole;
-import com.ehu.exception.MyException;
 import com.ehu.service.SysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,9 +39,8 @@ public class SysRoleController extends BaseController {
 
     @PostMapping(value = "page")
     public @ResponseBody
-    PageBean<SysRole> page(@RequestParam(value = "start", defaultValue = "1") int start,
-                           @RequestParam(value = "length", defaultValue = "10") int pageSize, SysRole sysRole) {
-        return sysRoleService.show(sysRole,start,pageSize) ;
+    PageResult<SysRole> page(SysRole sysRole) {
+        return sysRoleService.pageList(sysRole) ;
     }
     /**
     　* @description:角色新增

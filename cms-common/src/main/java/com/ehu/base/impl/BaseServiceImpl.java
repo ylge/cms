@@ -2,9 +2,10 @@ package com.ehu.base.impl;
 
 import com.ehu.base.BaseMapper;
 import com.ehu.base.BaseService;
-import com.ehu.bean.PageBean;
+import com.ehu.bean.PageResult;
 import com.ehu.bean.ShiroUser;
-import com.ehu.exception.MyException;
+import com.ehu.util.CamelCaseUtil;
+import com.ehu.util.ReflectHelper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
@@ -65,16 +66,12 @@ public abstract class BaseServiceImpl<T, E extends Serializable> implements Base
             } else {
                 operator = UPDATE_BY;
                 operateDate = UPDATE_TIME;
-
             }
-            Field fieldDate = clazz.getDeclaredField(operateDate);
-            fieldDate.setAccessible(true);
+            Field fieldDate = ReflectHelper.getTargetField(clazz,operateDate);
             fieldDate.set(record, new Date());
-            Field field = clazz.getDeclaredField(operator);
+            Field field = ReflectHelper.getTargetField(clazz,operator);
             field.setAccessible(true);
             field.set(record, currentUser.getName());
-        } catch (NoSuchFieldException e) {
-            //无此字段
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
@@ -113,16 +110,17 @@ public abstract class BaseServiceImpl<T, E extends Serializable> implements Base
      * 公共展示类
      *
      * @param t     实体
-     * @param start  开始行
-     * @param pageSize 每页条数
      * @return
      */
-    @Override
-    public PageBean<T> show(T t, int start, int pageSize) {
-        PageHelper.startPage(start/pageSize+1, pageSize);
+    public PageResult<T> pageList(T t) {
+        Integer offset = (Integer) ReflectHelper.getFieldValue(t, "offset");
+        Integer limit = (Integer) ReflectHelper.getFieldValue(t, "limit");
+        String order = (String) ReflectHelper.getFieldValue(t, "order");
+        String sort = (String) ReflectHelper.getFieldValue(t, "sort");
+        PageHelper.startPage(offset,limit,CamelCaseUtil.toUnderlineName(sort+" "+order));
         List<T> tList = getMappser().selectListByPage(t);
-        PageBean<T> pageBean = new PageBean<>(new PageInfo<>(tList));
-        return pageBean;
+        PageResult<T> result = new PageResult<>(new PageInfo<>(tList));
+        return result;
     }
 
 }
