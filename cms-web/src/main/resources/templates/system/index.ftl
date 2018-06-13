@@ -20,7 +20,7 @@
 					<li class="active"><span>我的主页</span></li>
 				</ul>
 				<a href="javascript:void(0);" class="prev fa fa-step-backward"></a>
-				<a href="javascript:void(0);" class="next fa fa-step-forward"></a> 
+				<a href="javascript:void(0);" class="next fa fa-step-forward"></a>
 			</div>
 			<!--邮件按钮-->
 			<div class="context-menu" id="contextMenu">
@@ -42,6 +42,6 @@
 		<@footer/>
 		<@setting/>
 	</div>
-	<@jsFile/>
+    <@jsFile/>
 </body>
 </html>

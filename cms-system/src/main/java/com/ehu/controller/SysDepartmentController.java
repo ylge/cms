@@ -4,6 +4,7 @@ import com.ehu.base.BaseController;
 import com.ehu.bean.PageResult;
 import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysDepartment;
+import com.ehu.service.SysCompanyService;
 import com.ehu.service.SysDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,8 @@ public class SysDepartmentController extends BaseController {
 
     @Autowired
     private SysDepartmentService sysDepartmentService;
+    @Autowired
+    private SysCompanyService sysCompanyService;
 
     /**
     　* @description:部门列表
@@ -37,7 +40,7 @@ public class SysDepartmentController extends BaseController {
         return modelAndView;
     }
 
-    @PostMapping(value = "page")
+    @GetMapping(value = "page")
     public @ResponseBody
     PageResult<SysDepartment> page(SysDepartment sysDepartment){
         return sysDepartmentService.pageList(sysDepartment) ;
@@ -50,6 +53,7 @@ public class SysDepartmentController extends BaseController {
     @GetMapping(value = "add")
     public ModelAndView add(ModelAndView modelAndView) {
         modelAndView.setViewName("/system/department/add");
+        modelAndView.addObject("companys", sysCompanyService.selectAll(null));
         return modelAndView;
     }
 

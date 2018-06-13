@@ -37,7 +37,7 @@ public class SysCompanyController extends BaseController {
         return modelAndView;
     }
 
-    @PostMapping(value = "page")
+    @GetMapping(value = "page")
     public @ResponseBody
     PageResult<SysCompany> page(SysCompany sysCompany){
         return sysCompanyService.pageList(sysCompany) ;

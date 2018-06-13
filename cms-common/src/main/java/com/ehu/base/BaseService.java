@@ -54,9 +54,8 @@ public interface BaseService <T,E extends Serializable>{
   int updateByPrimaryKey(T record);
 
 
-  List<T> selectListByPage(T record);
+  List<T> selectAll(T record);
 
-//  public PageBean<T> show(T t, int page, int limit);
-  public PageResult<T> pageList(T t);
+  PageResult<T> pageList(T t);
 
 }

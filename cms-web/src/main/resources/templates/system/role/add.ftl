@@ -24,19 +24,13 @@
 <script type="text/javascript">
     function roleSave() {
         if ($("#roleAddForm").valid()) {
-            $.ajax({
-                url: 'system/role/save',
-                type: 'put',
-                dataType: 'json',
-                data: $("#roleAddForm").serialize(),
-                success: function (data) {
-                    if (data.code == 200) {
-                        $("#lgModal").modal('hide');
-                        alertMsg("添加成功", "success");
-                        reloadTable(list_ajax);
-                    } else {
-                        alertMsg("添加失败:" + data.msg, "success");
-                    }
+            $.post('/system/role/save', $("#roleAddForm").serialize(), function (data) {
+                if (data.code == 200) {
+                    $("#lgModal").modal('hide');
+                    alertMsg("添加成功", "success");
+                    reloadTable(list_ajax);
+                } else {
+                    alertMsg("添加失败:" + data.msg, "success");
                 }
             });
         }

@@ -1,5 +1,6 @@
 package com.ehu.bean.entity.system;
 
+import com.ehu.bean.PageBean;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
@@ -15,7 +16,7 @@ import java.util.Date;
  * @since 2018-05-11
  */
 @Data
-public class SysCompany implements Serializable {
+public class SysCompany extends PageBean implements Serializable {
 
 
 	private Integer companyId;

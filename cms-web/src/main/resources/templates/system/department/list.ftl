@@ -51,65 +51,49 @@
 <script type="text/javascript">
     var department_tab;
     $(function () {
-        department_tab = $('#department_tab').DataTable({
-            "dom": "t<'row'<'col-xs-2'l><'col-xs-3'i><'col-xs-6'p>>",
-            "processing": true,
-            "searching": false,
-            "serverSide": true, //启用服务器端分页
-            "scrollY": "480",//滚动条y轴
-            "bSort": false, //是否启动各个字段的排序功能
-            "autoWidth": true, //是否自适应宽度
-            // "bLengthChange" : true,//分页条数选择按钮
-            // "pagingType": "full_numbers",//首页和尾页
-            "language": {"url": "adminlte/plugins/datatables/language.json"},
-            "ajax": {
-                "url": "system/department/page",
-                "dataType": "json",
-                "type": "post",
-                "data": function (d) {
-                    d.name = $('#name').val();
-                    d.companyName = $('#companyName').val();
-                }
-            },
-            "columns": [
-                {"data": "departmentId"},
-                {"data": "name"},
-                {"data": "companyName"},
-                {"data": "comment"},
-                {"data": null},
-                {"data": "createTime"},
-                {"data": "createBy"},
-                {"data": "updateTime"},
-                {"data": "updateBy"},
-                {"data": null}
-            ],
-            "columnDefs": [
-                {
-                    targets: 4,
-                    data: null,
-                    render: function (data) {
-                        if (data.status == 0) {
-                            return "不可用";
-                        }
-                        if (data.status == 1) {
-                            return "可用";
-                        }
-                        return "未知状态";
-                    }
-                },
-                {
-                    "targets": -1,
-                    "data": null,
-                    "render": function (data) {
-                        var btn = '<a class="btn btn-xs btn-primary" target="modal" onclick="departmentToListAjax()" modal="lg" href="system/department/view/' + data.departmentId + '">查看</a> &nbsp;'
-                                + '<@shiro.hasPermission name="system/department/edit">'
-                                + '<a class="btn btn-xs btn-info" data-title="修改" onclick="departmentToListAjax()" target="modal" modal="lg" href="system/department/edit/' + data.departmentId + '">修改</a> &nbsp;'
-                                + '</@shiro.hasPermission>';
-                        return btn;
-                    }
-                }]
+        department_tab = $('#department_tab').bootstrapTable({
+            // height : tableModel.getHeight(),
+            url: "system/department/page",
+            method: 'get',
+            striped: true,                      //是否显示行间隔色
+            pagination: true, //分页
+            queryParams: queryParams,//传递参数（*）
+            sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+            columns: [
+                {title: "ID", field: "departmentId"},
+                {title: "部门名称", field: "name"},
+                {title: "所属公司", field: "companyName"},
+                {title: "描述", field: "comment"},
+                {title: "状态", field: "status", formatter: tableModel.getState},
+                {title: "创建时间", field: "createTime", sortable: true},
+                {title: "创建人", field: "createBy"},
+                {title: "修改时间", field: "updateTime"},
+                {title: "修改人", field: "updateBy"},
+                {title: "操作", field: "operate", align: 'center', formatter: operateFormatter}
+            ]
         })
     });
+
+    function queryParams(params) {
+        params.name = $("#name").val();
+        params.companyName = $("#companyName").val();
+        return params;
+    }
+
+    function operateFormatter(value, row, index) {
+        return [
+            <@shiro.hasPermission name="system/department/edit">,
+            '<a target="modal" onclick="departmentToListAjax()" href="system/department/edit/' + row.departmentId + '" >',
+            '<i class="fa fa-edit"></i>修改',
+            '</a>  ',
+            </@shiro.hasPermission>,
+            <@shiro.hasPermission name="system/department/delete">,
+            '<a callback="departmentReload();" data-body="确认要删除吗？" target="ajaxTodo" href="system/department/delete/' + row.departmentId + '">',
+            '<i class="fa fa-remove"></i>删除',
+            '</a>',
+            </@shiro.hasPermission>
+        ].join('');
+    }
 
     function departmentToListAjax() {
         list_ajax = department_tab;

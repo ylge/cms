@@ -53,13 +53,13 @@
     function operateFormatter(value, row, index) {
         return [
             <@shiro.hasPermission name="system/user/edit">,
-            '<a href="system/user/edit/'+row.userId+'" >',
-            '<i class="glyphicon glyphicon-edit"></i>修改',
+            '<a href="system/user/edit/'+row.userId+'" onclick="userToListAjax()" target="modal" modal="lg">',
+            '<i class="fa fa-edit"></i>修改',
             '</a>  ',
             </@shiro.hasPermission>,
             <@shiro.hasPermission name="system/user/delete">,
             '<a callback="userReload();" data-body="确认要删除吗？" target="ajaxTodo" href="system/user/delete/'+row.userId+'">',
-            '<i class="glyphicon glyphicon-trash"></i>删除',
+            '<i class="fa fa-remove"></i>删除',
             '</a>',
             </@shiro.hasPermission>
         ].join('');
@@ -69,15 +69,8 @@
     }
 
     function queryParams(params) {
-        console.log(params);
-        var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-            limit: params.limit,   //页面大小
-            offset: params.offset,  //偏移量
-            order: params.order,  //排序方式
-            sort: params.sort,  //排序字段
-            username: $("#username").val()
-        };
-        return temp;
+        params.username= $("#username").val()
+        return params;
     }
 
     function userReload() {

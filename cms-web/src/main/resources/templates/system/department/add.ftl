@@ -8,10 +8,11 @@
                 </div>
                 <div class="form-group">
                     <label>所属公司</label>
-                    <select name="companyId" id="companyId" class="selectpicker form-control" data-live-search="true" required>
+                    <select name="companyId" id="companyId" class="selectpicker form-control" data-live-search="true">
                         <#if companys??>
+                            <option value="">请选择</option>
                             <#list companys as company>
-                                <option value="${company.companyId}">${company.name}</option>
+                                <option value="${company.companyId}">${company.shortName!}</option>
                             </#list>
                         </#if>
                     </select>
@@ -35,6 +36,9 @@
     </div>
 </div>
 <script type="text/javascript">
+    $(".selectpicker").selectpicker({
+        noneSelectedText: '请选择'
+    });
     function securitySave() {
         if ($("#departmentAddForm").valid()) {
             $.ajax({

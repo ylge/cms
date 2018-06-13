@@ -53,9 +53,16 @@ public interface BaseMapper<T,E extends Serializable>{
     int updateByPrimaryKey(T record);
 
     /**
-     * 查询
+     * 分页查询
      * @param record
      * @return
      */
     List<T> selectListByPage(T record);
+
+    /**
+     * 查询全部
+     * @param record
+     * @return
+     */
+    List<T> selectAll(T record);
 }

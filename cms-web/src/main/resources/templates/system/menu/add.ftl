@@ -37,20 +37,16 @@
 <script type="text/javascript">
     function securitySave() {
         if ($("#menuAddForm").valid()) {
-            $.ajax({
-                url: '/system/menu/save',
-                type: 'post',
-                dataType: 'json',
-                data: $("#menuAddForm").serialize(),
-                success: function (data) {
-                    if (data.code == 200) {
+            $.post('/system/menu/save',$("#menuAddForm").serialize(),
+                function (data) {
+                    if (data.code === 200) {
                         alertMsg("添加成功", "success");
                         $("#lgModal").modal('hide');
                     } else {
                         alertMsg("添加失败:" + data.msg, "success");
                     }
                 }
-            });
+            })
         }
     }
 

@@ -149,7 +149,12 @@
                 update_by = #{updateBy,jdbcType=TIMESTAMP},
             </if>
         </set>
-        where id = #{id,jdbcType=VARCHAR}
+        where company_id = #{companyId}
     </update>
 
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_company
+    </select>
 </mapper>

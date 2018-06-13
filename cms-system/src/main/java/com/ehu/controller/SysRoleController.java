@@ -4,9 +4,15 @@ import com.ehu.base.BaseController;
 import com.ehu.bean.PageResult;
 import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysRole;
+import com.ehu.bean.entity.system.SysRoleMenu;
+import com.ehu.service.SysRoleMenuService;
 import com.ehu.service.SysRoleService;
+import com.ehu.vo.RoleMenuVO;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,6 +29,8 @@ public class SysRoleController extends BaseController {
 
     @Autowired
     private SysRoleService sysRoleService;
+    @Autowired
+    private SysRoleMenuService sysRoleMenuService;
 
     /**
     　* @description:角色列表
@@ -37,7 +45,7 @@ public class SysRoleController extends BaseController {
         return modelAndView;
     }
 
-    @PostMapping(value = "page")
+    @GetMapping(value = "page")
     public @ResponseBody
     PageResult<SysRole> page(SysRole sysRole) {
         return sysRoleService.pageList(sysRole) ;
@@ -51,6 +59,40 @@ public class SysRoleController extends BaseController {
     public ModelAndView add(ModelAndView modelAndView) {
         modelAndView.setViewName("/system/role/add");
         return modelAndView;
+    }
+
+    /**
+    　* @description: 角色菜单查询
+    　* @param
+    　* @return
+    　* @author geyl
+    　* @date 2018-6-8 16:39
+    　*/
+    @GetMapping(value = "menutree")
+    @ResponseBody
+    public Result menutree(@RequestParam(value = "roleId") String roleId){
+        return sysRoleMenuService.getMenuByRoleId(roleId);
+    }
+
+    /**
+     * 角色授权页面跳转
+     * @return
+     */
+    @GetMapping(value = "grant")
+    public ModelAndView grant(ModelAndView modelAndView) {
+        modelAndView.setViewName("/system/role/grant");
+        modelAndView.addObject("roles", sysRoleService.selectAllRole());
+        return modelAndView;
+    }
+    /**
+     * 角色授权保存
+     * @param roleMenuVO
+     * @return
+     */
+    @PostMapping(value = "grant")
+    @ResponseBody
+    public Result grant(RoleMenuVO roleMenuVO) {
+        return sysRoleMenuService.grant(roleMenuVO);
     }
 
     /**
@@ -72,7 +114,7 @@ public class SysRoleController extends BaseController {
      　* @author geyl
      　* @date 2018-5-22 13:35
      　*/
-    @PutMapping(value = "save")
+    @PostMapping(value = "save")
     public @ResponseBody
     Result save(SysRole sysrole ){
         return sysRoleService.save(sysrole);

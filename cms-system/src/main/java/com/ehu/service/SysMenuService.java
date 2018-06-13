@@ -23,4 +23,6 @@ public interface SysMenuService extends BaseService<SysMenu,String> {
     List<SysMenu> listLevelSysMenu(Map<String, Object> param);
 
     Result save(SysMenu menu);
+
+    List<SysMenu> getAllMenu();
 }

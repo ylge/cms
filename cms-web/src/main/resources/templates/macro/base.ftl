@@ -155,6 +155,8 @@
 <link rel="stylesheet" href="adminlte/plugins/bootstrap-slider/slider.css">
 <!-- bootstrap-table -->
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+<!-- treeview-->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css" />
 <style>
     .active .pull-right-container {
         transform: rotate(-90deg);
@@ -201,18 +203,12 @@
 <!-- AdminLTE App -->
 <script src="adminlte/dist/js/app.js"></script>
 <script src="adminlte/dist/js/common.js"></script>
-<script src="adminlte/plugins/tree/treeview.js"></script>
 <!-- 以上JS为页面必须 -->
 
 <!-- jQuery UI 1.11.bootstrap-select -->
 <script src="adminlte/plugins/jQueryUI/jquery-ui.min.js"></script>
 <script src="adminlte/plugins/jquery-treegrid-master/js/jquery.treegrid.min.js"></script>
 <script src="adminlte/plugins/jquery-treegrid-master/js/jquery.treegrid.bootstrap3.js"></script>
-<!-- Sparkline -->
-<script src="adminlte/plugins/sparkline/jquery.sparkline.min.js"></script>
-<!-- jvectormap -->
-<script src="adminlte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="adminlte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- SlimScroll 1.3.0 -->
@@ -242,6 +238,9 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
 <!-- validate-->
 <script src="adminlte/plugins/validate/jquery.validate.js"></script>
+<!-- treeview-->
+<script src="adminlte/plugins/tree/treeview.js"></script>z
+<script type="text/javascript" src="//cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
 <script type="text/javascript">
     var list_ajax;
     var date_ajax;

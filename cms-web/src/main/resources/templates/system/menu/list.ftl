@@ -28,14 +28,14 @@
                                         <td>${menu.createTime?string('yyyy-MM-dd hh:mm:ss')}</td>
                                         <td class="text-left text-nowrap">
                                             <div class="btn-group ">
-                                                <a class="btn btn-xs btn-info" target="modal"
-                                                   href="/system/menu/add/${menu.id}">添加</a>
+                                                <a target="modal" href="/system/menu/add/${menu.id}"><i class="fa fa-plus"></i>添加</a>
                                                 <#if menu.id!=1>
-                                                    <a class="btn btn-xs btn-info" target="modal"
-                                                       href="/system/menu/edit/${menu.id}">修改</a>
-                                                <a class="btn btn-xs btn-default" callback="menuReload('tr_${menu.id}')"
-                                                   data-body="确认要删除吗？" target="ajaxTodo"
-                                                   href="/system/menu/delete/${menu.id}">删除</a>
+                                                    <a  target="modal" href="/system/menu/edit/${menu.id}">
+                                                        <i class="fa fa-edit"></i>修改</a>
+                                                    <a  callback="menuReload('tr_${menu.id}')"
+                                                        data-body="确认要删除吗？" target="ajaxTodo"
+                                                        href="/system/menu/delete/${menu.id}">
+                                                        <i class="fa fa-remove"></i>删除</a>
                                                 </#if>
                                             </div>
                                         </td>
@@ -52,8 +52,8 @@
 <script type="text/javascript">
     $(function () {
         $(".table").treegrid({
-            expanderExpandedClass: 'glyphicon glyphicon-minus',
-            expanderCollapsedClass: 'glyphicon glyphicon-plus'
+            expanderExpandedClass: 'fa fa-chevron-down',
+            expanderCollapsedClass: 'fa fa-chevron-right'
         });
     });
     //更新排序

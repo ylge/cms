@@ -43,7 +43,7 @@
             dataType: 'json',
             data: $("#menuEditForm").serialize(),
             success: function (data) {
-                if (data.code == 200) {
+                if (data.code === 200) {
                     $("#lgModal").modal('hide');
                     alertMsg("更新成功", "success");
                 } else {
@@ -51,16 +51,5 @@
                 }
             }
         });
-    }
-
-    function hideMenu() {
-        $("#menuContent").fadeOut("fast");
-        $("body").unbind("mousedown", onBodyDown);
-    }
-
-    function onBodyDown(event) {
-        if (!(event.target.id == "menuBtn" || event.target.id == "pName" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length > 0)) {
-            hideMenu();
-        }
     }
 </script>

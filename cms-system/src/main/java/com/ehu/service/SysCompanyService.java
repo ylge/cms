@@ -5,6 +5,8 @@ import com.ehu.base.BaseService;
 import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysCompany;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类

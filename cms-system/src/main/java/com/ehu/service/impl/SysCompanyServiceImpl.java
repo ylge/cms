@@ -9,6 +9,8 @@ import com.ehu.service.SysCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  *  公司服务实现类
@@ -33,7 +35,7 @@ public class SysCompanyServiceImpl extends BaseServiceImpl<SysCompany, String> i
         if(sysCompany.getCompanyId()==null){
             this.insertSelective(sysCompany);
         }else{
-            this.updateByPrimaryKey(sysCompany);
+            this.updateByPrimaryKeySelective(sysCompany);
         }
         return Result.OK();
     }

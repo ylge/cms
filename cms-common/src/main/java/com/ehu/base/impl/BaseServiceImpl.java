@@ -10,6 +10,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
+import org.springframework.util.ObjectUtils;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
@@ -68,10 +69,13 @@ public abstract class BaseServiceImpl<T, E extends Serializable> implements Base
                 operateDate = UPDATE_TIME;
             }
             Field fieldDate = ReflectHelper.getTargetField(clazz,operateDate);
-            fieldDate.set(record, new Date());
+            if(!ObjectUtils.isEmpty(fieldDate)){
+                fieldDate.set(record, new Date());
+            }
             Field field = ReflectHelper.getTargetField(clazz,operator);
-            field.setAccessible(true);
-            field.set(record, currentUser.getName());
+            if(!ObjectUtils.isEmpty(field)){
+                field.set(record, currentUser.getName());
+            }
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
@@ -102,8 +106,8 @@ public abstract class BaseServiceImpl<T, E extends Serializable> implements Base
     }
 
     @Override
-    public List<T> selectListByPage(T record) {
-        return getMappser().selectListByPage(record);
+    public List<T> selectAll(T record) {
+        return getMappser().selectAll(record);
     }
 
     /**

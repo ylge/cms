@@ -1,7 +1,9 @@
 package com.ehu.service;
 
 import com.ehu.base.BaseService;
+import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysRoleMenu;
+import com.ehu.vo.RoleMenuVO;
 
 import java.util.List;
 
@@ -16,4 +18,8 @@ import java.util.List;
 public interface SysRoleMenuService extends BaseService<SysRoleMenu,String> {
 
     List<SysRoleMenu> selectByRoleId(Integer roleId);
+
+    Result getMenuByRoleId(String roleId);
+
+    Result grant(RoleMenuVO roleMenuVO);
 }

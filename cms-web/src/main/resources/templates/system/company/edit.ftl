@@ -42,7 +42,7 @@
                 dataType: 'json',
                 data: $("#companyEditForm").serialize(),
                 success: function (data) {
-                    if (data.code==200) {
+                    if (data.code===200) {
                         $("#lgModal").modal('hide');
                         alertMsg("添加成功", "success");
                         reloadTable(list_ajax);

@@ -1,6 +1,8 @@
 package com.ehu.service;
 
 import com.ehu.base.BaseService;
+import com.ehu.bean.Result;
+import com.ehu.bean.entity.system.SysMenu;
 import com.ehu.bean.entity.system.SysUserRole;
 
 import java.util.List;

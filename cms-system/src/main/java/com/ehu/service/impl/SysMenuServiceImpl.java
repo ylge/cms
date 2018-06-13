@@ -59,6 +59,11 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String> impleme
     }
 
     @Override
+    public List<SysMenu> getAllMenu() {
+        return sysMenuMapper.getAllMenu();
+    }
+
+    @Override
     public BaseMapper<SysMenu, String> getMappser() {
         return sysMenuMapper;
     }

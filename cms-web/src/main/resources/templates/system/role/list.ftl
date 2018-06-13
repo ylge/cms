@@ -17,20 +17,15 @@
                             <a class="btn btn-primary" onclick="roleToListAjax()" target="modal" modal="lg"
                                href="system/role/add">添加</a>
                         </@shiro.hasPermission>
+                        <@shiro.hasPermission name="system/role/grant">
+                                <a class="btn btn-primary" target="modal" modal="lg"
+                                   href="system/role/grant">角色授权</a>
+                        </@shiro.hasPermission>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12">
-                    <table id="role_tab" class="table table-bordered table-striped dataTable">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>角色名称</th>
-                            <th>状态</th>
-                            <th>创建时间</th>
-                            <th>操作</th>
-                        </tr>
-                        </thead>
+                <div class="col-md-12">
+                    <table id="role_tab">
                     </table>
                 </div>
             </div>
@@ -40,64 +35,47 @@
 <script type="text/javascript">
     var role_tab;
     $(function () {
-        role_tab = $('#role_tab').DataTable({
-            "dom": "t<'row'<'col-xs-2'l><'col-xs-3'i><'col-xs-6'p>>",
-            "processing": true,
-            "searching": false,
-            "serverSide": true, //启用服务器端分页
-            "scrollY": "480",//滚动条y轴
-            "bSort": false, //是否启动各个字段的排序功能
-            "autoWidth": true, //是否自适应宽度
-            // "bLengthChange" : true,//分页条数选择按钮
-            // "pagingType": "full_numbers",//首页和尾页
-            "language": {"url": "adminlte/plugins/datatables/language.json"},
-            "ajax": {
-                "url": "system/role/page",
-                "dataType": "json",
-                "type": "post",
-                "data": function (d) {
-                    d.name = $('#name').val();
-                }
-            },
-            "columns": [
-                {"data": "roleId"},
-                {"data": "name"},
-                {"data": null},
-                {"data": "createTime"},
-                {"data": null}
-            ],
-            "columnDefs": [
-                {
-                    targets: 2,
-                    data: null,
-                    render: function (data) {
-                        if (data.status == 0) {
-                            return "不可用";
-                        }
-                        if (data.status == 1) {
-                            return "可用";
-                        }
-                        return "未知状态";
-                    }
-                },
-                {
-                    "targets": -1,
-                    "data": null,
-                    "render": function (data) {
-                        var btn = '<@shiro.hasPermission name="system/role/edit">'
-                                + '<a class="btn btn-xs btn-info" data-title="修改" target="modal" modal="lg" href="system/role/edit/' + data.id + '">修改</a> &nbsp;'
-                                +'</@shiro.hasPermission>'
-                                + '<@shiro.hasPermission name="system/role/delete">'
-                                + '<a class="btn btn-xs btn-default" callback="roleReload();" data-body="确认要删除吗？" target="ajaxTodo" href="system/role/delete/' + data.id + '">删除</a>'
-                                +'</@shiro.hasPermission>';
-                        return btn;
-                    }
-                }]
-        })
+        role_tab = $('#role_tab').bootstrapTable({
+            // height : tableModel.getHeight(),
+            url: "system/role/page",
+            method: 'get',
+            striped: true,                      //是否显示行间隔色
+            pagination: true, //分页
+            queryParams: queryParams,//传递参数（*）
+            sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+            columns: [
+                {title: "ID", field: "roleId"},
+                {title: "角色名称", field: "name"},
+                {title: "角色描述", field: "remark"},
+                {title: "状态", field: "status", formatter: tableModel.getState},
+                {title: "创建时间", field: "createTime", sortable: true},
+                {title: "操作", field: "operate", align: 'center', formatter: operateFormatter}
+            ]
+        });
     });
+
+    function operateFormatter(value, row, index) {
+        return [
+            <@shiro.hasPermission name="system/role/edit">,
+            '<a target="modal" modal="lg"  href="system/role/edit/' + row.roleId + '" >',
+            '<i class="fa fa-edit"></i>修改',
+            '</a>  ',
+            </@shiro.hasPermission>,
+            <@shiro.hasPermission name="system/role/delete">,
+            '<a callback="roleReload();" data-body="确认要删除吗？" target="ajaxTodo" href="system/role/delete/' + row.roleId + '">',
+            '<i class="fa fa-remove"></i>删除',
+            '</a>',
+            </@shiro.hasPermission>
+        ].join('');
+    }
 
     function roleToListAjax() {
         list_ajax = role_tab;
+    }
+
+    function queryParams(params) {
+        params.name= $("#name").val()
+        return params;
     }
 
     function roleReload() {
