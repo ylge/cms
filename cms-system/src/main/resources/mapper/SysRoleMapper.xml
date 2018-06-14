@@ -21,7 +21,7 @@
 		<include refid="Base_Column_List"/>
 		from sys_role where role_id =#{roleId}
 	</select>
-	<select id="selectAllRole" resultMap="BaseResultMap">
+	<select id="selectAll" resultMap="BaseResultMap">
 		select <include refid="Base_Column_List"/>
 		from sys_role
 	</select>

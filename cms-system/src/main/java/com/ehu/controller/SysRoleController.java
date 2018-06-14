@@ -81,18 +81,8 @@ public class SysRoleController extends BaseController {
     @GetMapping(value = "grant")
     public ModelAndView grant(ModelAndView modelAndView) {
         modelAndView.setViewName("/system/role/grant");
-        modelAndView.addObject("roles", sysRoleService.selectAllRole());
+        modelAndView.addObject("roles", sysRoleService.selectAll(null));
         return modelAndView;
-    }
-    /**
-     * 角色授权保存
-     * @param roleMenuVO
-     * @return
-     */
-    @PostMapping(value = "grant")
-    @ResponseBody
-    public Result grant(RoleMenuVO roleMenuVO) {
-        return sysRoleMenuService.grant(roleMenuVO);
     }
 
     /**
@@ -116,7 +106,7 @@ public class SysRoleController extends BaseController {
      　*/
     @PostMapping(value = "save")
     public @ResponseBody
-    Result save(SysRole sysrole ){
+    Result save(RoleMenuVO sysrole ){
         return sysRoleService.save(sysrole);
     }
 

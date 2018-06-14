@@ -6,7 +6,11 @@ import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysRole;
 import com.ehu.dao.SysRoleMapper;
 import com.ehu.exception.MyException;
+import com.ehu.service.SysRoleMenuService;
 import com.ehu.service.SysRoleService;
+import com.ehu.vo.RoleMenuVO;
+import io.swagger.models.auth.In;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,24 +28,27 @@ import java.util.List;
 public class SysRoleServiceImpl extends BaseServiceImpl<SysRole, String> implements SysRoleService {
     @Autowired
     private SysRoleMapper sysRoleMapper;
+    @Autowired
+    private SysRoleMenuService sysRoleMenuService;
 
     @Override
     public BaseMapper<SysRole, String> getMappser() {
         return sysRoleMapper;
     }
 
-    @Override
-    public List<SysRole> selectAllRole() {
-        return sysRoleMapper.selectAllRole();
-    }
 
     @Override
-    public Result save(SysRole sysrole){
-        if(sysrole.getRoleId()==null){
-            this.insertSelective(sysrole);
+    public Result save(RoleMenuVO roleMenuVO){
+        SysRole sysRole = new SysRole();
+        sysRole.setRoleId(roleMenuVO.getRoleId()==null?null:Integer.parseInt(roleMenuVO.getRoleId()));
+        BeanUtils.copyProperties(roleMenuVO,sysRole);
+        if(sysRole.getRoleId()==null){
+            this.insertSelective(sysRole);
+            roleMenuVO.setRoleId(sysRole.getRoleId().toString());
         }else{
-            this.updateByPrimaryKey(sysrole);
+            this.updateByPrimaryKeySelective(sysRole);
         }
+        sysRoleMenuService.grant(roleMenuVO);
         return Result.OK();
     }
 }

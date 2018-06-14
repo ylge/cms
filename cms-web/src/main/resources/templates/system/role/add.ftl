@@ -1,14 +1,15 @@
 <form id="roleAddForm">
     <div class="modal-body">
         <div class="form-group">
-            <label id="userNoLabel">账号</label>
-            <input type="text" class="form-control" name="name" placeholder="角色名称..."
+            <label id="userNoLabel">角色名称</label>
+            <input type="text" class="form-control" id="roleName" name="name" placeholder="角色名称..."
                    required>
         </div>
         <div class="form-group">
             <label id="phoneLabel">备注</label>
-            <input type="text" class="form-control" name="remark" placeholder="描述...">
+            <input type="text" class="form-control" id="roleRemark" name="remark" placeholder="描述...">
         </div>
+        <div id="menuTree" class="pre-scrollable" <#--style=" overflow-y:auto; width:400px; height:350px;"-->></div>
     </div>
     <div class="modal-footer">
         <div class="pull-right">
@@ -20,11 +21,43 @@
             </button>
         </div>
     </div>
+    </div>
 </form>
 <script type="text/javascript">
+    $("#lgModal").on("shown.bs.modal", function () {
+        /*$('.list-group').each(function () {
+            var group = $(this);
+            group.find(".list-group-item.active").removeClass("active");
+        });*/
+        $.getJSON('system/role/menutree', {roleId: '0'}, function (data) {
+            if (data.code === 200) {
+                $('#menuTree').treeview({
+                    data: data.data,
+                    showIcon: false,
+                    highlightSelected: true,
+                    showCheckbox: true,
+                    onNodeChecked: nodeChecked,
+                    onNodeUnchecked: nodeUnchecked
+                }).treeview('expandAll', {levels: 2, silent: true});
+            } else {
+                alertMsg("加载失败" + data.msg, "success");
+            }
+        });
+    });
+
     function roleSave() {
+        debugger;
         if ($("#roleAddForm").valid()) {
-            $.post('/system/role/save', $("#roleAddForm").serialize(), function (data) {
+            var checkNodes = $('#menuTree').treeview('getChecked');
+            var _menuIds = [];
+            $.each(checkNodes, function (i, obj) {
+                _menuIds[i] = obj.id;
+            });
+            var role = {};
+            role.name = $("#roleName").val();
+            role.remark = $("#roleRemark").val();
+            role.menuIds = _menuIds.join();
+            $.post('/system/role/save', role, function (data) {
                 if (data.code == 200) {
                     $("#lgModal").modal('hide');
                     alertMsg("添加成功", "success");

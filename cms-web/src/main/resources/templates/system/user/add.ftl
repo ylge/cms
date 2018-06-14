@@ -49,10 +49,10 @@
     </div>
 </form>
 <script type="text/javascript">
-    $(".selectpicker").selectpicker({
-        noneSelectedText: '请选择',
-        countSelectedText: function () {
-        }
+    $("#lgModal").on("shown.bs.modal", function () {
+        $(".selectpicker").selectpicker({
+            noneSelectedText: '请选择'
+        });
     });
     var userParam = $("#userAddForm");
 

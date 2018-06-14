@@ -47,7 +47,7 @@ public class SysUserController extends BaseController {
     @GetMapping(value = "add")
     public ModelAndView add(ModelAndView modelAndView) {
         modelAndView.setViewName("/system/user/add");
-        modelAndView.addObject("roles",sysRoleService.selectAllRole());
+        modelAndView.addObject("roles",sysRoleService.selectAll(null));
         return modelAndView;
     }
 

@@ -17,10 +17,6 @@
                             <a class="btn btn-primary" onclick="roleToListAjax()" target="modal" modal="lg"
                                href="system/role/add">添加</a>
                         </@shiro.hasPermission>
-                        <@shiro.hasPermission name="system/role/grant">
-                                <a class="btn btn-primary" target="modal" modal="lg"
-                                   href="system/role/grant">角色授权</a>
-                        </@shiro.hasPermission>
                 </div>
             </div>
             <div class="row">

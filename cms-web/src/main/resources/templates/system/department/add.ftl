@@ -36,9 +36,14 @@
     </div>
 </div>
 <script type="text/javascript">
-    $(".selectpicker").selectpicker({
-        noneSelectedText: '请选择'
+    $(function () {
+        $("#lgModal").on("shown.bs.modal", function () {
+            $(".selectpicker").selectpicker({
+                noneSelectedText: '请选择'
+            });
+        });
     });
+
     function securitySave() {
         if ($("#departmentAddForm").valid()) {
             $.ajax({
