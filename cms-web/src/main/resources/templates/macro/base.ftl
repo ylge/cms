@@ -107,7 +107,7 @@
     <div class="pull-right hidden-xs">
         <b>Version</b> 3.0.0
     </div>
-    </strong> All rights reserved.
+    上海初瞳信息科技有限公司
 </footer>
 </#macro>
 

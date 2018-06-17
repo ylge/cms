@@ -1,16 +1,22 @@
 <form id="roleUpdateForm">
     <div class="modal-body">
         <input type="hidden" id="roleId" name="roleId" value="${role.roleId}">
-        <div class="form-group">
-            <label id="userNoLabel">角色名称</label>
-            <input type="text" class="form-control" id="roleName" name="name" value="${role.name}" placeholder="角色名称..."
-                   required>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label id="userNoLabel">角色名称</label>
+                    <input type="text" class="form-control" id="roleName" name="name" value="${role.name}" placeholder="角色名称..."
+                           required>
+                </div>
+                <div class="form-group">
+                    <label id="phoneLabel">备注</label>
+                    <input type="text" class="form-control" id="roleRemark" name="remark" value="${role.remark!}" placeholder="描述...">
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div id="menuTree" style=" overflow-y:auto;height:650px;"></div>
+            </div>
         </div>
-        <div class="form-group">
-            <label id="phoneLabel">备注</label>
-            <input type="text" class="form-control" id="roleRemark" name="remark" value="${role.remark!}" placeholder="描述...">
-        </div>
-        <div id="menuTree" class="pre-scrollable"></div>
     </div>
     <div class="modal-footer">
         <div class="pull-right">
@@ -58,10 +64,10 @@
             $.post('/system/role/save', role, function (data) {
                 if (data.code == 200) {
                     $("#lgModal").modal('hide');
-                    alertMsg("添加成功", "success");
+                    alertMsg("修改成功", "success");
                     reloadTable(list_ajax);
                 } else {
-                    alertMsg("添加失败:" + data.msg, "success");
+                    alertMsg("修改失败:" + data.msg, "success");
                 }
             });
         }

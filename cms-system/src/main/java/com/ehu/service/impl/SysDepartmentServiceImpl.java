@@ -32,7 +32,7 @@ public class SysDepartmentServiceImpl extends BaseServiceImpl<SysDepartment,Stri
         if(sysDepartment.getDepartmentId()==null){
             this.insertSelective(sysDepartment);
         }else{
-            this.updateByPrimaryKey(sysDepartment);
+            this.updateByPrimaryKeySelective(sysDepartment);
         }
         return Result.OK();
     }

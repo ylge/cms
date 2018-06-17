@@ -65,6 +65,7 @@ public class SysDepartmentController extends BaseController {
     @GetMapping(value = "edit/{departmentId}")
     public ModelAndView edit(ModelAndView modelAndView,@PathVariable String departmentId) {
         modelAndView.setViewName("/system/department/edit");
+        modelAndView.addObject("companys", sysCompanyService.selectAll(null));
         modelAndView.addObject("department",sysDepartmentService.selectByPrimaryKey(departmentId));
         return modelAndView;
     }

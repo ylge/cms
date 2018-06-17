@@ -2,9 +2,9 @@
 DROP TABLE IF EXISTS `sys_company`;
 
 CREATE TABLE `sys_company` (
-  `company_id` int(8) NOT NULL AUTO_INCREMENT,
+  `company_id` varchar(20) NOT NULL AUTO_INCREMENT,
   `code` varchar(50) DEFAULT NULL COMMENT '公司代码',
-  `name` varchar(20) DEFAULT NULL COMMENT '公司名称',
+  `name` varchar(255) DEFAULT NULL COMMENT '公司名称',
   `short_name` varchar(10) DEFAULT NULL COMMENT '公司简称',
   `parent_code` varchar(50) DEFAULT NULL COMMENT '上级代码',
   `logo` varchar(50) DEFAULT NULL COMMENT '公司LOGO',
@@ -13,25 +13,26 @@ CREATE TABLE `sys_company` (
   `city_code` varchar(10) DEFAULT NULL COMMENT '城市代码',
   `status` int(1) DEFAULT '1' COMMENT '是否有效 0 无效 1 有效',
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
-  `create_by` int(8) DEFAULT NULL COMMENT '创建人',
+  `create_by` varchar(20) DEFAULT NULL COMMENT '创建人',
   `update_time` datetime DEFAULT NULL COMMENT '更新日期',
-  `update_by` int(8) DEFAULT NULL COMMENT '更新人',
+  `update_by` varchar(20) DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`company_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `sys_department`;
 CREATE TABLE `sys_department` (
-  `department_id` int(8) NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `company_id` int(8) DEFAULT NULL COMMENT '公司代码',
+  `department_id` varchar(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `company_id` varchar(20) DEFAULT NULL COMMENT '公司代码',
+  `company_name` varchar(255) DEFAULT NULL COMMENT '公司名称',
   `code` varchar(50) DEFAULT NULL COMMENT '部门编号',
   `name` varchar(50) DEFAULT NULL COMMENT '部门名称',
   `parent_code` varchar(50) DEFAULT NULL COMMENT '上级代码',
   `comment` varchar(200) DEFAULT NULL COMMENT '部门描述',
   `status` int(1) DEFAULT '1' COMMENT '是否有效 0 无效 1 有效',
   `create_time` datetime DEFAULT NULL,
-  `create_by` int(8) DEFAULT NULL,
+  `create_by` varchar(20) DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
-  `update_by` int(8) DEFAULT NULL,
+  `update_by` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`department_id`),
   UNIQUE KEY `index_department_code` (`code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET= utf8;
@@ -40,9 +41,9 @@ CREATE TABLE `sys_department` (
 DROP TABLE IF EXISTS `sys_department_user`;
 
 CREATE TABLE `sys_department_user` (
-  `id` int(8) NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `department_id` int(8) DEFAULT NULL COMMENT '部门编码',
-  `user_id` int(8) DEFAULT NULL COMMENT '用户号',
+  `id` varchar(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `department_id` varchar(20) DEFAULT NULL COMMENT '部门编码',
+  `user_id` varchar(20) DEFAULT NULL COMMENT '用户号',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET= utf8;
 
@@ -84,9 +85,9 @@ CREATE TABLE `sys_menu` (
   `status` int(1) DEFAULT '1' COMMENT '是否有效 0 无效 1 有效',
   `icon` varchar(255) DEFAULT NULL COMMENT '图标',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `create_by` int(8) DEFAULT NULL COMMENT '创建人',
+  `create_by` varchar(20) DEFAULT NULL COMMENT '创建人',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `update_by` int(8) DEFAULT NULL COMMENT '更新人',
+  `update_by` varchar(20) DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`menu_id`),
   UNIQUE KEY `FK_CODE` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -118,7 +119,7 @@ CREATE TABLE `sys_notice` (
   `type` int(11) DEFAULT NULL COMMENT '类型',
   `content` text COMMENT '内容',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `creater` int(11) DEFAULT NULL COMMENT '创建人',
+  `create_by` varchar(20) DEFAULT NULL COMMENT '创建人',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -216,9 +217,9 @@ CREATE TABLE `sys_user` (
   `phone` varchar(45) DEFAULT NULL COMMENT'手机号码',
   `status` int(1) DEFAULT '1' COMMENT '是否有效 0 无效 1 有效',
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
-  `create_by` int(8) DEFAULT NULL COMMENT '创建人',
+  `create_by` varchar(20) DEFAULT NULL COMMENT '创建人',
   `update_time` datetime DEFAULT NULL COMMENT '更新日期',
-  `update_by` int(8) DEFAULT NULL COMMENT '更新人',
+  `update_by` varchar(20) DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `unique_user_username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
@@ -238,7 +239,7 @@ CREATE TABLE `sys_user_role` (
   `user_id` int(11) DEFAULT NULL,
   `role_id` int(11) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
-  `create_by` varchar(255) DEFAULT NULL,
+  `create_by` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 

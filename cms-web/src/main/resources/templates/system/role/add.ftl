@@ -1,15 +1,21 @@
 <form id="roleAddForm">
     <div class="modal-body">
-        <div class="form-group">
-            <label id="userNoLabel">角色名称</label>
-            <input type="text" class="form-control" id="roleName" name="name" placeholder="角色名称..."
-                   required>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label id="userNoLabel">角色名称</label>
+                    <input type="text" class="form-control" id="roleName" name="name" placeholder="角色名称..."
+                           required>
+                </div>
+                <div class="form-group">
+                    <label id="phoneLabel">备注</label>
+                    <input type="text" class="form-control" id="roleRemark" name="remark" placeholder="描述...">
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div id="menuTree" style=" overflow-y:auto;height:650px;"></div>
+            </div>
         </div>
-        <div class="form-group">
-            <label id="phoneLabel">备注</label>
-            <input type="text" class="form-control" id="roleRemark" name="remark" placeholder="描述...">
-        </div>
-        <div id="menuTree" class="pre-scrollable" <#--style=" overflow-y:auto; width:400px; height:350px;"-->></div>
     </div>
     <div class="modal-footer">
         <div class="pull-right">
@@ -32,7 +38,7 @@
         $.getJSON('system/role/menutree', {roleId: '0'}, function (data) {
             if (data.code === 200) {
                 $('#menuTree').treeview({
-                    data: data.data,
+                    dataAll rights reserved: data.data,
                     showIcon: false,
                     highlightSelected: true,
                     showCheckbox: true,

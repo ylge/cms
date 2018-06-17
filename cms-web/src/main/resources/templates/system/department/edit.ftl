@@ -2,17 +2,17 @@
     <div class="col-md-12">
         <form id="departmentEditForm">
             <div class="modal-body">
-                <input type="hidden" name="companyId" value="${department.departmentId}">
+                <input type="hidden" name="departmentId" value="${department.departmentId}">
                 <div class="form-group">
                     <label>名称</label>
-                    <input type="text" class="form-control" name="code" id="code" value="${department.name}" placeholder="输入部门名称..." required>
+                    <input type="text" class="form-control" name="name" value="${department.name}" placeholder="输入部门名称..." required>
                 </div>
                 <div class="form-group">
                     <label>公司名称</label>
-                    <select name="companyId" id="companyId" class="selectpicker form-control" data-live-search="true" required>
+                    <select name="companyId" class="selectpicker form-control" data-live-search="true" required>
                         <#if companys??>
                             <#list companys as company>
-                                <option value="${company.companyId}"<#if company.companyId ==department.companyId>selected</#if> >${company.name}</option>
+                                <option value="${company.companyId}" <#if company.companyId ==department.companyId>selected</#if> >${company.name}</option>
                             </#list>
                         </#if>
                     </select>
@@ -27,7 +27,7 @@
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i
                             class="fa fa-close"></i>关闭
                     </button>
-                    <button type="button" class="btn btn-primary btn-sm" onclick="securitySave();"><i
+                    <button type="button" class="btn btn-primary btn-sm" onclick="departmentSave();"><i
                             class="fa fa-save"></i>保存
                     </button>
                 </div>
@@ -36,7 +36,15 @@
     </div>
 </div>
 <script type="text/javascript">
-    function securitySave() {
+    $(function () {
+        $("#lgModal").on("shown.bs.modal", function () {
+            $(".selectpicker").selectpicker({
+                noneSelectedText: '请选择'
+            });
+        });
+    });
+
+    function departmentSave() {
         if ($("#departmentEditForm").valid()) {
             $.ajax({
                 url: 'system/department/save',
@@ -55,7 +63,6 @@
             });
         }
     }
-
     $("#departmentEditForm").validate({
         errorClass: 'text-danger',
         errorElement: "span"

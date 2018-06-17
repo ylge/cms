@@ -132,7 +132,7 @@
 				update_by = #{updateBy,jdbcType=TIMESTAMP},
 			</if>
 		</set>
-		where id = #{id}
+		where department_id = #{departmentId}
 	</update>
 
 </mapper>

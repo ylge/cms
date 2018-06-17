@@ -8,7 +8,7 @@
                 </div>
                 <div class="form-group">
                     <label>所属公司</label>
-                    <select name="companyId" id="companyId" class="selectpicker form-control" data-live-search="true">
+                    <select name="companyId" class="selectpicker form-control" data-live-search="true">
                         <#if companys??>
                             <option value="">请选择</option>
                             <#list companys as company>
