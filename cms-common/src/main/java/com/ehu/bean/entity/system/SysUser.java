@@ -1,7 +1,6 @@
 package com.ehu.bean.entity.system;
 
 import com.ehu.bean.PageBean;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -55,7 +54,6 @@ public class SysUser extends PageBean implements Serializable{
 	/**
 	 * 创建日期
 	 */
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createTime;
 	/**
      * 创建人
@@ -64,7 +62,6 @@ public class SysUser extends PageBean implements Serializable{
 	/**
      * 更新日期
      */
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date updateTime;
     /**
      * 更新人
@@ -72,24 +69,5 @@ public class SysUser extends PageBean implements Serializable{
 	private String updateBy;
 
 	private List<SysRole> roleList;
-
-	@Override
-	public String toString() {
-		return "SysUser{" +
-			", userId=" + userId +
-			", avatar=" + avatar +
-			", username=" + username +
-			", password=" + password +
-			", name=" + name +
-			", merchantId=" + merchantId +
-			", salt=" + salt +
-			", phone=" + phone +
-			", status=" + status +
-			", createTime=" + createTime +
-			", createBy=" + createBy +
-			", updateTime=" + updateTime +
-			", updateBy=" + updateBy +
-			"}";
-	}
 
 }

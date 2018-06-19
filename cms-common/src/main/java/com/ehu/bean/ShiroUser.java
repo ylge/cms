@@ -2,7 +2,6 @@ package com.ehu.bean;
 
 import com.ehu.bean.entity.system.SysRole;
 import com.ehu.bean.entity.system.SysRoleMenu;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,7 +20,6 @@ public class ShiroUser implements Serializable{
     private String name;         // 姓名
     private Integer deptId;      // 部门id
     private String deptName;        // 部门名称
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
     //角色集
     private List<SysRole> roleList;

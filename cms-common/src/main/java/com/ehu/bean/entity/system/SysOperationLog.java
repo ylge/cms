@@ -1,6 +1,5 @@
 package com.ehu.bean.entity.system;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -47,22 +46,6 @@ public class SysOperationLog implements Serializable {
      */
 	private String newData;
 
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createTime;
 
-
-	@Override
-	public String toString() {
-		return "SysOperationLog{" +
-			", id=" + id +
-			", userId=" + userId +
-			", userName=" + userName +
-			", className=" + className +
-			", method=" + method +
-			", args=" + args +
-			", originData=" + originData +
-			", newData=" + newData +
-			", createTime=" + createTime +
-			"}";
-	}
 }

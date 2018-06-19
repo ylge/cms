@@ -29,12 +29,4 @@ public class SysDepartmentUser implements Serializable{
      */
 	private Integer userId;
 
-	@Override
-	public String toString() {
-		return "SysDepartmentUser{" +
-			", id=" + id +
-			", departmentId=" + departmentId +
-			", userId=" + userId +
-			"}";
-	}
 }

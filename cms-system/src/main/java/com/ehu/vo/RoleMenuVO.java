@@ -1,6 +1,5 @@
 package com.ehu.vo;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
@@ -21,7 +20,6 @@ public class RoleMenuVO {
     private String name;
     private String value;
     private String remark;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
     private Date updateTime;
     /**

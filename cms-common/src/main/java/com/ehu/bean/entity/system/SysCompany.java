@@ -1,7 +1,6 @@
 package com.ehu.bean.entity.system;
 
 import com.ehu.bean.PageBean;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -59,7 +58,6 @@ public class SysCompany extends PageBean implements Serializable {
     /**
      * 创建日期
      */
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createTime;
     /**
      * 创建人
@@ -68,30 +66,9 @@ public class SysCompany extends PageBean implements Serializable {
     /**
      * 更新日期
      */
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date updateTime;
     /**
      * 更新人
      */
 	private String updateBy;
-
-	@Override
-	public String toString() {
-		return "SysCompany{" +
-			", companyId=" + companyId +
-			", code=" + code +
-			", name=" + name +
-			", shortName=" + shortName +
-			", parentCode=" + parentCode +
-			", logo=" + logo +
-			", comment=" + comment +
-			", address=" + address +
-			", cityCode=" + cityCode +
-			", status=" + status +
-			", createTime=" + createTime +
-			", createBy=" + createBy +
-			", updateTime=" + updateTime +
-			", updateBy=" + updateBy +
-			"}";
-	}
 }

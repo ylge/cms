@@ -1,6 +1,5 @@
 package com.ehu.bean.entity.system;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -19,16 +18,6 @@ public class SysRoleMenu implements Serializable{
 
 	private Integer roleId;
 	private Integer menuId;
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createTime;
-
-	@Override
-	public String toString() {
-		return "SysRoleMenu{" +
-			", roleId=" + roleId +
-			", menuId=" + menuId +
-			", createTime=" + createTime +
-			"}";
-	}
 
 }
