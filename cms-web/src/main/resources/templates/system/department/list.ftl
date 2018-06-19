@@ -83,7 +83,7 @@
     function operateFormatter(value, row, index) {
         return [
             <@shiro.hasPermission name="system/department/edit">,
-            '<a target="modal" onclick="departmentToListAjax()" href="system/department/edit/' + row.departmentId + '" >',
+            '<a target="modal"  onclick="departmentToListAjax()" href="system/department/edit/' + row.departmentId + '" >',
             '<i class="fa fa-edit"></i>修改',
             '</a>  ',
             </@shiro.hasPermission>,

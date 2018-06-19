@@ -31,7 +31,7 @@
 </form>
 <script type="text/javascript">
     var _roleId;
-    $("#lgModal").on("shown.bs.modal", function () {
+    $(function () {
         _roleId = $("#roleId").val();
         $.getJSON('system/role/menutree', {roleId: _roleId}, function (data) {
             if (data.code === 200) {
@@ -48,7 +48,6 @@
             }
         });
     });
-
     function roleSave() {
         if ($("#roleUpdateForm").valid()) {
             var checkNodes = $('#menuTree').treeview('getChecked');
@@ -62,7 +61,7 @@
             role.remark = $("#roleRemark").val();
             role.menuIds = _menuIds.join();
             $.post('/system/role/save', role, function (data) {
-                if (data.code == 200) {
+                if (data.code === 200) {
                     $("#lgModal").modal('hide');
                     alertMsg("修改成功", "success");
                     reloadTable(list_ajax);

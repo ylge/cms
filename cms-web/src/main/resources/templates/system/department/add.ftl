@@ -4,7 +4,7 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>部门名称</label>
-                    <input type="text" class="form-control" name="name"  placeholder="输入部门名称..." required>
+                    <input type="text" class="form-control" name="name" placeholder="输入部门名称..." required>
                 </div>
                 <div class="form-group">
                     <label>所属公司</label>
@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group">
                     <label>描述</label>
-                    <input type="text" class="form-control" name="comment" id="comment"  placeholder="输入备注...">
+                    <input type="text" class="form-control" name="comment" id="comment" placeholder="输入备注...">
                 </div>
             </div>
             <div class="modal-footer">
@@ -37,13 +37,10 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        $("#lgModal").on("shown.bs.modal", function () {
-            $(".selectpicker").selectpicker({
-                noneSelectedText: '请选择'
-            });
+        $(".selectpicker").selectpicker({
+            noneSelectedText: '请选择'
         });
     });
-
     function securitySave() {
         if ($("#departmentAddForm").valid()) {
             $.ajax({
@@ -52,7 +49,7 @@
                 dataType: 'json',
                 data: $("#departmentAddForm").serialize(),
                 success: function (data) {
-                    if (data.code==200) {
+                    if (data.code == 200) {
                         $("#lgModal").modal('hide');
                         alertMsg("添加成功", "success");
                         reloadTable(list_ajax);

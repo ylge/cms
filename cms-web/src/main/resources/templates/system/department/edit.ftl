@@ -5,21 +5,24 @@
                 <input type="hidden" name="departmentId" value="${department.departmentId}">
                 <div class="form-group">
                     <label>名称</label>
-                    <input type="text" class="form-control" name="name" value="${department.name}" placeholder="输入部门名称..." required>
+                    <input type="text" class="form-control" name="name" value="${department.name}"
+                           placeholder="输入部门名称..." required>
                 </div>
                 <div class="form-group">
                     <label>公司名称</label>
                     <select name="companyId" class="selectpicker form-control" data-live-search="true" required>
                         <#if companys??>
                             <#list companys as company>
-                                <option value="${company.companyId}" <#if company.companyId ==department.companyId>selected</#if> >${company.name}</option>
+                                <option value="${company.companyId}"
+                                        <#if company.companyId ==department.companyId>selected</#if> >${company.name}</option>
                             </#list>
                         </#if>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>描述</label>
-                    <input type="text" class="form-control" name="comment" id="comment" value="${department.comment}" placeholder="输入备注..." required>
+                    <input type="text" class="form-control" name="comment" id="comment" value="${department.comment}"
+                           placeholder="输入备注..." required>
                 </div>
             </div>
             <div class="modal-footer">
@@ -37,10 +40,9 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        $("#lgModal").on("shown.bs.modal", function () {
-            $(".selectpicker").selectpicker({
-                noneSelectedText: '请选择'
-            });
+        debugger;
+        $(".selectpicker").selectpicker({
+            noneSelectedText: '请选择'
         });
     });
 
@@ -52,7 +54,7 @@
                 dataType: 'json',
                 data: $("#departmentEditForm").serialize(),
                 success: function (data) {
-                    if (data.code==200) {
+                    if (data.code === 200) {
                         $("#lgModal").modal('hide');
                         alertMsg("添加成功", "success");
                         reloadTable(list_ajax);
@@ -63,6 +65,7 @@
             });
         }
     }
+
     $("#departmentEditForm").validate({
         errorClass: 'text-danger',
         errorElement: "span"

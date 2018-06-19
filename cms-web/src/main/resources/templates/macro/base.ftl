@@ -250,6 +250,13 @@
         oTable.bootstrapTable('refresh', opt);
     }
 </script>
+<#--关闭model时清空内容-->
+<script type="text/javascript">
+    $("#lgModal").on("hide.bs.modal", function () {
+        $(this).removeData("bs.modal");
+        $(".modal-body").children().remove();
+    });
+</script>
 </#macro>
 
 <#macro setting>

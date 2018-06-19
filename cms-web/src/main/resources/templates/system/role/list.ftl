@@ -53,7 +53,7 @@
     function operateFormatter(value, row, index) {
         return [
             <@shiro.hasPermission name="system/role/edit">,
-            '<a target="modal" modal="lg"  href="system/role/edit/' + row.roleId + '" >',
+            '<a target="modal" modal="lg" onclick="roleToListAjax()"  href="system/role/edit/' + row.roleId + '" >',
             '<i class="fa fa-edit"></i>修改',
             '</a>  ',
             </@shiro.hasPermission>,
