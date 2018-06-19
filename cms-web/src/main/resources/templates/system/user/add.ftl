@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             <label>角色：</label>
-            <select name="roles" id="roles" class="selectpicker form-control" multiple data-max-options="4"
+            <select name="roles" class="selectpicker form-control" multiple data-max-options="4"
                     data-live-search="true">
                 <#if roles??>
                     <#list roles as role>
@@ -32,6 +32,20 @@
                         <#else>
                             <option value="${role.roleId}">${role.name}</option>
                         </#if>
+                    </#list>
+                </#if>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>部门：</label>
+            <select name="departmentId" class="selectpicker form-control"
+                    data-live-search="true">
+                <option value="">请选择</option>
+                <#if departments??>
+                    <#list departments as department>
+                        <optgroup label="${department.companyName}">
+                            <option value="${department.departmentId}">${department.name}</option>
+                        </optgroup>
                     </#list>
                 </#if>
             </select>
@@ -49,7 +63,7 @@
     </div>
 </form>
 <script type="text/javascript">
-    $("#lgModal").on("shown.bs.modal", function () {
+    $(function () {
         $(".selectpicker").selectpicker({
             noneSelectedText: '请选择'
         });
@@ -60,16 +74,15 @@
         if (!userParam.valid()) {
             return;
         }
-        $.post('system/user/save', userParam.serialize(), "json")
-                .success(function (data) {
-                    if (data.code === 200) {
-                        $("#lgModal").modal('hide');
-                        alertMsg("添加成功", "success");
-                        reloadTable(list_ajax);
-                    } else {
-                        alertMsg("添加失败:" + data.msg, "success");
-                    }
-                });
+        $.post('system/user/save', userParam.serialize(), function (data) {
+            if (data.code === 200) {
+                $("#lgModal").modal('hide');
+                alertMsg("添加成功", "success");
+                reloadTable(list_ajax);
+            } else {
+                alertMsg("添加失败:" + data.msg, "success");
+            }
+        });
         userParam.validate({
             errorClass: 'text-danger',
             errorElement: "span"

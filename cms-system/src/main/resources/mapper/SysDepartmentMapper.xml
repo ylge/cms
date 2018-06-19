@@ -134,5 +134,8 @@
 		</set>
 		where department_id = #{departmentId}
 	</update>
-
+	<select id="selectAll" resultMap="BaseResultMap">
+		select  <include refid="Base_Column_List"/>
+		from sys_department
+	</select>
 </mapper>

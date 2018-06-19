@@ -3,11 +3,13 @@ package com.ehu.service.impl;
 import com.ehu.base.BaseMapper;
 import com.ehu.base.impl.BaseServiceImpl;
 import com.ehu.bean.Result;
+import com.ehu.bean.entity.system.SysDepartmentUser;
 import com.ehu.bean.entity.system.SysRole;
 import com.ehu.bean.entity.system.SysUser;
 import com.ehu.bean.entity.system.SysUserRole;
 import com.ehu.dao.SysUserMapper;
 import com.ehu.dao.SysUserRoleMapper;
+import com.ehu.service.SysDepartmentUserService;
 import com.ehu.service.SysUserRoleService;
 import com.ehu.service.SysUserService;
 import com.ehu.shiro.ShiroKit;
@@ -34,6 +36,8 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String> impleme
     private SysUserMapper sysUserMapper;
     @Autowired
     private SysUserRoleService sysUserRoleService;
+    @Autowired
+    private SysDepartmentUserService departmentUserService;
 
     @Override
     public BaseMapper<SysUser, String> getMappser() {
@@ -55,18 +59,25 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String> impleme
         sysUser.setPassword(saltPwd);
         if(ObjectUtils.isEmpty(userVO.getUserId())){
             this.insertSelective(sysUser);
-            //增加角色
-            if(!ObjectUtils.isEmpty(userVO.getRoles())){
-                String[] roles = userVO.getRoles().split(",");
-                Arrays.stream(roles).forEach(s -> {
-                    SysUserRole sysUserRole = new SysUserRole();
-                    sysUserRole.setRoleId(Integer.valueOf(s));
-                    sysUserRole.setUserId(sysUser.getUserId());
-                    sysUserRoleService.insertSelective(sysUserRole);
-                });
-            }
         }else {
             this.updateByPrimaryKeySelective(sysUser);
+        }
+        //增加角色
+        if(!ObjectUtils.isEmpty(userVO.getRoles())){
+            String[] roles = userVO.getRoles().split(",");
+            Arrays.stream(roles).forEach(s -> {
+                SysUserRole sysUserRole = new SysUserRole();
+                sysUserRole.setRoleId(Integer.valueOf(s));
+                sysUserRole.setUserId(sysUser.getUserId());
+                sysUserRoleService.insertSelective(sysUserRole);
+            });
+        }
+        //增加角色
+        if(!ObjectUtils.isEmpty(userVO.getDepartmentId())){
+            SysDepartmentUser sysDepartmentUser = new SysDepartmentUser();
+            sysDepartmentUser.setUserId(sysUser.getUserId());
+            sysDepartmentUser.setDepartmentId(Integer.parseInt(userVO.getDepartmentId()));
+            departmentUserService.insertSelective(sysDepartmentUser);
         }
         return Result.OK();
     }

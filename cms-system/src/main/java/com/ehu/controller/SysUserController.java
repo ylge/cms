@@ -4,6 +4,7 @@ import com.ehu.base.BaseController;
 import com.ehu.bean.PageResult;
 import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysUser;
+import com.ehu.service.SysDepartmentService;
 import com.ehu.service.SysRoleService;
 import com.ehu.service.SysUserService;
 import com.ehu.vo.UserVO;
@@ -27,6 +28,8 @@ public class SysUserController extends BaseController {
     private SysUserService sysUserService;
     @Autowired
     private SysRoleService sysRoleService;
+    @Autowired
+    private SysDepartmentService sysDepartmentService;
 
     @GetMapping(value = "list")
     public String list() {
@@ -48,6 +51,7 @@ public class SysUserController extends BaseController {
     public ModelAndView add(ModelAndView modelAndView) {
         modelAndView.setViewName("/system/user/add");
         modelAndView.addObject("roles",sysRoleService.selectAll(null));
+        modelAndView.addObject("departments",sysDepartmentService.selectAll(null));
         return modelAndView;
     }
 

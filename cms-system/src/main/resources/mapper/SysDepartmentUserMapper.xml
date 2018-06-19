@@ -8,5 +8,32 @@
 		<result column="department_id" property="departmentId" />
 		<result column="user_id" property="userId" />
 	</resultMap>
-
+	<sql id="Base_Column_List">
+		id, department_id,user_id
+	</sql>
+	<insert id="insertSelective" parameterType="SysRoleMenu">
+		insert into sys_role_menu
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="departmentId != null">
+				department_id,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},
+			</if>
+			<if test="departmentId != null">
+				#{departmentId},
+			</if>
+			<if test="userId != null">
+				#{userId},
+			</if>
+		</trim>
+	</insert>
 </mapper>

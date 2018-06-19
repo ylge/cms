@@ -20,4 +20,5 @@ public class UserVO extends PageBean implements Serializable {
     private String password;
     private String phone;
     private String roles;
+    private String departmentId;
 }

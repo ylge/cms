@@ -52,7 +52,6 @@
     });
 
     function roleSave() {
-        debugger;
         if ($("#roleAddForm").valid()) {
             var checkNodes = $('#menuTree').treeview('getChecked');
             var _menuIds = [];
