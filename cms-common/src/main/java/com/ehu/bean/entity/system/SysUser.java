@@ -1,5 +1,6 @@
 package com.ehu.bean.entity.system;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.ehu.bean.PageBean;
 import lombok.Data;
 
@@ -26,6 +27,7 @@ public class SysUser extends PageBean implements Serializable{
     /**
      * 账号
      */
+    @Excel(name = "帐号", replace = {"男_1","女_2"})
 	private String username;
     /**
      * 密码

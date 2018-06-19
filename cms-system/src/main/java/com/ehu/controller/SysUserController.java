@@ -1,5 +1,9 @@
 package com.ehu.controller;
 
+import cn.afterturn.easypoi.entity.vo.NormalExcelConstants;
+import cn.afterturn.easypoi.excel.entity.ExportParams;
+import cn.afterturn.easypoi.excel.entity.enmus.ExcelType;
+import cn.afterturn.easypoi.view.PoiBaseView;
 import com.ehu.base.BaseController;
 import com.ehu.bean.PageResult;
 import com.ehu.bean.Result;
@@ -7,11 +11,18 @@ import com.ehu.bean.entity.system.SysUser;
 import com.ehu.service.SysDepartmentService;
 import com.ehu.service.SysRoleService;
 import com.ehu.service.SysUserService;
+import com.ehu.util.DateUtil;
 import com.ehu.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.text.ParseException;
+import java.util.Date;
 
 /**
  * @author geyl
@@ -78,5 +89,20 @@ public class SysUserController extends BaseController {
     Result delete(@PathVariable String id){
         sysUserService.deleteByPrimaryKey(id);
         return Result.OK();
+    }
+
+    /**
+     * excel导出
+     */
+    @GetMapping(value = "userExport")
+    public void exportExcel(ModelMap modelMap, HttpServletRequest request,
+                            HttpServletResponse response) {
+        ExportParams params = new ExportParams("用户信息", null, ExcelType.XSSF);
+        modelMap.put(NormalExcelConstants.DATA_LIST, sysUserService.selectAll(null));
+        modelMap.put(NormalExcelConstants.CLASS, SysUser.class);
+        modelMap.put(NormalExcelConstants.PARAMS, params);
+        String fileName = DateUtil.dateFormat(new Date(), DateUtil.DATE_TIME_PATTERN);
+        modelMap.put(NormalExcelConstants.FILE_NAME, "用户信息表:" + fileName);
+        PoiBaseView.render(modelMap, request, response, NormalExcelConstants.EASYPOI_EXCEL_VIEW);
     }
 }
