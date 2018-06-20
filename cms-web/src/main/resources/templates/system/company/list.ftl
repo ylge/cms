@@ -8,7 +8,7 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                        <input type="text" class="form-control" id="name" placeholder="根据公司名称搜索...">
+                        <input type="text" class="form-control" name="companyName" placeholder="根据公司名称搜索...">
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -60,34 +60,26 @@
                 {title: "状态", field: "status", formatter: tableModel.getState},
                 {title: "创建时间", field: "createTime", sortable: true},
                 {title: "创建人", field: "createBy"},
-                {title: "操作", field: "operate", align: 'center',formatter: operateFormatter}
+                {title: "操作", field: "operate", align: 'center', formatter: operateFormatter}
             ]
         })
     });
 
     function queryParams(params) {
+        params.name = $("input[name='companyName']").val();
         console.log(params);
-        params.name = $("#name").val();
-        console.log(params);
-        /*var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-            limit: params.limit,   //页面大小
-            offset: params.offset,  //偏移量
-            order: params.order,  //排序方式
-            sort: params.sort,  //排序字段
-            name: $("#name").val()
-        };*/
         return params;
     }
 
     function operateFormatter(value, row, index) {
         return [
             <@shiro.hasPermission name="system/company/edit">,
-            '<a href="system/company/edit/'+row.companyId+'" onclick="companyToListAjax()" target="modal" modal="lg" >',
+            '<a href="system/company/edit/' + row.companyId + '" onclick="companyToListAjax()" target="modal" modal="lg" >',
             '<i class="fa fa-edit"></i>修改',
             '</a>  ',
             </@shiro.hasPermission>,
             <@shiro.hasPermission name="system/company/delete">,
-            '<a callback="companyReload();" data-body="确认要删除吗？" target="ajaxTodo" href="system/company/delete/'+row.companyId+'">',
+            '<a callback="companyReload();" data-body="确认要删除吗？" target="ajaxTodo" href="system/company/delete/' + row.companyId + '">',
             '<i class="fa fa-remove"></i>删除',
             '</a>',
             </@shiro.hasPermission>

@@ -8,13 +8,13 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                        <input type="text" class="form-control" id="companyName" placeholder="根据公司名称搜索...">
+                        <input type="text" class="form-control" name="companyName" placeholder="根据公司名称搜索...">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                        <input type="text" class="form-control" id="name" placeholder="根据部门名称搜索...">
+                        <input type="text" class="form-control" name="name" placeholder="根据部门名称搜索...">
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -75,8 +75,8 @@
     });
 
     function queryParams(params) {
-        params.name = $("#name").val();
-        params.companyName = $("#companyName").val();
+        params.name = $("input[name='name']").val();
+        params.companyName = $("input[name='companyName']").val();
         return params;
     }
 

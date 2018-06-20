@@ -38,7 +38,7 @@
         $.getJSON('system/role/menutree', {roleId: '0'}, function (data) {
             if (data.code === 200) {
                 $('#menuTree').treeview({
-                    dataAll rights reserved: data.data,
+                    data: data.data,
                     showIcon: false,
                     highlightSelected: true,
                     showCheckbox: true,

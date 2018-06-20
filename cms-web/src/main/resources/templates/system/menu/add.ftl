@@ -4,23 +4,25 @@
         <input type="hidden" name="level" value="${menu.level+1}">
         <div class="form-group">
             <label class="" id="nameLabel">菜单名称</label>
-            <input type="text" class="form-control" name="name" id="name" placeholder="输入菜单名称..." required>
+            <input type="text" class="form-control" name="name" placeholder="输入菜单名称..." required>
         </div>
         <div class="form-group">
             <label class="" id="urlLabel">请求地址</label>
-            <input type="text" class="form-control" name="url" id="url" placeholder="输入请求地址..." required>
+            <input type="text" class="form-control" name="url" placeholder="输入请求地址..." required>
         </div>
         <div class="form-group">
             <label id="sortNameLabel">排序</label>
-            <input type="number" class="form-control" name="sort" id="sort" placeholder="输入排序..." required>
+            <input type="number" class="form-control" name="sort" placeholder="输入排序..." required>
         </div>
         <div class="form-group">
             <label id="nickNameLabel">图标</label>
-            <input type="text" class="form-control" name="icon" id="icon" placeholder="输入图标...">
+            <button id="target" name="icon" class="btn btn-default" data-icon="glyphicon-chevron-down"
+                    role="iconpicker">
+            </button>
         </div>
         <div class="form-group">
             <label>是否是菜单</label>
-            <select name="isMenu" class="form-control select2" style="width: 100%;">
+            <select name="isMenu" class="form-control" style="width: 100%;">
                 <option value="1">是</option>
                 <option value="0">否</option>
             </select>
@@ -28,25 +30,49 @@
     </div>
     <div class="modal-footer">
         <div class="pull-right">
-            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-close"></i>关闭</button>
-            <button type="button" class="btn btn-primary btn-sm" onclick="securitySave();"><i class="fa fa-save"></i>保存
+            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-close"></i>关闭
+            </button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="menuAdd();"><i class="fa fa-save"></i>保存
             </button>
         </div>
     </div>
 </form>
 <script type="text/javascript">
-    function securitySave() {
+    $(function () {
+        $('#target').iconpicker({
+            align: 'center', // Only in div tag
+            arrowClass: 'btn-danger',
+            arrowPrevIconClass: 'glyphicon glyphicon-chevron-left',
+            arrowNextIconClass: 'glyphicon glyphicon-chevron-right',
+            cols: 10,
+            footer: true,
+            header: true,
+            icon: '',
+            iconset: 'fontawesome',
+            labelHeader: '{0} of {1} pages',
+            labelFooter: '{0} - {1} of {2} icons',
+            placement: 'bottom', // Only in button tag
+            rows: 6,
+            search: true,
+            searchText: 'Search',
+            selectedClass: 'btn-success',
+            unselectedClass: ''
+        });
+    });
+
+    function menuAdd() {
         if ($("#menuAddForm").valid()) {
-            $.post('/system/menu/save',$("#menuAddForm").serialize(),
-                function (data) {
-                    if (data.code === 200) {
-                        alertMsg("添加成功", "success");
-                        $("#lgModal").modal('hide');
-                    } else {
-                        alertMsg("添加失败:" + data.msg, "success");
+            console.log($("#menuAddForm").serialize());
+            $.post('/system/menu/save', $("#menuAddForm").serialize(),
+                    function (data) {
+                        if (data.code === 200) {
+                            alertMsg("添加成功", "success");
+                            $("#lgModal").modal('hide');
+                        } else {
+                            alertMsg("添加失败:" + data.msg, "success");
+                        }
                     }
-                }
-            })
+            );
         }
     }
 

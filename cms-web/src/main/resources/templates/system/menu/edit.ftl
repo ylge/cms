@@ -15,7 +15,10 @@
         </div>
         <div class="form-group">
             <label id="nickNameLabel">图标</label>
-            <input type="text" class="form-control" name="icon" id="icon" value="${menu.icon!}" placeholder="输入图标...">
+            <input type="hidden" id="icon" value="${menu.icon!}"></input>
+            <button id="target" name="icon" class="btn btn-default" data-icon="glyphicon-chevron-down"
+                    role="iconpicker">
+            </button>
         </div>
         <div class="form-group">
             <label>是否是菜单</label>
@@ -36,6 +39,29 @@
 </form>
 
 <script type="text/javascript">
+    $(function () {
+        var icon = $("#icon").val();
+        $('#target').iconpicker({
+            align: 'center', // Only in div tag
+            arrowClass: 'btn-danger',
+            arrowPrevIconClass: 'glyphicon glyphicon-chevron-left',
+            arrowNextIconClass: 'glyphicon glyphicon-chevron-right',
+            cols: 10,
+            footer: true,
+            header: true,
+            icon: icon,
+            iconset: 'fontawesome',
+            labelHeader: '{0} of {1} pages',
+            labelFooter: '{0} - {1} of {2} icons',
+            placement: 'bottom', // Only in button tag
+            rows: 6,
+            search: true,
+            searchText: 'Search',
+            selectedClass: 'btn-success',
+            unselectedClass: ''
+        });
+    });
+
     function menuSave() {
         $.ajax({
             url: '/system/menu/save',

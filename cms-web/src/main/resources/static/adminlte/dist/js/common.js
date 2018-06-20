@@ -1,20 +1,58 @@
 var tableModel = (function () {
-    return{
-        getHeight : function () {
+    return {
+        getHeight: function () {
             return $(window).height() - $('.content-header').outerHeight(true);
         },
-        getState : function (value,row,index) {
-            return value==1 ? "启用" : "禁用";
+        getState: function (value, row, index) {
+            return value == 1 ? "启用" : "禁用";
         }
     }
 })();
 
+//每次隐藏modal 清理内容
+$("#lgModal").on("hide.bs.modal", function () {
+    $(this).removeData("bs.modal");
+    $(".modal-body").children().remove();
+});
+
+//表单刷新
+var list_ajax;
+var date_ajax;
+//当你需要多条件查询，你可以调用此方法，动态修改参数传给服务器
+//查询添加的时候需要重写该方法，每个页面查询参数不一样，请参考user/list 葛永亮 2017-9-14
+window.reloadTable = function (oTable, opt) {
+    oTable.bootstrapTable('refresh', opt);
+};
+
+/*
+function onClickCheckbox(clickName, target) {
+    var status = false;
+    if (document.getElementById(clickName).checked) {
+        status = true;
+    }
+    var list = document.getElementsByName(target);
+    for (var i = 0; i < list.length; i++) {
+        list[i].checked = status;
+    }
+}
+*/
+
+/*function iFrameHeight() {
+    var ifm = document.getElementById("content");
+    var subWeb = document.frames ? document.frames["content"].document : ifm.contentDocument;
+    if (ifm != null && subWeb != null) {
+        ifm.height = subWeb.body.scrollHeight;
+    }
+}*/
+
 (function () {
     //全局ajax处理
     $.ajaxSetup({
-        complete: function (jqXHR) {},
+        complete: function (jqXHR) {
+        },
         data: {},
-        error: function (jqXHR, textStatus, errorThrown) {}
+        error: function (jqXHR, textStatus, errorThrown) {
+        }
     });
 
     if ($.browser && $.browser.msie) {
@@ -54,9 +92,9 @@ var tableModel = (function () {
         $('button.js-ajax-submit').on('click', function (e) {
             var btn = $(this);
             var form = btn.parents('form.js-ajax-form');
-            $btn=btn;
+            $btn = btn;
 
-            if(btn.data("loading")){
+            if (btn.data("loading")) {
                 return;
             }
 
@@ -71,31 +109,31 @@ var tableModel = (function () {
             }
         });
 
-        ajaxForm_list.each(function(){
+        ajaxForm_list.each(function () {
             $(this).validate({
-                debug:true,
+                debug: true,
                 //是否在获取焦点时验证
                 //onfocusout : false,
                 //当鼠标掉级时验证
                 //onclick : false,
                 //给未通过验证的元素加效果,闪烁等
                 //highlight : false,
-                onkeyup : function( element, event ){
-                  return;
+                onkeyup: function (element, event) {
+                    return;
                 },
-                showErrors:function(errorMap, errorArr){
-                    if(parseInt(errorArr.length) > 0){
+                showErrors: function (errorMap, errorArr) {
+                    if (parseInt(errorArr.length) > 0) {
                         $(errorArr[0].element).focus();
                         layer.msg(errorArr[0].message, {icon: 2});
                     }
                 },
-                submitHandler:function(form){
-                    var $form= $(form);
+                submitHandler: function (form) {
+                    var $form = $(form);
                     $form.ajaxSubmit({
                         url: $btn.data('action') ? $btn.data('action') : $form.attr('action'),
                         dataType: 'json',
                         beforeSubmit: function (arr, $form, options) {
-                            $btn.data("loading",true);
+                            $btn.data("loading", true);
                             var text = $btn.text();
                             $btn.text(text + '中...').prop('disabled', true).addClass('disabled');
                         },
@@ -112,16 +150,16 @@ var tableModel = (function () {
                                         }
                                     }
                                 });
-                            }else if(data.state === 'error'){
+                            } else if (data.state === 'error') {
                                 layer.msg(data.msg, {icon: 2});
                             }
                         },
-                        error:function(xhr,e,statusText){
+                        error: function (xhr, e, statusText) {
                             console.log(statusText);
                             operaModel.reloadPage(window);//刷新当前页
                         },
-                        complete: function(){
-                            $btn.data("loading",false);
+                        complete: function () {
+                            $btn.data("loading", false);
                         }
                     });
                 }

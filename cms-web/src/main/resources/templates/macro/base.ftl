@@ -7,7 +7,7 @@
                 <#list menuList as menu>
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-bars"></i>
+                            <i class="fa ${menu.icon}"></i>
                             <span>${menu.name}</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
@@ -17,19 +17,18 @@
                             <ul class="treeview-menu">
                                 <#list menu.child as child>
                                     <li>
-                                        <a target="navTab"
-                                            <#if child.url=""> target_type="iframe" fresh="false"
-                                            </#if>href="${child.url}">
-                                            <#if child.child??>
-                                                <i class="fa fa-bars"></i>
-                                                <span>${child.name}</span>
-                                                <span class="pull-right-container">
-                                                    <i class="fa fa-angle-left pull-right"></i>
-                                                </span>
-                                            <#else >
-                                                <i class="fa fa-circle-o"></i>
-                                                <span>${child.name}</span>
-                                            </#if>
+                                        <#if child.child??>
+                                            <a href="#"
+                                            <i class="fa fa-bars"></i>
+                                            <span>${child.name}</span>
+                                            <span class="pull-right-container">
+                                                <i class="fa fa-angle-left pull-right"></i>
+                                            </span>
+                                        <#else >
+                                            <a target="navTab" href="${child.url}">
+                                            <i class="fa fa-circle-o"></i>
+                                            <span>${child.name}</span>
+                                        </#if>
                                         </a>
                                         <#if child.child??>
                                             <ul class="treeview-menu">
@@ -143,18 +142,14 @@
 <!-- iCheck -->
 <link rel="stylesheet" href="adminlte/plugins/iCheck/flat/blue.css">
 
-<!-- fullCalendar 2.2.5-->
-<link rel="stylesheet" href="adminlte/plugins/fullcalendar/fullcalendar.min.css">
-<link rel="stylesheet" href="adminlte/plugins/fullcalendar/fullcalendar.print.css" media="print">
 <link rel="stylesheet" href="adminlte/plugins/jquery-treegrid-master/css/jquery.treegrid.css"></link>
-<!-- Ion Slider -->
-<link rel="stylesheet" href="adminlte/plugins/ionslider/ion.rangeSlider.css">
-<!-- ion slider Nice -->
-<link rel="stylesheet" href="adminlte/plugins/ionslider/ion.rangeSlider.skinNice.css">
 <!-- bootstrap slider -->
 <link rel="stylesheet" href="adminlte/plugins/bootstrap-slider/slider.css">
 <!-- bootstrap-table -->
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+<#--bootstrap-iconpicker-->
+<link rel="stylesheet" href="adminlte/plugins/bootstrap-iconpicker/bootstrap-iconpicker.min.css">
+
 <!-- treeview-->
 <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css" />
 <style>
@@ -170,26 +165,6 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-<script>
-    function onClickCheckbox(clickName, target) {
-        var status = false;
-        if (document.getElementById(clickName).checked) {
-            status = true;
-        }
-        var list = document.getElementsByName(target);
-        for (var i = 0; i < list.length; i++) {
-            list[i].checked = status;
-        }
-    }
-
-    function iFrameHeight() {
-        var ifm = document.getElementById("content");
-        var subWeb = document.frames ? document.frames["content"].document : ifm.contentDocument;
-        if (ifm != null && subWeb != null) {
-            ifm.height = subWeb.body.scrollHeight;
-        }
-    }
-</script>
 </#macro>
 
 <#macro jsFile>
@@ -201,8 +176,8 @@
 <!-- Slimscroll -->
 <script src="adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- AdminLTE App -->
-<script src="adminlte/dist/js/app.js"></script>
 <script src="adminlte/dist/js/common.js"></script>
+<script src="adminlte/dist/js/app.js"></script>
 <!-- 以上JS为页面必须 -->
 
 <!-- jQuery UI 1.11.bootstrap-select -->
@@ -211,8 +186,6 @@
 <script src="adminlte/plugins/jquery-treegrid-master/js/jquery.treegrid.bootstrap3.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<!-- SlimScroll 1.3.0 -->
-<script src="adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- iCheck -->
 <script src="adminlte/plugins/iCheck/icheck.min.js"></script>
 <!-- InputMask -->
@@ -229,34 +202,19 @@
 <!-- bootstrap select -->
 <script src="adminlte/plugins/bootstrap-select/bootstrap-select.min.js"></script>
 <script src="adminlte/plugins/bootstrap-select/i18n/defaults-zh_CN.js"></script>
-<!-- Ion Slider -->
-<script src="adminlte/plugins/ionslider/ion.rangeSlider.min.js"></script>
 <!-- Bootstrap slider -->
 <script src="adminlte/plugins/bootstrap-slider/bootstrap-slider.js"></script>
 <!-- bootstrap-table -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+<#--bootstrap-iconpicker-->
+<script type="text/javascript" src="adminlte/plugins/bootstrap-iconpicker/bootstrap-iconpicker-iconset-all.min.js"></script>
+<script type="text/javascript" src="adminlte/plugins/bootstrap-iconpicker/bootstrap-iconpicker.min.js"></script>
 <!-- validate-->
-<script src="adminlte/plugins/validate/jquery.validate.js"></script>
+<script type="text/javascript" src="adminlte/plugins/validate/jquery.validate.js"></script>
 <!-- treeview-->
-<script src="adminlte/plugins/tree/treeview.js"></script>z
+<script type="text/javascript" src="adminlte/plugins/tree/treeview.js"></script>z
 <script type="text/javascript" src="//cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
-<script type="text/javascript">
-    var list_ajax;
-    var date_ajax;
-    //当你需要多条件查询，你可以调用此方法，动态修改参数传给服务器
-    //查询添加的时候需要重写该方法，每个页面查询参数不一样，请参考user/list 葛永亮 2017-9-14
-    window.reloadTable = function (oTable,opt) {
-        oTable.bootstrapTable('refresh', opt);
-    }
-</script>
-<#--关闭model时清空内容-->
-<script type="text/javascript">
-    $("#lgModal").on("hide.bs.modal", function () {
-        $(this).removeData("bs.modal");
-        $(".modal-body").children().remove();
-    });
-</script>
 </#macro>
 
 <#macro setting>
