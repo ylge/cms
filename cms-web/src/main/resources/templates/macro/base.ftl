@@ -24,18 +24,18 @@
                                             <span class="pull-right-container">
                                                 <i class="fa fa-angle-left pull-right"></i>
                                             </span>
+                                            </a>
                                         <#else >
                                             <a target="navTab" href="${child.url}">
                                             <i class="fa fa-circle-o"></i>
                                             <span>${child.name}</span>
+                                            </a>
                                         </#if>
-                                        </a>
                                         <#if child.child??>
                                             <ul class="treeview-menu">
                                                 <#list child.child as child>
                                                     <li>
-                                                        <a target="navTab" <#if child.url=""> target_type="iframe"
-                                                           fresh="false" </#if>href="${child.url}">
+                                                        <a target="navTab" href="${child.url}">
                                                             <i class="fa fa-circle-o"></i> <span>${child.name}</span>
                                                         </a>
                                                     </li>
@@ -117,9 +117,7 @@
 <!-- Bootstrap 3.3.6 -->
 <link rel="stylesheet" href="adminlte/plugins/bootstrap/css/bootstrap.min.css">
 <!-- Font Awesome -->
-<link rel="stylesheet" href="adminlte/dist/css/font-awesome.min.css">
-<!-- Ionicons -->
-<link rel="stylesheet" href="adminlte/dist/css/ionicons.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <!-- Theme style -->
 <link rel="stylesheet" href="adminlte/dist/css/AdminLTE.min.css">
 <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -149,15 +147,8 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
 <#--bootstrap-iconpicker-->
 <link rel="stylesheet" href="adminlte/plugins/bootstrap-iconpicker/bootstrap-iconpicker.min.css">
-
 <!-- treeview-->
 <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css" />
-<style>
-    .active .pull-right-container {
-        transform: rotate(-90deg);
-        transition: all .3s;
-    }
-</style>
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -172,7 +163,7 @@
 <script src="adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="adminlte/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="adminlte/plugins/fastclick/fastclick.js"></script>
+<#--<script src="adminlte/plugins/fastclick/fastclick.js"></script>-->
 <!-- Slimscroll -->
 <script src="adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- AdminLTE App -->
