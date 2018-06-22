@@ -7,9 +7,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 /**
  * @author geyl
- * @Title: ${CLASS_NAME}
+ * @Title: MyWebAppConfigurer
  * @Package com.ehu.web.config
- * @Description: TODO
  * @date 2018-5-28 17:21
  */
 @Configuration

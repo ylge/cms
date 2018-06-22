@@ -1,5 +1,6 @@
 package com.ehu.controller;
 
+import com.ehu.annotation.Log;
 import com.ehu.base.BaseController;
 import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysMenu;
@@ -54,6 +55,7 @@ public class SysMenuController extends BaseController {
      * @param menu
      * @return
      */
+    @Log(desc="编辑菜单")
     @PostMapping(value = "save")
     public @ResponseBody
     Result save(SysMenu menu){
@@ -79,6 +81,7 @@ public class SysMenuController extends BaseController {
      * @param id
      * @return
      */
+    @Log(desc="删除菜单")
     @RequestMapping(value = "delete/{id}")
     public @ResponseBody
     Result delete(@PathVariable String id){

@@ -1,5 +1,6 @@
 package com.ehu.controller;
 
+import com.ehu.annotation.Log;
 import com.ehu.base.BaseController;
 import com.ehu.bean.PageResult;
 import com.ehu.bean.Result;
@@ -72,6 +73,7 @@ public class SysCompanyController extends BaseController {
      　* @author geyl
      　* @date 2018-5-22 13:35
      　*/
+    @Log(desc="编辑公司")
     @PutMapping(value = "save")
     public @ResponseBody
     Result save(SysCompany sysCompany ){

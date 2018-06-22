@@ -121,7 +121,7 @@ public abstract class BaseServiceImpl<T, E extends Serializable> implements Base
         Integer limit = (Integer) ReflectHelper.getFieldValue(t, "limit");
         String order = (String) ReflectHelper.getFieldValue(t, "order");
         String sort = (String) ReflectHelper.getFieldValue(t, "sort");
-        PageHelper.startPage(offset,limit,CamelCaseUtil.toUnderlineName(sort+" "+order));
+        PageHelper.startPage(offset/limit+1,limit,CamelCaseUtil.toUnderlineName(sort+" "+order));
         List<T> tList = getMappser().selectListByPage(t);
         PageResult<T> result = new PageResult<>(new PageInfo<>(tList));
         return result;

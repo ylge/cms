@@ -26,9 +26,9 @@ public class SysOperationLog implements Serializable {
      */
 	private String userName;
     /**
-     * 被操作类
+     * 用户操作
      */
-	private String className;
+	private String operation;
     /**
      * 方法
      */
@@ -37,14 +37,6 @@ public class SysOperationLog implements Serializable {
      * 参数
      */
 	private String args;
-    /**
-     * 原始数据
-     */
-	private String originData;
-    /**
-     * 新数据
-     */
-	private String newData;
 
 	private Date createTime;
 

@@ -7,6 +7,6 @@
 <body>
 <h1> 系统异常 </h1>
 <h3>${url}</h3>
-<h3>原因：${exception}</h3>
+<h3>原因：${message}</h3>
 </body>
 </html>

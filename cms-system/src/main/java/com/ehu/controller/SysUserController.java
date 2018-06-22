@@ -4,6 +4,7 @@ import cn.afterturn.easypoi.entity.vo.NormalExcelConstants;
 import cn.afterturn.easypoi.excel.entity.ExportParams;
 import cn.afterturn.easypoi.excel.entity.enmus.ExcelType;
 import cn.afterturn.easypoi.view.PoiBaseView;
+import com.ehu.annotation.Log;
 import com.ehu.base.BaseController;
 import com.ehu.bean.PageResult;
 import com.ehu.bean.Result;
@@ -72,6 +73,7 @@ public class SysUserController extends BaseController {
      　* @author geyl
      　* @date 2018-5-22 13:35
      　*/
+//    @Log(desc="新增用户")
     @PostMapping(value = "save")
     public @ResponseBody
     Result save(UserVO userVO ) {
@@ -83,6 +85,7 @@ public class SysUserController extends BaseController {
      * @param id
      * @return
      */
+    @Log(desc="删除用户")
     @GetMapping(value = "delete/{id}")
     public @ResponseBody
     Result delete(@PathVariable String id){

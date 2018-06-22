@@ -1372,7 +1372,7 @@ function alertMsg(text, type) {
     $("#alertMsgBox").attr("class", "box box-" + type + " box-solid").stop().slideDown("slow").find(".box-body").html(text);
     alertsetTime = setTimeout(function () {
         $("#alertMsgBox").slideUp("slow");
-    }, 4000)
+    }, 3000)
 }
 
 // 动态提示

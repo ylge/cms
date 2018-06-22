@@ -4,7 +4,7 @@ MySQL - 5.7.19 : Database - ehu_cms
 *********************************************************************
 */
 
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 /*!40101 SET SQL_MODE=''*/;
 
@@ -12,7 +12,7 @@ MySQL - 5.7.19 : Database - ehu_cms
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`ehu_cms` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`ehu_cms` /*!40100 DEFAULT CHARACTER SET utf8mb4mb4 */;
 
 USE `ehu_cms`;
 
@@ -36,7 +36,7 @@ CREATE TABLE `sys_company` (
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '修改日期',
   `update_by` varchar(50) DEFAULT NULL COMMENT '修改人',
   PRIMARY KEY (`company_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `sys_company` */
 
@@ -59,7 +59,7 @@ CREATE TABLE `sys_department` (
   `update_by` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`department_id`),
   UNIQUE KEY `index_department_code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `sys_department` */
 
@@ -72,7 +72,7 @@ CREATE TABLE `sys_department_user` (
   `department_id` int(8) DEFAULT NULL COMMENT '部门编码',
   `user_id` int(8) DEFAULT NULL COMMENT '用户号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `sys_department_user` */
 
@@ -87,7 +87,7 @@ CREATE TABLE `sys_dict` (
   `name` varchar(255) DEFAULT NULL,
   `tips` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `sys_dict` */
 
@@ -123,7 +123,7 @@ CREATE TABLE `sys_menu` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `update_by` varchar(50) DEFAULT NULL COMMENT '修改人',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `sys_menu` */
 
@@ -186,7 +186,7 @@ CREATE TABLE `sys_notice` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `creater` int(11) DEFAULT NULL COMMENT '创建人',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `sys_notice` */
 
@@ -205,7 +205,7 @@ CREATE TABLE `sys_operation_log` (
   `new_data` text COMMENT '新数据',
   `create_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `sys_operation_log` */
 
@@ -224,7 +224,7 @@ CREATE TABLE `sys_role` (
   PRIMARY KEY (`role_id`),
   UNIQUE KEY `unique_role_name` (`name`),
   UNIQUE KEY `unique_role_value` (`value`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `sys_role` */
 
@@ -239,7 +239,7 @@ CREATE TABLE `sys_role_menu` (
   `role_id` int(11) DEFAULT NULL,
   `menu_id` int(11) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `sys_role_menu` */
 
@@ -326,7 +326,7 @@ CREATE TABLE `sys_user` (
   `update_by` datetime DEFAULT NULL COMMENT '修改人',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `unique_user_username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `sys_user` */
 
@@ -344,7 +344,7 @@ CREATE TABLE `sys_user_role` (
   `create_time` datetime DEFAULT NULL,
   `create_by` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `sys_user_role` */
 

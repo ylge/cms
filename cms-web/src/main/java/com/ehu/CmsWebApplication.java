@@ -6,10 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan("com.ehu")
 @MapperScan("com.ehu.dao")
-@ComponentScan(basePackages ="com.ehu")
 public class CmsWebApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(CmsWebApplication.class, args);
     }
