@@ -50,6 +50,11 @@
         });
     });
 
+    function queryParams(params) {
+        params.name= $("#name").val()
+        return params;
+    }
+
     function operateFormatter(value, row, index) {
         return [
             <@shiro.hasPermission name="system/role/edit">,
@@ -67,11 +72,6 @@
 
     function roleToListAjax() {
         list_ajax = role_tab;
-    }
-
-    function queryParams(params) {
-        params.name= $("#name").val()
-        return params;
     }
 
     function roleReload() {

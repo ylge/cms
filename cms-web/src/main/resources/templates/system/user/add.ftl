@@ -74,7 +74,7 @@
         if (!userParam.valid()) {
             return;
         }
-        $.post('system/user/save', userParam.serialize(), function (data) {
+        $.post('system/user/add', userParam.serialize(), function (data) {
             if (data.code === 200) {
                 $("#lgModal").modal('hide');
                 alertMsg("添加成功", "success");

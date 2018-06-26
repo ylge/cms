@@ -21,20 +21,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <table id="company_tab" class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                            <th>序号</th>
-                            <th>公司名称</th>
-                            <th>公司简称</th>
-                            <th>公司编码</th>
-                            <th>地址</th>
-                            <th>状态</th>
-                            <th>创建时间</th>
-                            <th>创建人</th>
-                            <th>操作</th>
-                        </tr>
-                        </thead>
+                    <table id="company_tab">
                     </table>
                 </div>
             </div>

@@ -77,10 +77,10 @@ public class SysDepartmentController extends BaseController {
      　* @author geyl
      　* @date 2018-5-22 13:35
      　*/
-    @PutMapping(value = "save")
+    @PutMapping(value = "add")
     public @ResponseBody
-    Result save(SysDepartment sysDepartment ) {
-        return sysDepartmentService.save(sysDepartment);
+    Result addDepartment(SysDepartment sysDepartment ) {
+        return sysDepartmentService.addDepartment(sysDepartment);
     }
 
 }

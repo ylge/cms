@@ -16,4 +16,6 @@ import java.util.List;
 public interface SysUserRoleMapper extends BaseMapper<SysUserRole,String> {
 
     List<SysUserRole> selectByUserId(Integer userId);
+
+    void deleteByUserId(String userId);
 }

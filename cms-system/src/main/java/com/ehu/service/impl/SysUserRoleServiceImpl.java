@@ -40,4 +40,9 @@ public class SysUserRoleServiceImpl extends BaseServiceImpl<SysUserRole, String>
     public List<SysUserRole> selectByUserId(Integer userId) {
         return sysUserRoleMapper.selectByUserId(userId);
     }
+
+    @Override
+    public void deleteByUserId(String userId) {
+        sysUserRoleMapper.deleteByUserId(userId);
+    }
 }

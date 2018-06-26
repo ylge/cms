@@ -31,14 +31,18 @@ public class SysDepartmentServiceImpl extends BaseServiceImpl<SysDepartment, Str
         return sysDepartmentMapper;
     }
 
-    @Override
     public Result save(SysDepartment sysDepartment) {
         sysDepartment.setCompanyName(companyService.selectByPrimaryKey(sysDepartment.getCompanyId().toString()).getShortName());
         if (sysDepartment.getDepartmentId() == null) {
-            this.insertSelective(sysDepartment);
+            super.insertSelective(sysDepartment);
         } else {
-            this.updateByPrimaryKeySelective(sysDepartment);
+            super.updateByPrimaryKeySelective(sysDepartment);
         }
         return Result.OK();
+    }
+
+    @Override
+    public Result addDepartment(SysDepartment sysDepartment) {
+        return save(sysDepartment);
     }
 }

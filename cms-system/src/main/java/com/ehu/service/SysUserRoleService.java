@@ -18,4 +18,6 @@ import java.util.List;
 public interface SysUserRoleService extends BaseService<SysUserRole,String> {
 
     List<SysUserRole> selectByUserId(Integer userId);
+
+    void deleteByUserId(String userId);
 }

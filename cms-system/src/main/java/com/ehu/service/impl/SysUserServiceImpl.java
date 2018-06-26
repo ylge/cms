@@ -4,11 +4,9 @@ import com.ehu.base.BaseMapper;
 import com.ehu.base.impl.BaseServiceImpl;
 import com.ehu.bean.Result;
 import com.ehu.bean.entity.system.SysDepartmentUser;
-import com.ehu.bean.entity.system.SysRole;
 import com.ehu.bean.entity.system.SysUser;
 import com.ehu.bean.entity.system.SysUserRole;
 import com.ehu.dao.SysUserMapper;
-import com.ehu.dao.SysUserRoleMapper;
 import com.ehu.service.SysDepartmentUserService;
 import com.ehu.service.SysUserRoleService;
 import com.ehu.service.SysUserService;
@@ -23,7 +21,7 @@ import java.util.Arrays;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author geyongliang
@@ -50,20 +48,33 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String> impleme
     }
 
     @Override
+    public Result deleteUser(String userId) {
+        //删除用户
+        super.deleteByPrimaryKey(userId);
+        //删除用户部门
+        sysUserRoleService.deleteByUserId(userId);
+        //删除用户角色
+        departmentUserService.deleteByUserId(userId);
+        return Result.OK();
+    }
     public Result save(UserVO userVO) {
         SysUser sysUser = new SysUser();
-        BeanUtils.copyProperties(userVO,sysUser);
+        sysUser.setName(userVO.getName());
+        sysUser.setPhone(userVO.getPhone());
+        sysUser.setUsername(userVO.getUsername());
+//        BeanUtils.copyProperties(userVO, sysUser);
         String salt = ShiroKit.getRandomSalt(5);
         sysUser.setSalt(salt);
         String saltPwd = ShiroKit.md5(sysUser.getPassword(), salt);
         sysUser.setPassword(saltPwd);
-        if(ObjectUtils.isEmpty(userVO.getUserId())){
-            this.insertSelective(sysUser);
-        }else {
-            this.updateByPrimaryKeySelective(sysUser);
+        if (ObjectUtils.isEmpty(userVO.getUserId())) {
+            super.insertSelective(sysUser);
+        } else {
+            super.updateByPrimaryKeySelective(sysUser);
         }
+        int a = 1 / 0;
         //增加角色
-        if(!ObjectUtils.isEmpty(userVO.getRoles())){
+        if (!ObjectUtils.isEmpty(userVO.getRoles())) {
             String[] roles = userVO.getRoles().split(",");
             Arrays.stream(roles).forEach(s -> {
                 SysUserRole sysUserRole = new SysUserRole();
@@ -73,7 +84,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String> impleme
             });
         }
         //增加部门
-        if(!ObjectUtils.isEmpty(userVO.getDepartmentId())){
+        if (!ObjectUtils.isEmpty(userVO.getDepartmentId())) {
             SysDepartmentUser sysDepartmentUser = new SysDepartmentUser();
             sysDepartmentUser.setUserId(sysUser.getUserId());
             sysDepartmentUser.setDepartmentId(Integer.parseInt(userVO.getDepartmentId()));
@@ -81,4 +92,15 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String> impleme
         }
         return Result.OK();
     }
+
+    @Override
+    public Result addUser(UserVO userVO) {
+        return save(userVO);
+    }
+
+    @Override
+    public Result updateUser(UserVO userVO) {
+        return save(userVO);
+    }
+
 }

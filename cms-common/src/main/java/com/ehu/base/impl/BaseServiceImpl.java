@@ -8,7 +8,6 @@ import com.ehu.util.CamelCaseUtil;
 import com.ehu.util.ReflectHelper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.util.ObjectUtils;
 
@@ -21,7 +20,6 @@ import java.util.List;
  * @author geyl
  * @date 2017/12/13.
  */
-@Slf4j
 public abstract class BaseServiceImpl<T, E extends Serializable> implements BaseService<T, E> {
 
     /**

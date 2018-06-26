@@ -17,5 +17,10 @@ public interface SysUserService extends BaseService<SysUser,String > {
 
     SysUser getUserByName(String username);
 
-    Result save(UserVO sysUser) ;
+    Result deleteUser(String id);
+
+    Result addUser(UserVO userVO);
+
+    Result updateUser(UserVO userVO);
+
 }

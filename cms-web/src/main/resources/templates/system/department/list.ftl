@@ -28,20 +28,6 @@
             <div class="row">
                 <div class="col-sm-12">
                     <table id="department_tab" class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>部门名称</th>
-                            <th>所属公司</th>
-                            <th>描述</th>
-                            <th>状态</th>
-                            <th>创建时间</th>
-                            <th>创建人</th>
-                            <th>修改时间</th>
-                            <th>修改人</th>
-                            <th>操作</th>
-                        </tr>
-                        </thead>
                     </table>
                 </div>
             </div>

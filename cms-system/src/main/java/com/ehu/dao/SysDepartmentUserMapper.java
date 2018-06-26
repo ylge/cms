@@ -13,4 +13,5 @@ import com.ehu.bean.entity.system.SysDepartmentUser;
  */
 public interface SysDepartmentUserMapper extends BaseMapper<SysDepartmentUser,String> {
 
+    void deleteByUserId(String userId);
 }

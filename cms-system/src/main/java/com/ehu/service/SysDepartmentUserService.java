@@ -12,5 +12,6 @@ import com.ehu.bean.entity.system.SysDepartmentUser;
  * @since 2018-05-11
  */
 public interface SysDepartmentUserService extends BaseService<SysDepartmentUser,String> {
-	
+
+    void deleteByUserId(String userId);
 }

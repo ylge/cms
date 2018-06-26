@@ -44,7 +44,7 @@
     function securitySave() {
         if ($("#departmentAddForm").valid()) {
             $.ajax({
-                url: 'system/department/save',
+                url: 'system/department/add',
                 type: 'put',
                 dataType: 'json',
                 data: $("#departmentAddForm").serialize(),

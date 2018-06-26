@@ -2,6 +2,7 @@ package com.ehu.vo;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Date;
  * @date 2018-6-9 15:34
  */
 @Data
-public class RoleMenuVO {
+public class RoleMenuVO implements Serializable {
 
     private String roleId;
     /**

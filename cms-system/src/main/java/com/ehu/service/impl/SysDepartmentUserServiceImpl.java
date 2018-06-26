@@ -25,4 +25,9 @@ public class SysDepartmentUserServiceImpl extends BaseServiceImpl<SysDepartmentU
     public BaseMapper<SysDepartmentUser, String> getMappser() {
         return sysDepartmentUserMapper;
     }
+
+    @Override
+    public void deleteByUserId(String userId) {
+        sysDepartmentUserMapper.deleteByUserId(userId);
+    }
 }
