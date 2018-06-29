@@ -21,9 +21,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author zhuxiaomeng
+ * @author geyl
  * @date 2018/1/2.
- * @email 154040976@qq.com
  */
 @Configuration
 public class DruidConfig {
