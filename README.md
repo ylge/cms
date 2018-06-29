@@ -1,5 +1,6 @@
 #cms
 >此项目后台管理的基础框架
+
 ##采用技术
 后台框架：Springboot + Mybatis + Freemarker
 
@@ -12,10 +13,12 @@
 页面展示：AdminLTE + BootStrap
 
 报表导出：EasyPoi
+
 ##开发说明
 1.导入 db/cms_init.sql
 
 2.修改数据库配置文件
+
 ##项目结构
 1.cms-web是web项目,包括一些基础配置信息
 
