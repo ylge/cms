@@ -14,9 +14,8 @@ import java.lang.annotation.*;
 @Documented
 @Inherited
 public @interface Log {
-    public enum LOG_TYPE {ADD, UPDATE, DEL, SELECT, ATHOR}
-
-    ;
+    
+    enum LOG_TYPE {ADD, UPDATE, DEL, SELECT, ATHOR}
 
     /**
      * 内容

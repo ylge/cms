@@ -4,6 +4,7 @@ import cn.afterturn.easypoi.entity.vo.NormalExcelConstants;
 import cn.afterturn.easypoi.excel.entity.ExportParams;
 import cn.afterturn.easypoi.excel.entity.enmus.ExcelType;
 import cn.afterturn.easypoi.view.PoiBaseView;
+import com.ehu.annotation.Log;
 import com.ehu.base.BaseController;
 import com.ehu.bean.PageResult;
 import com.ehu.bean.Result;
@@ -40,7 +41,6 @@ public class SysUserController extends BaseController {
     private SysRoleService sysRoleService;
     @Autowired
     private SysDepartmentService sysDepartmentService;
-    private UserVO userVO;
 
     @GetMapping(value = "list")
     public ModelAndView list(ModelAndView modelAndView) {
@@ -73,7 +73,7 @@ public class SysUserController extends BaseController {
      　* @author geyl
      　* @date 2018-5-22 13:35
      　*/
-//    @Log(desc="新增用户")
+    @Log(desc="新增用户")
     @PostMapping(value = "add")
     public @ResponseBody
     Result addUser(UserVO userVO ) throws Exception {
