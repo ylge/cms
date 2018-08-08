@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
  * @author geyl
  * @Title: ${CLASS_NAME}
  * @Package com.ehu.common.bean
- * @Description: TODO
  * @date 2018-5-23 16:02
  */
 @NoArgsConstructor

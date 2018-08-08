@@ -1,7 +1,7 @@
 package com.ehu.bean.entity.system;
 
 import cn.afterturn.easypoi.excel.annotation.Excel;
-import com.ehu.bean.PageBean;
+import com.ehu.bean.PageRequest;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -17,7 +17,7 @@ import java.util.List;
  * @since 2018-05-11
  */
 @Data
-public class SysUser extends PageBean implements Serializable{
+public class SysUser extends PageRequest implements Serializable{
 
 	private Integer userId;
     /**

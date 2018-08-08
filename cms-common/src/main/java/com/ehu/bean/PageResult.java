@@ -10,7 +10,6 @@ import java.util.List;
  * @author geyl
  * @Title: ${CLASS_NAME}
  * @Package com.ehu.bean
- * @Description: TODO
  * @date 2018-6-7 17:45
  */
 public class PageResult<T> implements Serializable {

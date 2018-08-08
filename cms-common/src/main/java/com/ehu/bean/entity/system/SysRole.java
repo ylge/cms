@@ -1,6 +1,6 @@
 package com.ehu.bean.entity.system;
 
-import com.ehu.bean.PageBean;
+import com.ehu.bean.PageRequest;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,7 +15,7 @@ import java.util.Date;
  * @since 2018-05-11
  */
 @Data
-public class SysRole extends PageBean implements Serializable{
+public class SysRole extends PageRequest implements Serializable{
 
 
 	private Integer roleId;
