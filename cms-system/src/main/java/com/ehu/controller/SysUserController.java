@@ -80,6 +80,14 @@ public class SysUserController extends BaseController {
         return sysUserService.saveUser(userVO);
     }
 
+    /**
+     　* @description:修改用户
+     　* @param
+     　* @return
+     　* @author geyl
+     　* @date 2018-5-22 13:35
+     　*/
+    @Log(desc="修改用户")
     @PostMapping(value = "update")
     public @ResponseBody
     Result update(UserVO userVO ) throws Exception {
@@ -91,6 +99,7 @@ public class SysUserController extends BaseController {
      * @param id
      * @return
      */
+    @Log(desc="删除用户")
     @GetMapping(value = "delete/{id}")
     public @ResponseBody
     Result delete(@PathVariable String id){

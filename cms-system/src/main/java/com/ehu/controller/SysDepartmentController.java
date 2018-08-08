@@ -1,5 +1,6 @@
 package com.ehu.controller;
 
+import com.ehu.annotation.Log;
 import com.ehu.base.BaseController;
 import com.ehu.bean.PageResult;
 import com.ehu.bean.Result;
@@ -77,10 +78,26 @@ public class SysDepartmentController extends BaseController {
      　* @author geyl
      　* @date 2018-5-22 13:35
      　*/
-    @PutMapping(value = "add")
+    @Log(desc="部门信息新增")
+    @PostMapping(value = "add")
     public @ResponseBody
     Result addDepartment(SysDepartment sysDepartment ) {
-        return sysDepartmentService.addDepartment(sysDepartment);
+        return sysDepartmentService.saveDepartment(sysDepartment);
     }
+
+    /**
+     　* @description:修改部门
+     　* @param
+     　* @return
+     　* @author geyl
+     　* @date 2018-5-22 13:35
+     　*/
+    @Log(desc="部门信息修改")
+    @PostMapping(value = "update")
+    public @ResponseBody
+    Result updateDepartment(SysDepartment sysDepartment ) {
+        return sysDepartmentService.saveDepartment(sysDepartment);
+    }
+
 
 }

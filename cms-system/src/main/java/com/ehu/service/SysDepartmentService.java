@@ -14,5 +14,5 @@ import com.ehu.bean.entity.system.SysDepartment;
  */
 public interface SysDepartmentService extends BaseService<SysDepartment,String> {
 
-    Result addDepartment(SysDepartment sysDepartment);
+    Result saveDepartment(SysDepartment sysDepartment);
 }

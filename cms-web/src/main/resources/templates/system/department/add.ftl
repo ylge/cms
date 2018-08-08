@@ -45,7 +45,7 @@
         if ($("#departmentAddForm").valid()) {
             $.ajax({
                 url: 'system/department/add',
-                type: 'put',
+                type: 'post',
                 dataType: 'json',
                 data: $("#departmentAddForm").serialize(),
                 success: function (data) {

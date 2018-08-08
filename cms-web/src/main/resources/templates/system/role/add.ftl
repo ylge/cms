@@ -62,7 +62,7 @@
             role.name = $("#roleName").val();
             role.remark = $("#roleRemark").val();
             role.menuIds = _menuIds.join();
-            $.post('/system/role/save', role, function (data) {
+            $.post('/system/role/add', role, function (data) {
                 if (data.code == 200) {
                     $("#lgModal").modal('hide');
                     alertMsg("添加成功", "success");

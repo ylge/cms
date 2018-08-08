@@ -49,8 +49,8 @@
     function departmentSave() {
         if ($("#departmentEditForm").valid()) {
             $.ajax({
-                url: 'system/department/save',
-                type: 'put',
+                url: 'system/department/update',
+                type: 'post',
                 dataType: 'json',
                 data: $("#departmentEditForm").serialize(),
                 success: function (data) {

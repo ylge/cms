@@ -1,5 +1,6 @@
 package com.ehu.controller;
 
+import com.ehu.annotation.Log;
 import com.ehu.base.BaseController;
 import com.ehu.bean.PageResult;
 import com.ehu.bean.Result;
@@ -100,9 +101,24 @@ public class SysRoleController extends BaseController {
      　* @author geyl
      　* @date 2018-5-22 13:35
      　*/
-    @PostMapping(value = "save")
+    @Log(desc="角色编辑")
+    @PostMapping(value = "add")
     public @ResponseBody
     Result save(RoleMenuVO sysrole ){
+        return sysRoleService.save(sysrole);
+    }
+
+    /**
+     　* @description:编辑角色
+     　* @param
+     　* @return
+     　* @author geyl
+     　* @date 2018-5-22 13:35
+     　*/
+    @Log(desc="角色编辑")
+    @PostMapping(value = "update")
+    public @ResponseBody
+    Result update(RoleMenuVO sysrole ){
         return sysRoleService.save(sysrole);
     }
 

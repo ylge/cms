@@ -73,11 +73,26 @@ public class SysCompanyController extends BaseController {
      　* @author geyl
      　* @date 2018-5-22 13:35
      　*/
-    @Log(desc="编辑公司")
-    @PutMapping(value = "save")
+    @Log(desc="公司信息新增")
+    @PostMapping(value = "add")
     public @ResponseBody
-    Result save(SysCompany sysCompany ){
+    Result addCompany(SysCompany sysCompany ){
         return sysCompanyService.save(sysCompany);
     }
+
+    /**
+     　* @description:编辑公司
+     　* @param
+     　* @return
+     　* @author geyl
+     　* @date 2018-5-22 13:35
+     　*/
+    @Log(desc="公司信息编辑")
+    @PostMapping(value = "update")
+    public @ResponseBody
+    Result updateCompany(SysCompany sysCompany ){
+        return sysCompanyService.save(sysCompany);
+    }
+
 
 }

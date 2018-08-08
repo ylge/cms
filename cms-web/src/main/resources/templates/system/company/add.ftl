@@ -41,8 +41,8 @@
     function companySave() {
         if ($("#companyAddForm").valid()) {
             $.ajax({
-                url: 'system/company/save',
-                type: 'put',
+                url: 'system/company/add',
+                type: 'post',
                 dataType: 'json',
                 data: $("#companyAddForm").serialize(),
                 success: function (data) {

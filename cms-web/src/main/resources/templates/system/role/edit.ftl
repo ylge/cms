@@ -60,7 +60,7 @@
             role.name = $("#roleName").val();
             role.remark = $("#roleRemark").val();
             role.menuIds = _menuIds.join();
-            $.post('/system/role/save', role, function (data) {
+            $.post('/system/role/update', role, function (data) {
                 if (data.code === 200) {
                     $("#lgModal").modal('hide');
                     alertMsg("修改成功", "success");

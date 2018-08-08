@@ -37,8 +37,8 @@
     function companySave() {
         if ($("#companyEditForm").valid()) {
             $.ajax({
-                url: 'system/company/save',
-                type: 'put',
+                url: 'system/company/update',
+                type: 'post',
                 dataType: 'json',
                 data: $("#companyEditForm").serialize(),
                 success: function (data) {
