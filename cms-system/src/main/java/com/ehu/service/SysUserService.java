@@ -19,8 +19,5 @@ public interface SysUserService extends BaseService<SysUser,String > {
 
     Result deleteUser(String id);
 
-    Result addUser(UserVO userVO);
-
-    Result updateUser(UserVO userVO);
-
+    Result saveUser(UserVO userVO) throws Exception;
 }

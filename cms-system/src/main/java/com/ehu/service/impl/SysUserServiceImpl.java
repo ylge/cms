@@ -57,12 +57,11 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String> impleme
         departmentUserService.deleteByUserId(userId);
         return Result.OK();
     }
-    public Result save(UserVO userVO) {
+
+    @Override
+    public Result saveUser(UserVO userVO) throws Exception {
         SysUser sysUser = new SysUser();
-        sysUser.setName(userVO.getName());
-        sysUser.setPhone(userVO.getPhone());
-        sysUser.setUsername(userVO.getUsername());
-//        BeanUtils.copyProperties(userVO, sysUser);
+        BeanUtils.copyProperties(userVO, sysUser);
         String salt = ShiroKit.getRandomSalt(5);
         sysUser.setSalt(salt);
         String saltPwd = ShiroKit.md5(sysUser.getPassword(), salt);
@@ -72,7 +71,6 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String> impleme
         } else {
             super.updateByPrimaryKeySelective(sysUser);
         }
-        int a = 1 / 0;
         //增加角色
         if (!ObjectUtils.isEmpty(userVO.getRoles())) {
             String[] roles = userVO.getRoles().split(",");
@@ -83,6 +81,9 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String> impleme
                 sysUserRoleService.insertSelective(sysUserRole);
             });
         }
+        if(1>=0){
+            throw new Exception("aaa");
+        }
         //增加部门
         if (!ObjectUtils.isEmpty(userVO.getDepartmentId())) {
             SysDepartmentUser sysDepartmentUser = new SysDepartmentUser();
@@ -91,16 +92,6 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String> impleme
             departmentUserService.insertSelective(sysDepartmentUser);
         }
         return Result.OK();
-    }
-
-    @Override
-    public Result addUser(UserVO userVO) {
-        return save(userVO);
-    }
-
-    @Override
-    public Result updateUser(UserVO userVO) {
-        return save(userVO);
     }
 
 }

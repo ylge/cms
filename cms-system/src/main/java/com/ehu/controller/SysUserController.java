@@ -40,6 +40,7 @@ public class SysUserController extends BaseController {
     private SysRoleService sysRoleService;
     @Autowired
     private SysDepartmentService sysDepartmentService;
+    private UserVO userVO;
 
     @GetMapping(value = "list")
     public ModelAndView list(ModelAndView modelAndView) {
@@ -75,14 +76,14 @@ public class SysUserController extends BaseController {
 //    @Log(desc="新增用户")
     @PostMapping(value = "add")
     public @ResponseBody
-    Result addUser(UserVO userVO ) {
-        return sysUserService.addUser(userVO);
+    Result addUser(UserVO userVO ) throws Exception {
+        return sysUserService.saveUser(userVO);
     }
 
     @PostMapping(value = "update")
     public @ResponseBody
-    Result update(UserVO userVO ) {
-        return sysUserService.updateUser(userVO);
+    Result update(UserVO userVO ) throws Exception {
+        return sysUserService.saveUser(userVO);
     }
 
     /**
