@@ -198,14 +198,12 @@ CREATE TABLE `sys_operation_log` (
   `id` bigint(18) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL COMMENT '操作人ID',
   `user_name` varchar(255) DEFAULT NULL COMMENT '操作人姓名',
-  `class_name` varchar(255) DEFAULT NULL COMMENT '被操作类',
+  `operation` varchar(50) DEFAULT NULL COMMENT '用户操作',
   `method` varchar(255) DEFAULT NULL COMMENT '方法',
   `args` varchar(255) DEFAULT NULL COMMENT '参数',
-  `origin_data` text COMMENT '原始数据',
-  `new_data` text COMMENT '新数据',
   `create_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 
 /*Data for the table `sys_operation_log` */
 
