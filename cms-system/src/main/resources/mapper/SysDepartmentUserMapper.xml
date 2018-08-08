@@ -36,4 +36,7 @@
 			</if>
 		</trim>
 	</insert>
+	<delete id="deleteByUserId" parameterType="java.lang.String">
+		delete from sys_department_user where user_id=#{userId}
+	</delete>
 </mapper>

@@ -81,9 +81,6 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String> impleme
                 sysUserRoleService.insertSelective(sysUserRole);
             });
         }
-        if(1>=0){
-            throw new Exception("aaa");
-        }
         //增加部门
         if (!ObjectUtils.isEmpty(userVO.getDepartmentId())) {
             SysDepartmentUser sysDepartmentUser = new SysDepartmentUser();
