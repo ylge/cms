@@ -63,16 +63,14 @@
     function menuAdd() {
         if ($("#menuAddForm").valid()) {
             console.log($("#menuAddForm").serialize());
-            $.post('/system/menu/save', $("#menuAddForm").serialize(),
-                    function (data) {
-                        if (data.code === 200) {
-                            alertMsg("添加成功", "success");
-                            $("#lgModal").modal('hide');
-                        } else {
-                            alertMsg("添加失败:" + data.msg, "success");
-                        }
-                    }
-            );
+            $.post('/system/menu/save', $("#menuAddForm").serialize(), function (data) {
+                if (data.code === 200) {
+                    alertMsg("添加成功", "success");
+                    $("#lgModal").modal('hide');
+                } else {
+                    alertMsg("添加失败:" + data.msg, "success");
+                }
+            });
         }
     }
 

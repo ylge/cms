@@ -71,7 +71,4 @@
             });
         }
     });
-    function menuReload(data){
-        $("#"+data).hide();
-    }
 </script>

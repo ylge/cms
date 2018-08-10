@@ -11,7 +11,6 @@ import java.util.Map;
  * @author geyl
  * @Title: ${CLASS_NAME}
  * @Package com.ehu.web.interceptor
- * @Description: TODO
  * @date 2018-5-28 17:12
  */
 public class CommonInterceptor implements HandlerInterceptor {

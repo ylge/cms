@@ -63,18 +63,12 @@
     });
 
     function menuSave() {
-        $.ajax({
-            url: '/system/menu/save',
-            type: 'post',
-            dataType: 'json',
-            data: $("#menuEditForm").serialize(),
-            success: function (data) {
-                if (data.code === 200) {
-                    $("#lgModal").modal('hide');
-                    alertMsg("更新成功", "success");
-                } else {
-                    alertMsg("更新失败:" + data.msg, "success");
-                }
+        $.post('/system/menu/save', $("#menuEditForm").serialize(), function (data) {
+            if (data.code === 200) {
+                $("#lgModal").modal('hide');
+                alertMsg("更新成功", "success");
+            } else {
+                alertMsg("更新失败:" + data.msg, "success");
             }
         });
     }

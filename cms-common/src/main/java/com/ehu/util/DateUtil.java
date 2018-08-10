@@ -11,7 +11,6 @@ import java.util.Date;
  * @author geyl
  * @Title: ${CLASS_NAME}
  * @Package com.ehu.util
- * @Description: TODO
  * @date 2018-6-19 18:11
  */
 public class DateUtil {

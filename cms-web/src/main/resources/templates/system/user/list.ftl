@@ -69,7 +69,7 @@
     }
 
     function queryParams(params) {
-        params.username= $("#username").val()
+        params.username = $("#username").val();
         return params;
     }
 
