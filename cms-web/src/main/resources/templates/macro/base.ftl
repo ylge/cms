@@ -5,7 +5,7 @@
             <li class="header">主导航</li>
             <#if menuList??>
                 <#list menuList as menu>
-                    <li class="treeview">
+                    <li class="treeview active">
                         <a href="#">
                             <i class="fa ${menu.icon}"></i>
                             <span>${menu.name}</span>
@@ -14,26 +14,19 @@
                             </span>
                         </a>
                         <#if menu.child??>
-                            <ul class="treeview-menu">
-                                <#list menu.child as child>
-                                    <li>
-                                        <#if child.child??>
-                                            <a href="#"
-                                            <i class="fa fa-bars"></i>
-                                            <span>${child.name}</span>
-                                            <span class="pull-right-container">
-                                                <i class="fa fa-angle-left pull-right"></i>
-                                            </span>
+                            <ul class="treeview-menu active">
+                                <#list menu.child as childMenu>
+                                    <li class="treeview">
+                                        <#if childMenu.child??>
+                                            <a href="#">
+                                                <i class="fa ${childMenu.icon}"></i>
+                                                <span>${childMenu.name}</span>
+                                                <span class="pull-right-container">
+                                                    <i class="fa fa-angle-left pull-right"></i>
+                                                </span>
                                             </a>
-                                        <#else >
-                                            <a target="navTab" href="${child.url}">
-                                            <i class="fa fa-circle-o"></i>
-                                            <span>${child.name}</span>
-                                            </a>
-                                        </#if>
-                                        <#if child.child??>
                                             <ul class="treeview-menu">
-                                                <#list child.child as child>
+                                                <#list childMenu.child as child>
                                                     <li>
                                                         <a target="navTab" href="${child.url}">
                                                             <i class="fa fa-circle-o"></i> <span>${child.name}</span>
@@ -41,6 +34,11 @@
                                                     </li>
                                                 </#list>
                                             </ul>
+                                        <#else >
+                                            <a target="navTab" href="${childMenu.url}">
+                                                <i class="fa fa-circle-o"></i>
+                                                <span>${childMenu.name}</span>
+                                            </a>
                                         </#if>
                                     </li>
                                 </#list>
@@ -117,22 +115,22 @@
 <!-- Bootstrap 3.3.6 -->
 <link rel="stylesheet" href="adminlte/plugins/bootstrap/css/bootstrap.min.css">
 <!-- Font Awesome -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Theme style -->
 <link rel="stylesheet" href="adminlte/dist/css/AdminLTE.min.css">
+<#--<link rel="stylesheet" href="adminlte/dist/css/base.css">-->
 <!-- AdminLTE Skins. Choose a skin from the css/skins
    folder instead of downloading all of them to reduce the load. -->
 <link rel="stylesheet" href="adminlte/dist/css/skins/_all-skins.min.css"
 <!-- 以上为公共css -->
 
-<!-- bootstrap datepicker -->
-<link rel="stylesheet" href="adminlte/plugins/datepicker/datepicker3.css">
 <!-- iCheck for checkboxes and radio inputs -->
 <link rel="stylesheet" href="adminlte/plugins/iCheck/all.css">
 <!-- Bootstrap Color Picker -->
 <link rel="stylesheet" href="adminlte/plugins/colorpicker/bootstrap-colorpicker.min.css">
 <!-- Bootstrap time Picker -->
 <link rel="stylesheet" href="adminlte/plugins/timepicker/bootstrap-timepicker.min.css">
+<link href="http://cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/daterangepicker.css" rel="stylesheet">
 <!-- Bootstrap select -->
 <link rel="stylesheet" href="adminlte/plugins/bootstrap-select/bootstrap-select.min.css">
 <!-- bootstrap wysihtml5 - text editor -->
@@ -144,11 +142,11 @@
 <!-- bootstrap slider -->
 <link rel="stylesheet" href="adminlte/plugins/bootstrap-slider/slider.css">
 <!-- bootstrap-table -->
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-table/1.12.1/bootstrap-table.min.css">
 <#--bootstrap-iconpicker-->
 <link rel="stylesheet" href="adminlte/plugins/bootstrap-iconpicker/bootstrap-iconpicker.min.css">
 <!-- treeview-->
-<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css" />
+<#--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css"/>-->
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -156,11 +154,13 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 </#macro>
 
 <#macro jsFile>
 <!-- jQuery 2.2.3 -->
-<script src="adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<#--<script src="adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>-->
+<script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="adminlte/plugins/bootstrap/js/bootstrap.min.js"></script>
 <#--<script src="adminlte/plugins/fastclick/fastclick.js"></script>-->
@@ -168,13 +168,13 @@
 <script src="adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- AdminLTE App -->
 <script src="adminlte/dist/js/common.js"></script>
+<script src="adminlte/dist/js/AjaxFileUpload.js"></script>
 <script src="adminlte/dist/js/app.js"></script>
 <!-- 以上JS为页面必须 -->
 
 <!-- jQuery UI 1.11.bootstrap-select -->
 <script src="adminlte/plugins/jQueryUI/jquery-ui.min.js"></script>
-<script src="adminlte/plugins/jquery-treegrid-master/js/jquery.treegrid.min.js"></script>
-<script src="adminlte/plugins/jquery-treegrid-master/js/jquery.treegrid.bootstrap3.js"></script>
+
 <!-- Bootstrap WYSIHTML5 -->
 <script src="adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- iCheck -->
@@ -183,9 +183,9 @@
 <script src="adminlte/plugins/input-mask/jquery.inputmask.js"></script>
 <script src="adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="adminlte/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- bootstrap datepicker -->
-<script src="adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
-<script src="adminlte/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
+<!-- bootstrap daterangepicker -->
+<script src="http://cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/moment.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/daterangepicker.js"></script>
 <!-- bootstrap color picker -->
 <script src="adminlte/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <!-- bootstrap time picker -->
@@ -196,16 +196,18 @@
 <!-- Bootstrap slider -->
 <script src="adminlte/plugins/bootstrap-slider/bootstrap-slider.js"></script>
 <!-- bootstrap-table -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-table/1.12.0/extensions/treegrid/bootstrap-table-treegrid.js"></script>
+<script src="adminlte/plugins/jquery-treegrid-master/js/jquery.treegrid.min.js"></script>
+<script src="adminlte/plugins/jquery-treegrid-master/js/jquery.treegrid.bootstrap3.js"></script>
 <#--bootstrap-iconpicker-->
-<script type="text/javascript" src="adminlte/plugins/bootstrap-iconpicker/bootstrap-iconpicker-iconset-all.min.js"></script>
+<script type="text/javascript"
+        src="adminlte/plugins/bootstrap-iconpicker/bootstrap-iconpicker-iconset-all.min.js"></script>
 <script type="text/javascript" src="adminlte/plugins/bootstrap-iconpicker/bootstrap-iconpicker.min.js"></script>
 <!-- validate-->
 <script type="text/javascript" src="adminlte/plugins/validate/jquery.validate.js"></script>
-<!-- treeview-->
-<script type="text/javascript" src="adminlte/plugins/tree/treeview.js"></script>z
-<script type="text/javascript" src="//cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
+
 </#macro>
 
 <#macro setting>
@@ -398,11 +400,11 @@
 <div class="modal fade" id="lgModal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <#--<div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>-->
+        <#--<div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>-->
             <div class="modal-body">
                 <p>确认删除？</p>
             </div>

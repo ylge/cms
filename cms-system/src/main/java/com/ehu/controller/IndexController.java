@@ -30,7 +30,7 @@ public class IndexController {
     @RequestMapping(value = {"/"},method = RequestMethod.GET)
     public ModelAndView index(ModelAndView modelAndView){
         ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
-        modelAndView.setViewName("/system/index");
+        modelAndView.setViewName("/index");
         List<SysRoleMenu> privilegeList = user.getPrivilegeList();
         if (null != privilegeList){
             List<String> ids = new ArrayList<>();

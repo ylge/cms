@@ -182,7 +182,13 @@
       delete from sys_menu where id = #{id}
     </delete>
 
-    <select id="getAllMenu" resultMap="BaseResultMap">
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_menu
+    </select>
+
+    <select id="selectListByPage" parameterType="SysMenu" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from sys_menu

@@ -4,71 +4,108 @@
             <h3 class="box-title">菜单管理</h3>
         </div>
         <div class="box-body">
-            <div class="row">
-                <div class="col-sm-12">
-                    <table id="menu_tab" class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th>菜单名称</th>
-                            <th>菜单URL</th>
-                            <th>菜单类型</th>
-                            <th>排序</th>
-                            <th>创建时间</th>
-                            <th>操作</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <#if menus?? && (menus?size > 0) >
-                                <#list menus as menu>
-                                    <tr id="tr_${menu.id}" class="<#if menu.parentId==0>treegrid-${menu.id}<#else >treegrid-${menu.id} treegrid-parent-${menu.parentId} </#if>">
-                                        <td>${menu.name }</td>
-                                        <td>${menu.url }</td>
-                                        <td><#if menu.isMenu==1>菜单<#else>按钮</#if></td>
-                                        <td><input type="text" name="sort" value="${menu.sort}" id="${menu.id}" style="width:30px"/></td>
-                                        <td>${menu.createTime?string('yyyy-MM-dd hh:mm:ss')}</td>
-                                        <td class="text-left text-nowrap">
-                                            <div class="btn-group ">
-                                                <a target="modal" href="/system/menu/add/${menu.id}"><i class="fa fa-plus"></i>添加</a>
-                                                <#if menu.id!=1>
-                                                    <a  target="modal" href="/system/menu/edit/${menu.id}">
-                                                        <i class="fa fa-edit"></i>修改</a>
-                                                    <a  callback="menuReload('tr_${menu.id}')"
-                                                        data-body="确认要删除吗？" target="ajaxTodo"
-                                                        href="/system/menu/delete/${menu.id}">
-                                                        <i class="fa fa-remove"></i>删除</a>
-                                                </#if>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </#list>
-                            </#if>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <table id="menu_tab"></table>
         </div>
     </div>
 </div>
 <script type="text/javascript">
+    var menu_tab;
+    var $menu_tab = $('#menu_tab');
     $(function () {
-        $(".table").treegrid({
-            expanderExpandedClass: 'fa fa-chevron-down',
-            expanderCollapsedClass: 'fa fa-chevron-right'
+        menu_tab = $('#menu_tab').bootstrapTable({
+            url: "system/menu/page",
+            method: 'get',
+            striped: true,                      //是否显示行间隔色
+            height: $(window).height(),
+            sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+            idField: 'id',
+            columns: [
+                {title: "菜单名称", field: "name"},
+                {title: "菜单URL", field: "url"},
+                {title: "菜单类型", field: "isMenu", formatter: typeFormatter},
+                {title: "排序", field: "sort", formatter: menuSort},
+                {title: "操作", field: "operate", align: 'center', formatter: operateFormatter}
+            ],
+            treeShowField: 'name',
+            parentIdField: 'parentId',
+            onLoadSuccess: function (data) {
+                $menu_tab.treegrid({
+                    // initialState: 'collapsed',// 所有节点都折叠 默认展开
+                    treeColumn: 0,
+                    expanderExpandedClass: 'glyphicon glyphicon-triangle-bottom',
+                    expanderCollapsedClass: 'glyphicon glyphicon-triangle-right',
+                    onChange: function () {
+                        $menu_tab.bootstrapTable('resetWidth');
+                    }
+                });
+                //只展开树形的第一级节点
+                // $menu_tab.treegrid('getRootNodes').treegrid('expand');
+            }
         });
     });
+
+    function menuSort(value, row, index) {
+        return [
+            '<input type="text" name="sort" value="' + row.sort + '" id="' + row.id + '" style="width:30px" onblur="updateMenuSort(this)"/>'
+        ].join('');
+
+    }
+
+    // 格式化按钮
+    function operateFormatter(value, row, index) {
+        var result;
+        result = [
+            '<a href="/system/menu/add/' + row.id + '" onclick="menuToListAjax()" target="modal">',
+            '<i class="fa fa-plus"></i>添加',
+            '</a>  ',
+        ];
+        if (row.id != 1) {
+            result.push(
+                    '<a href="/system/menu/edit/' + row.id + '" onclick="menuToListAjax()" target="modal">',
+                    '<i class="fa fa-edit"></i>修改',
+                    '</a>  ',
+                    '<a href="/system/menu/delete/' + row.id + '" callback="menuReload();" data-body="确认要删除吗？" target="ajaxTodo">',
+                    '<i class="fa fa-remove"></i>删除',
+                    '</a>  ',
+            );
+        }
+        return result.join('');
+
+    }
+
+    // 格式化类型
+    function typeFormatter(value, row, index) {
+        if (value === 1) {
+            return '菜单';
+        }
+        if (value === 0) {
+            return '按钮';
+        }
+        return '-';
+    }
+
     //更新排序
-    $("input[name=sort]").on('keyup',function () {
-        var _id = $(this).attr("id");
-        var _sort = $(this).val();
-        if(_sort!==''){
-            $.post( '/system/menu/save',{
+    function updateMenuSort(date) {
+        debugger;
+        var _id = $(date).attr("id");
+        var _sort = $(date).val();
+        if (_sort !== '') {
+            $.post('/system/menu/save', {
                 id: _id,
                 sort: _sort
-            },function (data) {
-                if(data.code===200){
+            }, function (data) {
+                if (data.code === 200) {
                     alert("修改成功");
                 }
             });
         }
-    });
+    }
+
+    function menuToListAjax() {
+        list_ajax = menu_tab;
+    }
+
+    function menuReload() {
+        reloadTable(menu_tab);
+    }
 </script>

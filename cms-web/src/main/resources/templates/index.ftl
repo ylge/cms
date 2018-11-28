@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <#include "../macro/base.ftl"/>
+  <#include "macro/base.ftl"/>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>易乎社区CMS管理</title>

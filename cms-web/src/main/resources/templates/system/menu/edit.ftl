@@ -67,6 +67,7 @@
             if (data.code === 200) {
                 $("#lgModal").modal('hide');
                 alertMsg("更新成功", "success");
+                reloadTable(list_ajax);
             } else {
                 alertMsg("更新失败:" + data.msg, "success");
             }

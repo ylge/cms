@@ -1,4 +1,4 @@
-<form id="menuAddForm" method="post" action="/system/menu/save">
+<form id="menuAddForm" class="form-horizontal" method="post" action="/system/menu/save">
     <div class="modal-body">
         <input type="hidden" name="parentId" value="${menu.id}">
         <input type="hidden" name="level" value="${menu.level+1}">
@@ -67,6 +67,7 @@
                 if (data.code === 200) {
                     alertMsg("添加成功", "success");
                     $("#lgModal").modal('hide');
+                    reloadTable(list_ajax);
                 } else {
                     alertMsg("添加失败:" + data.msg, "success");
                 }
